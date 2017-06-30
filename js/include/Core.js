@@ -18,7 +18,7 @@ var CoreFactory = function($http) {
 	Core.LOGIN_URL = null;
 	Core.STATE = "WORKING";
 	Core.LOGIN_REDIRECT = location.protocol + "//" + location.host
-			+ location.pathname;
+		+ location.pathname;
 	Core.user = null;
 	Core.token = sessionStorage["lkticket.api.token"];
 
@@ -30,18 +30,18 @@ var CoreFactory = function($http) {
 			if (!code) {
 				console.log("Invalid code");
 			}
+			history.pushState(null, "index", "/");
 			$http.get(
-					Core.BASE_URL + "/login/google/token?code=" + code
-							+ "&redirect=" + Core.LOGIN_REDIRECT).then(
-					function(response) {
-						Core.user = response.data.user;
-						Core.token = response.data.token;
-						sessionStorage
-								.setItem("lkticket.api.token", Core.token);
-						Core.STATE = "LOGGED_IN";
-					}, function(response) {
-						Core.loginButton();
-					});
+				Core.BASE_URL + "/login/google/token?code=" + code
+					+ "&redirect=" + Core.LOGIN_REDIRECT).then(
+				function(response) {
+					Core.user = response.data.user;
+					Core.token = response.data.token;
+					sessionStorage.setItem("lkticket.api.token", Core.token);
+					Core.STATE = "LOGGED_IN";
+				}, function(response) {
+					Core.loginButton();
+				});
 		} else if (Core.token && Core.token != "null") {
 			console.log("Using existing login token: " + Core.token);
 			console.log(Core.token);
@@ -61,15 +61,15 @@ var CoreFactory = function($http) {
 
 	Core.loginButton = function() {
 		$http.get(
-				Core.BASE_URL + "/login/google/url?redirect="
-						+ encodeURIComponent(Core.LOGIN_REDIRECT)).then(
-				function(response) {
-					Core.LOGIN_URL = response.data;
-					Core.STATE = "LOGGED_OUT";
-				}, function(response) {
-					console.log("Failed to fetch login URL");
-					Core.STATE = "ERROR";
-				});
+			Core.BASE_URL + "/login/google/url?redirect="
+				+ encodeURIComponent(Core.LOGIN_REDIRECT)).then(
+			function(response) {
+				Core.LOGIN_URL = response.data;
+				Core.STATE = "LOGGED_OUT";
+			}, function(response) {
+				console.log("Failed to fetch login URL");
+				Core.STATE = "ERROR";
+			});
 	}
 
 	Core.get = function(url) {
