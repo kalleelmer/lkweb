@@ -74,9 +74,8 @@
 						class="icon-bar"></span>
 				</button>
 				<ul class="nav navbar-nav navbar-left">
-					<li class="level-one"><a href="#/"><img
-							src="/images/logo/logo-bright.svg" alt="LKTicket Admin"
-							class="main-logo" /></a></li>
+					<li class="level-one main-logo"><a href="#/"><img
+							src="/images/logo/logo.png" alt="LKTicket Admin" /></a></li>
 				</ul>
 			</div>
 			<!-- Collect the nav links, forms, and other content for toggling -->
@@ -86,13 +85,15 @@
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li class="level-one" ng-show="userStatus('ERROR')"><i
-						class="fa fa-warning"></i></li>
+						class="fa fa-lg fa-warning"></i></li>
 					<li class="level-one" ng-show="userStatus('WORKING')"><i
-						class="fa fa-spin fa-refresh"></i></li>
-					<li class="level-one" ng-show="userStatus('LOGGED_IN')"><img
+						class="fa fa-lg fa-spin fa-refresh"></i></li>
+					<li class="level-one user-display"
+						ng-show="userStatus('LOGGED_IN')"><img
 						class="user-picture-small" ng-src="{{user().picture}}" /> <a>{{user().email}}</a></li>
-					<li class="level-one" ng-show="userStatus('LOGGED_OUT')"><a
-						href="{{loginURL()}}" role="button">Log in</a></li>
+					<li class="level-one login-button"
+						ng-show="userStatus('LOGGED_OUT')"><a href="{{loginURL()}}"
+						role="button">Log in</a></li>
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->
