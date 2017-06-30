@@ -20,14 +20,13 @@ var CoreFactory = function($http) {
 	Core.LOGIN_REDIRECT = location.protocol + "//" + location.host
 			+ location.pathname;
 	Core.user = null;
-	Core.token = null;
+	Core.token = sessionStorage["lkticket.api.token"];
 
 	Core.initialize = function() {
 		var state = findGetParameter("state");
-		if (state.substring(0, 6) == "google") {
+		if (state && state.substring(0, 6) == "google") {
 			console.log("Detected Google login");
 			var code = findGetParameter("code");
-			console.log("Code: " + code);
 			if (!code) {
 				console.log("Invalid code");
 			}
@@ -37,11 +36,26 @@ var CoreFactory = function($http) {
 					function(response) {
 						Core.user = response.data.user;
 						Core.token = response.data.token;
+						sessionStorage
+								.setItem("lkticket.api.token", Core.token);
 						Core.STATE = "LOGGED_IN";
 					}, function(response) {
 						Core.loginButton();
-						Core.STATE = "LOGGED_OUT";
 					});
+		} else if (Core.token && Core.token != "null") {
+			console.log("Using existing login token: " + Core.token);
+			console.log(Core.token);
+			Core.get("/users/current").then(function(response) {
+				Core.user = response.data;
+				Core.STATE = "LOGGED_IN";
+			}, function(response) {
+				console.log("Failed to use existing login token");
+				Core.token = null;
+				sessionStorage.setItem("lkticket.api.token", Core.token);
+				Core.loginButton();
+			});
+		} else {
+			Core.loginButton();
 		}
 	}
 
@@ -53,9 +67,27 @@ var CoreFactory = function($http) {
 					Core.LOGIN_URL = response.data;
 					Core.STATE = "LOGGED_OUT";
 				}, function(response) {
-					Core.loginButton();
+					console.log("Failed to fetch login URL");
 					Core.STATE = "ERROR";
 				});
+	}
+
+	Core.get = function(url) {
+		return Core.request("GET", url, null);
+	}
+
+	Core.request = function(method, url, data) {
+		var req = {
+			method : method,
+			url : Core.BASE_URL + url,
+			headers : {
+				"Authorization" : ("Token " + Core.token)
+			},
+			data : data
+		};
+
+		console.log("Making request to " + req.url);
+		return $http(req);
 	}
 
 	Core.initialize();
