@@ -5,6 +5,7 @@ function findGetParameter(parameterName) {
 	var tmp = [];
 	location.search.substr(1).split("&").forEach(function(item) {
 		tmp = item.split("=");
+		console.log(tmp);
 		if (tmp[0] === parameterName) {
 			result = decodeURIComponent(tmp[1]);
 		}
@@ -12,7 +13,7 @@ function findGetParameter(parameterName) {
 	return result;
 }
 
-var CoreFactory = function($http) {
+var CoreFactory = function($http, $timeout) {
 	var Core = {};
 	Core.BASE_URL = "http://127.0.0.1:8080";
 	Core.LOGIN_URL = null;
@@ -30,7 +31,6 @@ var CoreFactory = function($http) {
 			if (!code) {
 				console.log("Invalid code");
 			}
-			history.pushState(null, "index", "/");
 			$http.get(
 				Core.BASE_URL + "/login/google/token?code=" + code
 					+ "&redirect=" + Core.LOGIN_REDIRECT).then(
@@ -39,7 +39,9 @@ var CoreFactory = function($http) {
 					Core.token = response.data.token;
 					sessionStorage.setItem("lkticket.api.token", Core.token);
 					Core.STATE = "LOGGED_IN";
+					history.pushState(null, "index", "/");
 				}, function(response) {
+					history.pushState(null, "index", "/");
 					Core.loginButton();
 				});
 		} else if (Core.token && Core.token != "null") {
@@ -55,6 +57,7 @@ var CoreFactory = function($http) {
 				Core.loginButton();
 			});
 		} else {
+			console.log("No login detected");
 			Core.loginButton();
 		}
 	}
@@ -69,6 +72,7 @@ var CoreFactory = function($http) {
 			}, function(response) {
 				console.log("Failed to fetch login URL");
 				Core.STATE = "ERROR";
+				$timeout(Core.loginButton, 1000);
 			});
 	}
 
