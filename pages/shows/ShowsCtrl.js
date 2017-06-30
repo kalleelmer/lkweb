@@ -1,9 +1,9 @@
 var module = angular.module("lkticket.admin");
 
 var shows = [
-    { name: 'Azurite', price: 2.95 },
-    { name: 'Bloodstone', price: 5.95 },
-    { name: 'Zircon', price: 3.95 }
+    { name: 'Azurite'},
+    { name: 'Bloodstone'},
+    { name: 'Zircon'}
   ];
 
 var ShowsCtrl = function($scope, $http, User) {
