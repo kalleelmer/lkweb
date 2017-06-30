@@ -1,4 +1,11 @@
-<div class="container">
+<div class="container" ng-controller = "ShowsCtrl as showCtrl">
 	<h1>Föreställningar</h1>
-	<!-- TODO -->
+
+	<div class="panel panel-default" ng-repeat="show in showCtrl.shows">
+	  <div class="panel-body">
+	    <show-panel>
+			</show-panel>
+	  </div>
+	</div>
+
 </div>
