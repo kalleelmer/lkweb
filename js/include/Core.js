@@ -15,7 +15,8 @@ function findGetParameter(parameterName) {
 
 var CoreFactory = function($http, $timeout) {
 	var Core = {};
-	Core.BASE_URL = "http://127.0.0.1:8080";
+	// Core.BASE_URL = "http://127.0.0.1:8080";
+	Core.BASE_URL = "https://lkticket.silvertejp.nu/api";
 	Core.LOGIN_URL = null;
 	Core.STATE = "WORKING";
 	Core.LOGIN_REDIRECT = location.protocol + "//" + location.host
