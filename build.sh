@@ -1,14 +1,18 @@
 #!/bin/bash
 #
 
-echo > x.js
-echo "Including module.js"
-echo "//module.js" >> x.js
-echo "(function () {" >> x.js
-cat js/module.js >> x.js
-echo "})();" >> x.js
-echo >> x.js
-echo >> x.js
+echo -n > x.js
+
+for f in "js/module.js" "js/env.js"
+do
+	echo "Including $f"
+	echo "//"$f >> x.js
+	echo "(function () {" >> x.js
+	cat $f >> x.js
+	echo "})();" >> x.js
+	echo >> x.js
+	echo >> x.js
+done
 
 for f in `echo js/include/*.js`
 do

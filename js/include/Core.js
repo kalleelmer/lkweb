@@ -13,10 +13,8 @@ function findGetParameter(parameterName) {
 	return result;
 }
 
-var CoreFactory = function($http, $timeout) {
+var CoreFactory = function($http, $timeout, ENV) {
 	var Core = {};
-	// Core.BASE_URL = "http://127.0.0.1:8080";
-	Core.BASE_URL = "https://lkticket.silvertejp.nu/api";
 	Core.LOGIN_URL = null;
 	Core.STATE = "WORKING";
 	Core.LOGIN_REDIRECT = location.protocol + "//" + location.host
@@ -33,7 +31,7 @@ var CoreFactory = function($http, $timeout) {
 				console.log("Invalid code");
 			}
 			$http.get(
-				Core.BASE_URL + "/login/google/token?code=" + code
+				ENV.CORE.BASE_URL + "/login/google/token?code=" + code
 					+ "&redirect=" + Core.LOGIN_REDIRECT).then(
 				function(response) {
 					Core.user = response.data.user;
@@ -65,7 +63,7 @@ var CoreFactory = function($http, $timeout) {
 
 	Core.loginButton = function() {
 		$http.get(
-			Core.BASE_URL + "/login/google/url?redirect="
+			ENV.CORE.BASE_URL + "/login/google/url?redirect="
 				+ encodeURIComponent(Core.LOGIN_REDIRECT)).then(
 			function(response) {
 				Core.LOGIN_URL = response.data;
@@ -84,7 +82,7 @@ var CoreFactory = function($http, $timeout) {
 	Core.request = function(method, url, data) {
 		var req = {
 			method : method,
-			url : Core.BASE_URL + url,
+			url : ENV.CORE.BASE_URL + url,
 			headers : {
 				"Authorization" : ("Token " + Core.token)
 			},
