@@ -3,11 +3,18 @@
 
 	<div class="panel panel-default" ng-repeat="show in shows">
 	  <div class="panel-body">
-			<div class="container item-page">
-				<h1>{{show.name}}</h1>
+			<div class="container item-page" ng-hide="show.editToggle">
+				<h4>{{show.name}}</h4>
 				<a href="#/packages/{{show.id}}" type="button" class="btn btn-success">Välj föreställning</a>
-				<button type="button" class="btn btn-primary">Redigera föreställning</button>
+				<button ng-click = "toggleEditMode(show)" type="button" class="btn btn-primary">Redigera föreställning</button>
 				<button type="button" class="btn btn-danger">Radera föreställning</button>
+			</div>
+			<div class="container item-page" ng-show="show.editToggle">
+				<form name= "editForm" ng-submit="editForm.$valid && editNameOfShow(show)" novalidate>
+					<input type="text" placeholder="{{show.name}}" ng-model = "show.name" required>
+					<input type="submit" class="btn btn-primary" value = "Spara">
+					<button ng-click = "toggleEditMode(show)" type="button" class="btn btn-primary">Återgå</button>
+				</form>
 			</div>
 	  </div>
 	</div>

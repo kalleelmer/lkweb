@@ -8,10 +8,17 @@ var ShowsCtrl = function($scope, $http, User, Core) {
     alert("Kunde inte hämta nöjan: " + response.status);
   });
 
-  this.deleteShow = function(id) {
-    //todo radera från databas databas
+  $scope.toggleEditMode = function(show) {
+		show.editToggle = !show.editToggle;
+    console.log(show);
+	}
 
-  };
+  $scope.editNameOfShow = function(show) {
+    //TODO Lösa riktigt mot databasen
+    //$scope.shows[index].name = newName;
+    $scope.toggleEditMode(show);
+
+    }
 
 }
 
