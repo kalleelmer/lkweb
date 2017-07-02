@@ -7,7 +7,7 @@
 				<h4>{{show.name}}</h4>
 				<a href="#/packages/{{show.id}}" type="button" class="btn btn-success">Välj föreställning</a>
 				<button ng-click = "toggleEditMode(show)" type="button" class="btn btn-primary">Redigera föreställning</button>
-				<button type="button" class="btn btn-danger">Radera föreställning</button>
+				<button ng-click = "deleteShow(show)" type="button" class="btn btn-danger">Radera föreställning</button>
 			</div>
 			<div class="container item-page" ng-show="show.editToggle">
 				<form name= "editForm" ng-submit="editForm.$valid && editNameOfShow(show)" novalidate>

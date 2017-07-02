@@ -10,15 +10,17 @@ var ShowsCtrl = function($scope, $http, User, Core) {
 
   $scope.toggleEditMode = function(show) {
 		show.editToggle = !show.editToggle;
-    console.log(show);
 	}
 
   $scope.editNameOfShow = function(show) {
     //TODO Lösa riktigt mot databasen
-    //$scope.shows[index].name = newName;
     $scope.toggleEditMode(show);
+  }
 
-    }
+  $scope.deleteShow = function(show){
+    //TODO Lösa riktigt mot databasen
+    $scope.shows.splice($scope.shows.indexOf(show),1);
+  }
 
 }
 
