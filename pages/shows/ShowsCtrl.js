@@ -1,11 +1,5 @@
 var module = angular.module("lkticket.admin");
 
-var shows = [
-    { name: 'Azurite'},
-    { name: 'Bloodstone'},
-    { name: 'Zircon'}
-  ];
-
 var ShowsCtrl = function($scope, $http, User, Core) {
 
   Core.get("/shows").then(function(response) {
