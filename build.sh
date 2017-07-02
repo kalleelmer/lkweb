@@ -3,7 +3,7 @@
 
 echo -n > x.js
 
-for f in "js/module.js" "js/env.js"
+for f in "js/module.js"
 do
 	echo "Including $f"
 	echo "//"$f >> x.js
