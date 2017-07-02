@@ -6,17 +6,18 @@ var shows = [
     { name: 'Zircon'}
   ];
 
-var ShowsCtrl = function($scope, $http, User) {
+var ShowsCtrl = function($scope, $http, User, Core) {
 
-  this.shows = shows;
+  Core.get("/shows").then(function(response) {
+    $scope.shows = response.data;
+  }, function(response) {
+    alert("Kunde inte hämta nöjan: " + response.status);
+  });
 
 }
 
-module.directive("showPanel", function() {
-  return {
-    restrict: "E",
-    templateUrl: "/pages/shows/show-panel.html"
-  };
-});
+var selectShow = function(id) {
+  alert("hej");
+}
 
 module.controller("ShowsCtrl", ShowsCtrl);

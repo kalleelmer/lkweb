@@ -1,10 +1,14 @@
 <div class="container" ng-controller = "ShowsCtrl as showCtrl">
-	<h1>Föreställningar</h1>
+	<h1>Nöjen</h1>
 
-	<div class="panel panel-default" ng-repeat="show in showCtrl.shows">
+	<div class="panel panel-default" ng-repeat="show in shows">
 	  <div class="panel-body">
-	    <show-panel>
-			</show-panel>
+			<div class="container item-page">
+				<h1>{{show.name}}</h1>
+				<a href="#/packages/{{show.id}}" type="button" class="btn btn-success" ng-click"selectShow(show.id)">Välj föreställning</a>
+				<button type="button" class="btn btn-primary">Redigera föreställning</button>
+				<button type="button" class="btn btn-danger">Radera föreställning</button>
+			</div>
 	  </div>
 	</div>
 

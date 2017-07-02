@@ -17,7 +17,7 @@ module.config([ "$routeProvider", function($routeProvider) {
 	});
 	$routeProvider.when("/packages/:id", {
 		templateUrl : "/pages/shows/show.html",
-		controller : "ShowsCtrl",
+		controller : "ShowCtrl",
 		pagetype : "item"
 	});
 	$routeProvider.otherwise({
