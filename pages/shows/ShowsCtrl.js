@@ -22,6 +22,11 @@ var ShowsCtrl = function($scope, $http, User, Core) {
     $scope.shows.splice($scope.shows.indexOf(show),1);
   }
 
+  $scope.addNewShow = function(show) {
+    //TODO koppla mot api
+    $scope.shows.push(show);
+  }
+
 }
 
 module.controller("ShowsCtrl", ShowsCtrl);

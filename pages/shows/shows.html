@@ -20,8 +20,12 @@
 	</div>
 
 	<div>
-		<!-- Lägga till ny föreställning-->
+		<form name="newShow" ng-submit = "addNewShow(show)" novalidate>
+			<input type="text" placeholder="Namn" ng-model = "show.name" required>
+			<input type="submit" class="btn btn-primary" value="Lägg till ny föreställning">
+
+		</form>
 	</div>
-	<button type="button" class="btn btn-primary">Lägg till ny föreställning</button>
+
 
 </div>
