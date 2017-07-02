@@ -10,9 +10,4 @@ var ShowCtrl = function($scope, $http, User, $routeParams, Core) {
 
 }
 
-var deletePerformance = function(id) {
-  //todo radera databas
-  $scope.p
-};
-
 module.controller("ShowCtrl", ShowCtrl);

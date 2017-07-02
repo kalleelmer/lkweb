@@ -8,10 +8,11 @@ var ShowsCtrl = function($scope, $http, User, Core) {
     alert("Kunde inte hämta nöjan: " + response.status);
   });
 
-}
+  this.deleteShow = function(id) {
+    //todo radera från databas databas
 
-var selectShow = function(id) {
-  alert("hej");
+  };
+
 }
 
 module.controller("ShowsCtrl", ShowsCtrl);
