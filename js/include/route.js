@@ -20,6 +20,11 @@ module.config([ "$routeProvider", function($routeProvider) {
 		controller : "ShowCtrl",
 		pagetype : "item"
 	});
+	$routeProvider.when("/karnevalister", {
+		templateUrl : "/pages/karnevalister/karnevalister.html",
+		controller : "KarnevalisterCtrl",
+		pagetype : "item-list"
+	});
 	$routeProvider.otherwise({
 		redirectTo : "/"
 	});
