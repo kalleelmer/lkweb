@@ -1,3 +1,14 @@
 <div class="container item-page">
-	<h1>{{performances}}</h1>
+	<h5>Föreställningar</h5>
+
+	<div class="panel panel-default" ng-repeat="performance in performances">
+		<div class="panel-body">
+			<div class="container item-page">
+				<h1>{{performance.start}}</h1>
+				<button type="button" class="btn btn-primary">Redigera föreställning</button>
+				<button type="button" class="btn btn-danger">Radera föreställning</button>
+			</div>
+		</div>
+	</div>
+
 </div>
