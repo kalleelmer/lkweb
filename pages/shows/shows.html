@@ -2,7 +2,7 @@
 	<h1>Nöjen</h1>
 
 	<div class="list-group">
-		<a href="#/packages/{{show.id}}" class="list-group-item" ng-repeat="show in shows">{{show.name}}</a>
+		<a href="#/packages/{{show.id}}" class="list-group-item" ng-repeat="show in shows">{{show.name.replace("?", "ä")}}</a>
 	</div>
 
 	<div>

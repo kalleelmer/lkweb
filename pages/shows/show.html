@@ -32,14 +32,11 @@
   </tbody>
 </table>
 
-	<div class="panel panel-default" ng-repeat="performance in performances">
-		<div class="panel-body">
-			<div class="container item-page">
-				<h1>{{formatDate(performance.start) | date : 'EEEE, MMMM d, HH:mm'}}</h1>
-				<button type="button" class="btn btn-primary">Redigera föreställning</button>
-				<button type="button" class="btn btn-danger">Radera föreställning</button>
-			</div>
-		</div>
+	<div ng-repeat="(dayDate, performances) in performancesByDate">
+				<h1>{{dayDate}}</h1>
+				<div class="list-group">
+					<a href="#" class="list-group-item" ng-repeat="performance in performances">{{formatDate(performance.start) | date : 'EEEE, MMMM d, HH:mm'}}</a>
+				</div>
 	</div>
 
 </div>
