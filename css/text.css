@@ -2,3 +2,7 @@
 p.multi-paragraph {
 	white-space: pre-line;
 }
+
+.capitalize {
+	text-transform: capitalize;
+}

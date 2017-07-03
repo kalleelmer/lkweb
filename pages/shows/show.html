@@ -1,54 +1,62 @@
-<div class="container item-page">
-	<h5>Föreställningar</h5>
+<div class="container">
+	<h1>{{show.name}}</h1>
 
+	<h2>Biljetter och priser</h2>
 	<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th ng-repeat = "category in categories">{{category.name}}</th>
-    </tr>
-  </thead>
-  <tbody>
+		<thead>
+			<tr>
+				<th>#</th>
+				<th ng-repeat="category in show.categories">{{category.name}}</th>
+			</tr>
+		</thead>
+		<tbody>
 
-		<tr ng-repeat = "rate in rates">
-			<th scope="row">{{rate.name}}</th>
+			<tr ng-repeat="rate in rates">
+				<th scope="row">{{rate.name}}</th>
 
-      <td>30</td>
-      <td>X</td>
-      <td>X</td>
-		</tr>
+				<td>30</td>
+				<td>X</td>
+				<td>X</td>
+			</tr>
 
-  </tbody>
-</table>
+		</tbody>
+	</table>
 
-	<div ng-repeat="(dayDate, performances) in performancesByDate">
-				<h5>{{dayDate | date : 'EEEE, MMMM d'}}</h5>
-				<div class="list-group">
-					<div class="list-group-item" ng-repeat="performance in performances">{{formatDate(performance.start) | date : 'HH:mm'}}</div>
-				</div>
-				<form name="newShow" ng-submit = "addNewPerformance(newPerformance, dayDate)" novalidate>
-					<input type="text" placeholder="HH:MM" ng-model = "newPerformance.time" required>
-					<input type="submit" class="btn btn-primary" value="Lägg till ny föreställning">
+	<h2>Föreställningar</h2>
+	<div ng-repeat="(date, performances) in show.dates">
+		<h3 class="capitalize">{{date | date : 'EEEE d MMMM yyyy'}}</h3>
+		<div class="list-group">
+			<div class="list-group-item" ng-repeat="performance in performances">{{performance.start
+				| timestamp | date : 'HH:mm'}}</div>
+			<form class="list-group-item"
+				ng-submit="addPerformance(newPerformance, date)" novalidate>
+				<input type="text" placeholder="HH:MM"
+					ng-model="newPerformance.time" required> <input
+					type="submit" class="btn btn-primary"
+					value="Lägg till ny föreställning">
 
-				</form>
+			</form>
+		</div>
 	</div>
-		<form name="newDateForm" ng-submit="addNewDate(newDate)" novalidate>
-			<input type="text" ng-model="newDate">
-			<input type="submit" class="btn btn-primary" value="Lägg till nytt datum">
-		</form>
+	<form ng-submit="addDate()">
+		<input required type="text" ng-model="newDate"> <input
+			type="submit" class="btn btn-primary" value="Lägg till nytt datum">
+	</form>
 
 
 
-Testfunktioner!
+	Testfunktioner!
 
-<form name="newCategory" ng-submit="newCategory.$valid && postCategory(category)" novalidate>
-	<input type="text" ng-model="category.name" required>
-	<input type="submit" class="btn btn-primary" value="Lägg till ny kategori">
-</form>
+	<form name="newCategory"
+		ng-submit="newCategory.$valid && postCategory(category)" novalidate>
+		<input type="text" ng-model="category.name" required> <input
+			type="submit" class="btn btn-primary" value="Lägg till ny kategori">
+	</form>
 
-<form name="newRate" ng-submit="newRate.$valid && postRate(rate)" novalidate>
-	<input type="text" ng-model="rate.name" required>
-	<input type="submit" class="btn btn-primary" value="Lägg till ny rate">
-</form>
+	<form name="newRate" ng-submit="newRate.$valid && postRate(rate)"
+		novalidate>
+		<input type="text" ng-model="rate.name" required> <input
+			type="submit" class="btn btn-primary" value="Lägg till ny rate">
+	</form>
 
 </div>
