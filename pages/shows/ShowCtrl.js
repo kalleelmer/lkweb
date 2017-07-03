@@ -4,7 +4,7 @@ var ShowCtrl = function($filter, $scope, $http, User, $routeParams, Core) {
 
 	$scope.formatDate = function(date){
 		return date.replace(" ", "T");
-	}
+	};
 
 	$scope.sortShows = function(shows) {
 		this.sortedShows = {};
@@ -18,7 +18,7 @@ var ShowCtrl = function($filter, $scope, $http, User, $routeParams, Core) {
 			this.sortedShows[dateKey].push(shows[i]);
 		}
 		$scope.performancesByDate = this.sortedShows;
-	}
+	};
 
 	$scope.id = $routeParams.id;
 
@@ -31,12 +31,12 @@ var ShowCtrl = function($filter, $scope, $http, User, $routeParams, Core) {
 
 		//TODO Koppla mot databasen
 
-	}
+	};
 
 	$scope.addNewDate = function(newDate) {
 		$scope.performancesByDate[newDate] = [];
 		newDate = "";
-	}
+	};
 
 
 	Core.get("/admin/shows/" + $scope.id + "/performances").then(
@@ -75,12 +75,12 @@ var ShowCtrl = function($filter, $scope, $http, User, $routeParams, Core) {
 
 		$scope.postCategory = function(category) {
 			Core.post("/admin/shows/" + $scope.id + "/categories", category);
-		}
+		};
 
-		$scope.postRate = function(rate) {
+		$scope.postRate = function(rate){
 			Core.post("/admin/shows/" + $scope.id + "/rates", rate);
-		}
+		};
 
-}
+};
 
 module.controller("ShowCtrl", ShowCtrl);
