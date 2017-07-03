@@ -14,32 +14,36 @@ var ShowCtrl = function($filter, $scope, $http, User, $routeParams, Core) {
 		this.sortedShows = {};
 
 		for (var i in shows){
-
-			var dateKey = $filter('date')($scope.formatDate(shows[i].start), "dd/MM/yyyy");
+			var dateKey = shows[i].start.split(" ")[0];
 
 			if(!this.sortedShows[dateKey]){
 				this.sortedShows[dateKey] = [];
 			}
 			this.sortedShows[dateKey].push(shows[i]);
 		}
-		console.log(this.sortedShows);
 		$scope.performancesByDate = this.sortedShows;
 
 	}
 
 	$scope.id = $routeParams.id;
 
+	$scope.addNewPerformance = function(performance, date) {
+
+		console.log($scope.performancesByDate);
+		$scope.performancesByDate[date].push({start: date + " " + performance.time});
+
+		performance.time = "";
+		
+		//TODO Koppla mot databasen
+
+	}
+
 	Core.get("/admin/shows/" + $scope.id + "/performances").then(
 		function(response) {
-
 			$scope.sortShows(response.data);
 		}, function(response) {
 			alert("Ett problem uppstod");
 		});
-
-
-
-
 
 }
 

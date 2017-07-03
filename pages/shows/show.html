@@ -33,10 +33,15 @@
 </table>
 
 	<div ng-repeat="(dayDate, performances) in performancesByDate">
-				<h1>{{dayDate}}</h1>
+				<h5>{{dayDate | date : 'EEEE, MMMM d'}}</h5>
 				<div class="list-group">
-					<a href="#" class="list-group-item" ng-repeat="performance in performances">{{formatDate(performance.start) | date : 'EEEE, MMMM d, HH:mm'}}</a>
+					<div class="list-group-item" ng-repeat="performance in performances">{{formatDate(performance.start) | date : 'HH:mm'}}</div>
 				</div>
+				<form name="newShow" ng-submit = "addNewPerformance(newPerformance, dayDate)" novalidate>
+					<input type="text" placeholder="HH:MM" ng-model = "newPerformance.time" required>
+					<input type="submit" class="btn btn-primary" value="Lägg till ny föreställning">
+
+				</form>
 	</div>
 
 </div>
