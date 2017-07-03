@@ -1,22 +1,8 @@
 <div class="container" ng-controller = "ShowsCtrl as showCtrl">
 	<h1>Nöjen</h1>
 
-	<div class="panel panel-default" ng-repeat="show in shows">
-	  <div class="panel-body">
-			<div class="container item-page" ng-hide="show.editToggle">
-				<h4>{{show.name}}</h4>
-				<a href="#/packages/{{show.id}}" type="button" class="btn btn-success">Välj föreställning</a>
-				<button ng-click = "toggleEditMode(show)" type="button" class="btn btn-primary">Redigera föreställning</button>
-				<button ng-click = "deleteShow(show)" type="button" class="btn btn-danger">Radera föreställning</button>
-			</div>
-			<div class="container item-page" ng-show="show.editToggle">
-				<form name= "editForm" ng-submit="editForm.$valid && editNameOfShow(show)" novalidate>
-					<input type="text" placeholder="{{show.name}}" ng-model = "show.name" required>
-					<input type="submit" class="btn btn-primary" value = "Spara">
-					<button ng-click = "toggleEditMode(show)" type="button" class="btn btn-primary">Återgå</button>
-				</form>
-			</div>
-	  </div>
+	<div class="list-group">
+		<a href="#/packages/{{show.id}}" class="list-group-item" ng-repeat="show in shows">{{show.name}}</a>
 	</div>
 
 	<div>
