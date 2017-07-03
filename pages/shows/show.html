@@ -5,30 +5,19 @@
   <thead>
     <tr>
       <th>#</th>
-      <th>Barnplats</th>
-      <th>Vuxenplats</th>
-      <th>Parkett</th>
+      <th ng-repeat = "category in categories">{{category.name}}</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">Barn</th>
+
+		<tr ng-repeat = "rate in rates">
+			<th scope="row">{{rate.name}}</th>
+
       <td>30</td>
       <td>X</td>
       <td>X</td>
-    </tr>
-    <tr>
-      <th scope="row">Vuxen</th>
-      <td>X</td>
-      <td>50</td>
-      <td>50</td>
-    </tr>
-    <tr>
-      <th scope="row">Student</th>
-      <td>X</td>
-      <td>X</td>
-      <td>40</td>
-    </tr>
+		</tr>
+
   </tbody>
 </table>
 
@@ -43,11 +32,23 @@
 
 				</form>
 	</div>
-
-
 		<form name="newDateForm" ng-submit="addNewDate(newDate)" novalidate>
 			<input type="text" ng-model="newDate">
 			<input type="submit" class="btn btn-primary" value="Lägg till nytt datum">
 		</form>
+
+
+
+Testfunktioner!
+
+<form name="newCategory" ng-submit="newCategory.$valid && postCategory(category)" novalidate>
+	<input type="text" ng-model="category.name" required>
+	<input type="submit" class="btn btn-primary" value="Lägg till ny kategori">
+</form>
+
+<form name="newRate" ng-submit="newRate.$valid && postRate(rate)" novalidate>
+	<input type="text" ng-model="rate.name" required>
+	<input type="submit" class="btn btn-primary" value="Lägg till ny rate">
+</form>
 
 </div>

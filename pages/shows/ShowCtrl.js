@@ -1,9 +1,5 @@
 var module = angular.module("lkticket.admin");
 
-var catagories = [{name : "Barnplats", Prices: {barn: 30, fribiljett: 0}},
-{anme : "Stol", prices: {student: 60, vuxen: 80, fribiljett: 0}},
-{name : "Parkett", prices: {student: 60, vuxen: 80, fribiljett: 0}}];
-
 var ShowCtrl = function($filter, $scope, $http, User, $routeParams, Core) {
 
 	$scope.formatDate = function(date){
@@ -48,7 +44,42 @@ var ShowCtrl = function($filter, $scope, $http, User, $routeParams, Core) {
 			$scope.sortShows(response.data);
 		}, function(response) {
 			alert("Ett problem uppstod");
-		});
+		}
+	);
+
+		//Hämta hem samt generera pristabell
+
+		Core.get("/admin/shows/" + $scope.id+ "/rates").then(
+			function(response) {
+				$scope.rates = response.data;
+			}, function(response) {
+				alert("Ett problem uppstod");
+			}
+		);
+
+		Core.get("/admin/shows/" + $scope.id+ "/categories").then(
+			function(response) {
+				$scope.categories = response.data;
+			}, function(response) {
+				alert("Ett problem uppstod");
+			}
+		);
+
+		/*Core.get("/admin/shows/" + $scope.id+ "/rates").then(
+			function(response) {
+				console.log(response.data);
+			}, function(response) {
+				alert("Ett problem uppstod");
+			}
+		);*/
+
+		$scope.postCategory = function(category) {
+			Core.post("/admin/shows/" + $scope.id + "/categories", category);
+		}
+
+		$scope.postRate = function(rate) {
+			Core.post("/admin/shows/" + $scope.id + "/rates", rate);
+		}
 
 }
 
