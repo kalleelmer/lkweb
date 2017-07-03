@@ -93,6 +93,13 @@ var CoreFactory = function($http, $timeout, ENV) {
 		return $http(req);
 	}
 
+	Core.logout = function() {
+		Core.user = null;
+		Core.token = null;
+		sessionStorage.setItem("lkticket.api.token", Core.token);
+		Core.loginButton();
+	}
+
 	Core.initialize();
 
 	return Core;

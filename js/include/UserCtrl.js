@@ -16,6 +16,10 @@ var UserCtrl = function($scope, User, $route, Core) {
 	$scope.user = function() {
 		return Core.user;
 	}
+
+	$scope.logout = function() {
+		Core.logout();
+	}
 }
 
 module.controller("UserCtrl", UserCtrl);
