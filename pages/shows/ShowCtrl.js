@@ -10,6 +10,11 @@ var ShowCtrl = function($scope, $http, User, $routeParams, Core) {
 			alert("Ett problem uppstod");
 		});
 
+
+		$scope.formatDate = function(date){
+			return date.replace(" ", "T");
+		}
+
 }
 
 module.controller("ShowCtrl", ShowCtrl);
