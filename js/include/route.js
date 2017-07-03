@@ -20,9 +20,9 @@ module.config([ "$routeProvider", function($routeProvider) {
 		controller : "ShowCtrl",
 		pagetype : "item"
 	});
-	$routeProvider.when("/karnevalister", {
-		templateUrl : "/pages/karnevalister/karnevalister.html",
-		controller : "KarnevalisterCtrl",
+	$routeProvider.when("/users", {
+		templateUrl : "/pages/users/users.html",
+		controller : "UsersCtrl",
 		pagetype : "item-list"
 	});
 	$routeProvider.otherwise({

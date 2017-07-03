@@ -1,9 +1,9 @@
-<div class="container" ng-controller = "KarnevalisterCtrl as karnevalistCtrl">
+<div class="container" ng-controller = "UsersCtrl">
 	<h1>Karnevalister</h1>
 
 	<div class="list-group">
 		<div class="list-group-item active">Namn | Kategori | Behörighet</div>
-		<a href="#" class="list-group-item" ng-repeat="karnevalist in karnevalister">{{karnevalist.name}}} | {{karnevarlist.category}} | {{karnevalist.permission}}</a>
+		<a href="#" class="list-group-item" ng-repeat="user in users">{{user.name}}} | {{karnevarlist.category}} | {{user.permission}}</a>
 		<!-- Static data -->
 	  <a href="#" class="list-group-item">Kalle Elmér | Kategori | Behörighet</a>
 	  <a href="#" class="list-group-item">Johan Hansson | Kategori | Behörighet</a>
