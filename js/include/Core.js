@@ -78,6 +78,10 @@ var CoreFactory = function($http, $timeout, ENV) {
 	Core.get = function(url) {
 		return Core.request("GET", url, null);
 	}
+	
+	Core.post = function(url, data) {
+		return Core.request("POST", url, data);
+	}
 
 	Core.request = function(method, url, data) {
 		var req = {
