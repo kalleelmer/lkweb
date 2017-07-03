@@ -22,7 +22,6 @@ var ShowCtrl = function($filter, $scope, $http, User, $routeParams, Core) {
 			this.sortedShows[dateKey].push(shows[i]);
 		}
 		$scope.performancesByDate = this.sortedShows;
-
 	}
 
 	$scope.id = $routeParams.id;
@@ -33,10 +32,16 @@ var ShowCtrl = function($filter, $scope, $http, User, $routeParams, Core) {
 		$scope.performancesByDate[date].push({start: date + " " + performance.time});
 
 		performance.time = "";
-		
+
 		//TODO Koppla mot databasen
 
 	}
+
+	$scope.addNewDate = function(newDate) {
+		$scope.performancesByDate[newDate] = [];
+		newDate = "";
+	}
+
 
 	Core.get("/admin/shows/" + $scope.id + "/performances").then(
 		function(response) {
