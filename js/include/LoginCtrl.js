@@ -1,9 +1,9 @@
 var module = angular.module("lkticket.admin");
 
-var UserCtrl = function($scope, User, $route, Core) {
+var LoginCtrl = function($scope, User, $route, Core) {
 	var ctrl = this;
 
-	console.log("Loading UserCtrl");
+	console.log("Loading LoginCtrl");
 
 	$scope.userStatus = function(status) {
 		return Core.STATE == status;
@@ -22,4 +22,4 @@ var UserCtrl = function($scope, User, $route, Core) {
 	}
 }
 
-module.controller("UserCtrl", UserCtrl);
+module.controller("LoginCtrl", LoginCtrl);
