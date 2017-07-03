@@ -80,8 +80,7 @@
 			<div class="collapse navbar-collapse" id="main-menu">
 				<ul class="nav navbar-nav" ng-if="userStatus('LOGGED_IN')">
 					<li class="level-one"><a href="#/shows" class="menu_header">Nöjen</a></li>
-					<li class="level-one"><a href="#/users"
-						class="menu_header">Karnevalister</a></li>
+					<li class="level-one"><a href="#/users" class="menu_header">Karnevalister</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li class="level-one" ng-show="userStatus('ERROR')"><i
@@ -90,9 +89,9 @@
 						class="fa fa-lg fa-spin fa-refresh"></i></li>
 					<li class="level-one user-display"
 						ng-show="userStatus('LOGGED_IN')"><img
-						class="user-picture-small" ng-src="{{user().picture}}" /> <a>{{user().email}}
-							<i class="fa fa-sign-out clickable" ng-click="logout()"
-							title="Logga ut"></i>
+						class="user-picture-small" ng-src="{{user().picture}}" /> <a>{{user().name
+							|| user().email}} <i class="fa fa-sign-out clickable"
+							ng-click="logout()" title="Logga ut"></i>
 					</a></li>
 					<li class="level-one login-button"
 						ng-show="userStatus('LOGGED_OUT')"><a href="{{loginURL()}}"
