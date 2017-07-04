@@ -17,6 +17,10 @@ var LoginCtrl = function($scope, User, $route, Core) {
 		return Core.user;
 	}
 
+	$scope.switchUser = function() {
+		Core.switchUser();
+	}
+
 	$scope.logout = function() {
 		Core.logout();
 	}

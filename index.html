@@ -89,10 +89,15 @@
 						class="fa fa-lg fa-spin fa-refresh"></i></li>
 					<li class="level-one user-display"
 						ng-show="userStatus('LOGGED_IN')"><img
-						class="user-picture-small" ng-src="{{user().picture}}" /> <a>{{user().name
-							|| user().email}} <i class="fa fa-sign-out clickable"
-							ng-click="logout()" title="Logga ut"></i>
-					</a></li>
+						class="user-picture-small" ng-src="{{user().picture}}" /> <a
+						class="clickable dropdown-toggle" data-toggle="dropdown">{{user().name
+							|| user().email}} </a>
+						<ul class="dropdown-menu">
+							<li class="clickable" ng-click="switchUser()"><i
+								class="fa fa-exchange"></i> Växla användare</li>
+							<li class="clickable" ng-click="logout()"><i
+								class="fa fa-sign-out"></i> Logga ut</li>
+						</ul></li>
 					<li class="level-one login-button"
 						ng-show="userStatus('LOGGED_OUT')"><a href="{{loginURL()}}"
 						role="button">Log in</a></li>

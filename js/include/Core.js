@@ -46,15 +46,22 @@ var CoreFactory = function($http, $timeout, ENV) {
 		} else if (Core.token && Core.token != "null") {
 			console.log("Using existing login token: " + Core.token);
 			console.log(Core.token);
-			Core.get("/users/current").then(function(response) {
-				Core.user = response.data;
-				Core.STATE = "LOGGED_IN";
-			}, function(response) {
-				console.log("Failed to use existing login token");
-				Core.token = null;
-				sessionStorage.setItem("lkticket.api.token", Core.token);
-				Core.loginButton();
-			});
+			Core.get("/users/current").then(
+				function(response) {
+					Core.user = response.data;
+					Core.STATE = "LOGGED_IN";
+					$http.get(
+						ENV.CORE.BASE_URL + "/login/google/url?redirect="
+							+ encodeURIComponent(Core.LOGIN_REDIRECT)).then(
+						function(response) {
+							Core.LOGIN_URL = response.data;
+						});
+				}, function(response) {
+					console.log("Failed to use existing login token");
+					Core.token = null;
+					sessionStorage.setItem("lkticket.api.token", Core.token);
+					Core.loginButton();
+				});
 		} else {
 			console.log("No login detected");
 			Core.loginButton();
@@ -78,7 +85,7 @@ var CoreFactory = function($http, $timeout, ENV) {
 	Core.get = function(url) {
 		return Core.request("GET", url, null);
 	}
-	
+
 	Core.post = function(url, data) {
 		return Core.request("POST", url, data);
 	}
@@ -95,6 +102,10 @@ var CoreFactory = function($http, $timeout, ENV) {
 
 		console.log("Making request to " + req.url);
 		return $http(req);
+	}
+
+	Core.switchUser = function() {
+		top.location = Core.LOGIN_URL + "&prompt=select_account";
 	}
 
 	Core.logout = function() {
