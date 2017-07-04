@@ -12,12 +12,9 @@
 				</thead>
 				<tbody>
 
-					<tr ng-repeat="rate in rates">
+					<tr ng-repeat="(i, rate) in show.rates">
 						<th scope="row">{{rate.name}}</th>
-
-						<td>30</td>
-						<td>X</td>
-						<td>X</td>
+						<td editable-text="category.prices[rate.id].price" ng-repeat="category in show.categories" onaftersave="postPrice(category.prices[rate.id])">{{category.prices[rate.id].price || "X"}}</td>
 					</tr>
 
 				</tbody>
