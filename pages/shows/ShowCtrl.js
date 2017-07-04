@@ -9,16 +9,15 @@ var ShowCtrl = function($filter, $scope, $http, User, $routeParams, Core) {
 
 	$scope.id = $routeParams.id;
 
-	$scope.addPerformance = function(performance, date) {
+	$scope.addPerf = function(date) {
+		var time = prompt("Ange klockslag (HH:mm)");
+		if (!time) {
+			return;
+		}
 		$scope.show.dates[date].push({
-			start : date + " " + performance.time
+			start : date + " " + time
 		});
-
-		performance.time = "";
-
-		// TODO Save in database
-
-	};
+	}
 
 	$scope.addDate = function() {
 		$scope.show.dates[$scope.newDate] = [];

@@ -1,47 +1,48 @@
 <div class="container">
 	<h1>{{show.name}}</h1>
+	<div class="row">
+		<div class="col-md-8">
+			<h2>Biljetter och priser</h2>
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th ng-repeat="category in show.categories">{{category.name}}</th>
+					</tr>
+				</thead>
+				<tbody>
 
-	<h2>Biljetter och priser</h2>
-	<table class="table table-bordered">
-		<thead>
-			<tr>
-				<th>#</th>
-				<th ng-repeat="category in show.categories">{{category.name}}</th>
-			</tr>
-		</thead>
-		<tbody>
+					<tr ng-repeat="rate in rates">
+						<th scope="row">{{rate.name}}</th>
 
-			<tr ng-repeat="rate in rates">
-				<th scope="row">{{rate.name}}</th>
+						<td>30</td>
+						<td>X</td>
+						<td>X</td>
+					</tr>
 
-				<td>30</td>
-				<td>X</td>
-				<td>X</td>
-			</tr>
-
-		</tbody>
-	</table>
-
-	<h2>Föreställningar</h2>
-	<div ng-repeat="(date, performances) in show.dates">
-		<h3 class="capitalize">{{date | date : 'EEEE d MMMM yyyy'}}</h3>
-		<div class="list-group">
-			<div class="list-group-item" ng-repeat="performance in performances">{{performance.start
-				| timestamp | date : 'HH:mm'}}</div>
-			<form class="list-group-item"
-				ng-submit="addPerformance(newPerformance, date)" novalidate>
-				<input type="text" placeholder="HH:MM"
-					ng-model="newPerformance.time" required> <input
-					type="submit" class="btn btn-primary"
-					value="Lägg till ny föreställning">
-
+				</tbody>
+			</table>
+		</div>
+		<div class="col-md-4">
+			<h2>Föreställningar</h2>
+			<div class="list-group"
+				ng-repeat="(date, performances) in show.dates">
+				<div class="list-group-item active">
+					<i class="fa fa-plus fa-lg clickable right"
+						ng-click="addPerf(date)"></i> {{date | date : 'EEEE d MMMM yyyy'}}
+				</div>
+				<div class="list-group-item" ng-repeat="performance in performances">{{performance.start
+					| timestamp | date : 'HH:mm'}}</div>
+			</div>
+			<form ng-submit="addDate()" class="input-group">
+				<input required type="text" ng-model="newDate" class="form-control"
+					placeholder="ÅÅÅÅ-MM-DD"> <span class="input-group-btn">
+					<input type="submit" class="btn btn-primary" type="button"
+					value="Lägg till" />
+				</span>
 			</form>
 		</div>
 	</div>
-	<form ng-submit="addDate()">
-		<input required type="text" ng-model="newDate"> <input
-			type="submit" class="btn btn-primary" value="Lägg till nytt datum">
-	</form>
 
 
 
