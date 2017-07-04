@@ -7,23 +7,23 @@ module.config([ '$locationProvider', function($locationProvider) {
 module.config([ "$routeProvider", function($routeProvider) {
 	console.log("Route: " + $routeProvider);
 	$routeProvider.when("/", {
-		templateUrl : "/pages/start/start.html",
-		pagetype : "start"
+		templateUrl : "/pages/start/start.html"
 	});
 	$routeProvider.when("/shows", {
 		templateUrl : "/pages/shows/shows.html",
-		controller : "ShowsCtrl",
-		pagetype : "item-list"
+		controller : "ShowsCtrl"
 	});
 	$routeProvider.when("/packages/:id", {
 		templateUrl : "/pages/shows/show.html",
-		controller : "ShowCtrl",
-		pagetype : "item"
+		controller : "ShowCtrl"
 	});
 	$routeProvider.when("/users", {
 		templateUrl : "/pages/users/users.html",
-		controller : "UsersCtrl",
-		pagetype : "item-list"
+		controller : "UsersCtrl"
+	});
+	$routeProvider.when("/users/:id", {
+		templateUrl : "/pages/users/user.html",
+		controller : "UserCtrl"
 	});
 	$routeProvider.otherwise({
 		redirectTo : "/"

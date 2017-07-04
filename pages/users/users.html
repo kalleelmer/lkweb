@@ -1,19 +1,13 @@
-<div class="container" ng-controller = "UsersCtrl">
+<div class="container" ng-controller="UsersCtrl">
 	<h1>Karnevalister</h1>
-
 	<div class="list-group">
-		<div class="list-group-item active">Namn | Kategori | Behörighet</div>
-		<a href="#" class="list-group-item" ng-repeat="user in users">{{user.name}}} | {{karnevarlist.category}} | {{user.permission}}</a>
-		<!-- Static data -->
-	  <a href="#" class="list-group-item">Kalle Elmér | Kategori | Behörighet</a>
-	  <a href="#" class="list-group-item">Johan Hansson | Kategori | Behörighet</a>
-	  <a href="#" class="list-group-item">Kristoffer Nordström | Kategori | Behörighet</a>
-	  <a href="#" class="list-group-item">Carl Johansson | Kategori | Behörighet<a>
+		<div class="list-group-item active">ID | Namn | E-post</div>
+		<a href="#/users/{{user.id}}" class="list-group-item"
+			ng-repeat="user in users">{{user.id}} | {{user.name}} |
+			{{user.email}} </a>
 	</div>
-
 	<div>
-		<!-- Lägga till ny karnevalist-->
+		<button type="button" class="btn btn-primary">Lägg till
+			karnevalist</button>
 	</div>
-	<button type="button" class="btn btn-primary">Skapa ny karnevalist</button>
-
 </div>
