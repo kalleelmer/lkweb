@@ -90,6 +90,10 @@ var CoreFactory = function($http, $timeout, ENV) {
 		return Core.request("POST", url, data);
 	}
 
+	Core.put = function(url, data) {
+		return Core.request("PUT", url, data);
+	}
+
 	Core.request = function(method, url, data) {
 		var req = {
 			method : method,
