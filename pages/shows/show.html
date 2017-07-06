@@ -16,7 +16,7 @@
 
 					<tr ng-repeat="(i, rate) in show.rates">
 						<th scope="row">{{rate.name}}</th>
-						<td editable-text="category.prices[rate.id].price" ng-repeat="category in show.categories" onaftersave="addPrice($data, rate.id, category.id)">{{category.prices[rate.id].price || "X"}}</td>
+						<td  ng-repeat="category in show.categories"><span editable-text="category.prices[rate.id].price" onaftersave="addPrice($data, rate.id, category.id)">{{category.prices[rate.id].price || "X"}}</span></td>
 					</tr>
 					<tr><th><i class="fa fa-plus fa-lg clickable left"
 						ng-click="addRate()"></i></th></tr>

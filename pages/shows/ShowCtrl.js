@@ -14,9 +14,16 @@ var ShowCtrl = function($filter, $scope, $http, User, $routeParams, Core) {
     if (!time) {
       return;
     }
-    $scope.show.dates[date].push({
+
+		var newPerformance = {
       start: date + " " + time
-    });
+    };
+
+		Core.post("/admin/shows/" + $scope.id + "/performances", newPerformance).then(function(response) {
+			$scope.show.dates[date].push(response.data);
+		}, function(response) {
+			alert("Kunde inte lägga till föreställnig: ", response.status);
+		});
   }
 
   $scope.addDate = function() {
@@ -138,7 +145,7 @@ var ShowCtrl = function($filter, $scope, $http, User, $routeParams, Core) {
       price: +price
     };
 
-    Core.post("/admin/shows/" + $scope.id + "/categories/" + category_id + "/prices", priceObject);
+    Core.put("/admin/shows/" + $scope.id + "/categories/" + category_id + "/prices", priceObject);
   };
 
 };
