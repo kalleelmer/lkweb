@@ -90,22 +90,49 @@ var ShowCtrl = function($filter, $scope, $http, User, $routeParams, Core) {
       });
   }
 
-  $scope.postCategory = function(category) {
+  $scope.addCategory = function() {
+
+		var name = prompt("Ange namn");
+    if (!name) {
+      return;
+    }
+		//TODO Lösa så att ett id skapas, annars går det inte att skapa nya priser
+
+		var category = {
+			name: name,
+		};
+
+		$scope.show.categories.push(category);
     Core.post("/admin/shows/" + $scope.id + "/categories", category);
   };
 
-  $scope.postRate = function(rate) {
+  $scope.addRate = function() {
+
+		var name = prompt("Ange namn");
+    if (!name) {
+      return;
+    }
+		//TODO Lösa så att ett id skapas, annars går det inte att skapa nya priser
+
+		var rate = {
+			name: name,
+		};
+
+		$scope.show.rates.push(rate);
+
     Core.post("/admin/shows/" + $scope.id + "/rates", rate);
   };
 
-  $scope.postPrice = function(newPrice) {
+  $scope.postPrice = function(price, rate_id, category_id) {
 
-    console.log(newPrice);
+		//TODO Hantera så att det går att tabort ett pris korrekt
 
-    Core.post("/admin/shows/" + $scope.id + "/categories/" + newPrice.category_id + "/prices", {
-      rate_id: newPrice.rate_id,
-      price: +newPrice.price
-    });
+		var priceObject = {
+      rate_id: rate_id,
+      price: +price
+    };
+
+    Core.post("/admin/shows/" + $scope.id + "/categories/" + category_id + "/prices", priceObject);
   };
 
 };
