@@ -92,42 +92,42 @@ var ShowCtrl = function($filter, $scope, $http, User, $routeParams, Core) {
 
   $scope.addCategory = function() {
 
-		var name = prompt("Ange namn");
+    var name = prompt("Ange namn");
     if (!name) {
       return;
     }
-		//TODO Lösa så att ett id skapas, annars går det inte att skapa nya priser
+    //TODO Lösa så att ett id skapas, annars går det inte att skapa nya priser
 
-		var category = {
-			name: name,
-		};
+    var category = {
+      name: name,
+    };
 
-		$scope.show.categories.push(category);
+    $scope.show.categories.push(category);
     Core.post("/admin/shows/" + $scope.id + "/categories", category);
   };
 
   $scope.addRate = function() {
 
-		var name = prompt("Ange namn");
+    var name = prompt("Ange namn");
     if (!name) {
       return;
     }
-		//TODO Lösa så att ett id skapas, annars går det inte att skapa nya priser
+    //TODO Lösa så att ett id skapas, annars går det inte att skapa nya priser
 
-		var rate = {
-			name: name,
-		};
+    var rate = {
+      name: name,
+    };
 
-		$scope.show.rates.push(rate);
+    $scope.show.rates.push(rate);
 
     Core.post("/admin/shows/" + $scope.id + "/rates", rate);
   };
 
-  $scope.postPrice = function(price, rate_id, category_id) {
+  $scope.addPrice = function(price, rate_id, category_id) {
 
-		//TODO Hantera så att det går att tabort ett pris korrekt
+    //TODO Hantera så att det går att tabort ett pris korrekt
 
-		var priceObject = {
+    var priceObject = {
       rate_id: rate_id,
       price: +price
     };
