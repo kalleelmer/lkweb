@@ -23,8 +23,12 @@ var ShowsCtrl = function($scope, $http, User, Core) {
 	}
 
 	$scope.addNewShow = function(show) {
-		// TODO koppla mot api
-		$scope.shows.push(show);
+		Core.post("/admin/shows", show).then(function(response){
+			$scope.shows.push(response.data);
+			show.name = "";
+		}, function(response) {
+			alert("kunde inte lägga till nöje: ", response.status);
+		});
 	}
 
 }
