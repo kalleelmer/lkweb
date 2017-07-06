@@ -7,7 +7,8 @@ module.config([ '$locationProvider', function($locationProvider) {
 module.config([ "$routeProvider", function($routeProvider) {
 	console.log("Route: " + $routeProvider);
 	$routeProvider.when("/", {
-		templateUrl : "/pages/start/start.html"
+		templateUrl : "/pages/start/start.html",
+		controller: "StartCtrl"
 	});
 	$routeProvider.when("/shows", {
 		templateUrl : "/pages/shows/shows.html",

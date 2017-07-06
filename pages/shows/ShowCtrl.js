@@ -102,8 +102,11 @@ var ShowCtrl = function($filter, $scope, $http, User, $routeParams, Core) {
       name: name,
     };
 
-    $scope.show.categories.push(category);
-    Core.post("/admin/shows/" + $scope.id + "/categories", category);
+    Core.post("/admin/shows/" + $scope.id + "/categories", category).then(function(response){
+    	$scope.show.categories.push(response.data);
+    }, function(response) {
+    	alert("Kunde inte hämta rate: ", response.status);
+    });
   };
 
   $scope.addRate = function() {
@@ -118,9 +121,12 @@ var ShowCtrl = function($filter, $scope, $http, User, $routeParams, Core) {
       name: name,
     };
 
-    $scope.show.rates.push(rate);
+    Core.post("/admin/shows/" + $scope.id + "/rates", rate).then(function(response) {
+    	$scope.show.rates.push(response.data);
+    }, function(response) {
+    	alert("Kunde inte hämta rate: ", response.status);
+    });
 
-    Core.post("/admin/shows/" + $scope.id + "/rates", rate);
   };
 
   $scope.addPrice = function(price, rate_id, category_id) {
