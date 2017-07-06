@@ -6,20 +6,22 @@
 			<table class="table table-bordered">
 				<thead>
 					<tr>
-						<th></th>
+						<th><i class="fa fa-user-plus fa-lg clickable left"
+							ng-click="addRate()" title="Lägg till biljettyp"></i> <i
+							class="fa fa-plus fa-lg clickable right" ng-click="addCategory()"
+							title="Lägg till platstyp"></i></th>
 						<th ng-repeat="category in show.categories">{{category.name}}</th>
-						<th><i class="fa fa-plus fa-lg clickable right"
-							ng-click="addCategory()"></i></th>
 					</tr>
 				</thead>
 				<tbody>
 
 					<tr ng-repeat="(i, rate) in show.rates">
 						<th scope="row">{{rate.name}}</th>
-						<td  ng-repeat="category in show.categories"><span editable-text="category.prices[rate.id].price" onaftersave="addPrice($data, rate.id, category.id)">{{category.prices[rate.id].price || "X"}}</span></td>
+						<td ng-repeat="category in show.categories"><span
+							editable-text="category.prices[rate.id].price"
+							onbeforesave="setPrice(category.id, rate.id, $data)">{{category.prices[rate.id].price
+								|| "X"}}</span></td>
 					</tr>
-					<tr><th><i class="fa fa-plus fa-lg clickable left"
-						ng-click="addRate()"></i></th></tr>
 				</tbody>
 			</table>
 		</div>

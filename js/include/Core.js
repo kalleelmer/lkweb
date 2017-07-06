@@ -93,6 +93,10 @@ var CoreFactory = function($http, $timeout, ENV) {
 	Core.put = function(url, data) {
 		return Core.request("PUT", url, data);
 	}
+	
+	Core.delete = function(url) {
+		return Core.request("DELETE", url, null);
+	}
 
 	Core.request = function(method, url, data) {
 		var req = {
