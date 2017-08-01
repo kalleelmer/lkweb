@@ -1,19 +1,5 @@
 <div class="container" ng-controller="ShowsCtrl as showCtrl">
 	<h1>Nöjen</h1>
 
-	<div class="list-group">
-		<a href="#/packages/{{show.id}}" class="list-group-item"
-			ng-repeat="show in shows">{{show.name}}</a>
-	</div>
-
-	<div>
-		<form name="newShow" ng-submit="addNewShow(show)" novalidate>
-			<input type="text" placeholder="Namn" ng-model="show.name" required>
-			<input type="submit" class="btn btn-primary"
-				value="Lägg till ny föreställning">
-
-		</form>
-	</div>
-
 
 </div>
