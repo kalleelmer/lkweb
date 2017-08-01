@@ -10,23 +10,12 @@ module.config([ "$routeProvider", function($routeProvider) {
 		templateUrl : "/pages/start/start.html",
 		controller: "StartCtrl"
 	});
-	$routeProvider.when("/shows", {
-		templateUrl : "/pages/shows/shows.html",
+	$routeProvider.when("/show/:id", {
+		templateUrl : "/pages/show/show.html",
 		controller : "ShowsCtrl"
 	});
-	$routeProvider.when("/packages/:id", {
-		templateUrl : "/pages/shows/show.html",
-		controller : "ShowCtrl"
-	});
-	$routeProvider.when("/users", {
-		templateUrl : "/pages/users/users.html",
-		controller : "UsersCtrl"
-	});
-	$routeProvider.when("/users/:id", {
-		templateUrl : "/pages/users/user.html",
-		controller : "UserCtrl"
-	});
-	$routeProvider.otherwise({
-		redirectTo : "/"
+	$routeProvider.when("/cart/", {
+		templateUrl : "/pages/cart/cart.html",
+		controller : "CartCtrl"
 	});
 } ]);
