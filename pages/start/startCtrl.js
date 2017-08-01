@@ -1,4 +1,4 @@
-var module = angular.module("lkticket.admin");
+var module = angular.module("lkticket.admin", ['ngMaterial']);
 
 var ShowCtrl = function($filter, $scope, $http, User, $routeParams, Core, $sce) {
 

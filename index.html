@@ -37,6 +37,15 @@
 	href="/bower_components/bootstrap/dist/css/bootstrap-theme.css" />
 <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
+<!-- Angular Material requires Angular.js Libraries -->
+ <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+
+ <!-- Angular Material Library -->
+ <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+
 <!-- ng-file-upload -->
 <script
 	src="/bower_components/ng-file-upload/ng-file-upload-shim.min.js"></script>
@@ -66,12 +75,15 @@
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<ul class="nav navbar-nav navbar-left">
-					<li class="level-one main-logo"><a href="#/"><img
-							src="/images/logo/logo.png" alt="LKTicket Admin" /></a></li>
+					<li class="level-one main-logo">
+						<a href="#/">
+							<img src="/images/logo/logo.png" alt="LKTicket Admin" />
+						</a>
+					</li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<button type="button" class="btn btn-default btn-lg">
-  					<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+						<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Star
 					</button>
 				</ul>
 			</div>
@@ -79,8 +91,6 @@
 		</div>
 		<!-- /.container-fluid -->
 	</nav>
-
-	<div ng-view></div>
 
 	<div class="main-footer">
 		<div class="footer-top"></div>
