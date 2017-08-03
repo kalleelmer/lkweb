@@ -1,5 +1,5 @@
 var module = angular.module("lkticket.admin", [ "ngRoute", "xeditable",
-	"ngFileUpload" ]);
+	"ngFileUpload"]);
 
 module.run(function(editableOptions) {
 	editableOptions.theme = 'bs3';
