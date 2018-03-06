@@ -1,4 +1,4 @@
-var module = angular.module("lkticket.admin");
+var module = angular.module("lkticket.webb");
 
 module.config([ '$locationProvider', function($locationProvider) {
 	$locationProvider.hashPrefix('');

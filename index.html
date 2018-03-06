@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="lkticket.admin" lang="en">
+<html ng-app="lkticket.webb" lang="en">
 <head>
 <title>LKTicket Admin</title>
 
@@ -20,10 +20,6 @@
 	src="/bower_components/angular-xeditable/dist/js/xeditable.min.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="/bower_components/angular-xeditable/dist/css/xeditable.min.css" />
-
-	<script src="/bower_components/angular-animate/angular-animate.min.js"></script>
-	<script src="/bower_components/angular-aria/angular-aria.min.js"></script>
-	<script src="/bower_components/angular-messages/angular-messages.min.js"></script>
 
 <!-- JQuery -->
 <script src="/bower_components/jquery/dist/jquery.min.js"></script>
@@ -64,11 +60,8 @@
 <script src="/x.js"></script>
 <script src="/js/env.js"></script>
 
-<!-- Angular Material Library -->
-<script src="/bower_components/material-ui/angular-material.min.js"></script>
-
 </head>
-<body ng-controller="LoginCtrl" class="page-{{route.current.pagetype}}">
+<body ng-controller="MainCtrl" class="page-{{route.current.pagetype}}">
 
 	<nav class="main-menu navbar navbar-default">
 		<div class="container-fluid">
@@ -96,13 +89,6 @@
 			<p></p>
 		</div>
 	</div>
-
-	<script type="text/javascript">
-    /**
-     * You must include the dependency on 'ngMaterial'
-     */
-    angular.module('lkticket.admin', ['ngMaterial']);
-  </script>
 
 	<!-- TODO Analytics -->
 </body>

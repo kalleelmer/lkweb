@@ -1,4 +1,4 @@
-var module = angular.module("lkticket.admin", [ "ngRoute", "xeditable",
+var module = angular.module("lkticket.webb", [ "ngRoute", "xeditable",
 	"ngFileUpload"]);
 
 module.run(function(editableOptions) {
