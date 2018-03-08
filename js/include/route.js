@@ -6,7 +6,7 @@ module.config([ '$locationProvider', function($locationProvider) {
 
 module.config([ "$routeProvider", function($routeProvider) {
 	console.log("Route: " + $routeProvider);
-	$routeProvider.when("/", {
+	$routeProvider.when("/:id", {
 		templateUrl : "/pages/start/start.html",
 		controller: "StartCtrl"
 	});
