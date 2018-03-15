@@ -1,7 +1,12 @@
 var module = angular.module("lkticket.webb");
 
-var ShowsCtrl = function($scope, $http, User, Core) {
+var ShowCtrl = function($scope, $routeParams, $http, User, Core) {
 
+  Core.get("/shows/" + $routeParams.id).then(function(response) {
+    $scope.show = response.data;
+  }, function(error) {
+    console.log(error);
+  });
 }
 
-module.controller("ShowsCtrl", ShowsCtrl);
+module.controller("ShowCtrl", ShowCtrl);
