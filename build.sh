@@ -36,6 +36,17 @@ do
 	echo >> x.js
 done
 
+for f in `echo components/*.js`
+do
+	echo "Including $f"
+	echo "//"$f >> x.js
+	echo "(function () {" >> x.js
+	cat $f >> x.js
+	echo "})();" >> x.js
+	echo >> x.js
+	echo >> x.js
+done
+
 echo > x.css
 for f in `echo css/*.css`
 do
