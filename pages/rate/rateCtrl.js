@@ -18,9 +18,7 @@ var RateCtrl = function($filter, $scope, $http, User, $routeParams, Core, $sce) 
   function addTicket(rateId, cateogryId){
     var data = {category_id : categoryID, rate_id : rateID,
       performance_id : $routeParams.performance.id}
-    Core.post("/order/" + $routeParams.id + "/tickets", data).then(function(response){
-      
-    });
+    Cart.addTicket(data);
   }
 
 }
