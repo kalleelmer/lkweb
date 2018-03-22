@@ -20,6 +20,7 @@
 	src="/bower_components/angular-xeditable/dist/js/xeditable.min.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="/bower_components/angular-xeditable/dist/css/xeditable.min.css" />
+<script src="bower_components/angular-filter/dist/angular-filter.min.js"></script>
 
 <!-- JQuery -->
 <script src="/bower_components/jquery/dist/jquery.min.js"></script>
@@ -80,7 +81,7 @@
       <ul class="nav navbar-nav">
 				<li ng-repeat = "show in shows">
 
-					<a href ="#/{{show.id}}" class="navbar-btn">
+					<a href ="#/show/{{show.id}}" class="navbar-btn">
 						{{show.name}}
 					</a>
 
@@ -92,8 +93,11 @@
 
 	<div ng-view></div>
 
-	<div class="footer">
-			<cart></cart>
+	<div class="footer" style="z-index: 5">
+			<a href ="#/cart/" class="navbar-btn">
+				Kundvagn
+				Totalt pris - {{getTotalPrice()}}kr
+			</a>
 	</div>
 
 	<!-- TODO Analytics -->
