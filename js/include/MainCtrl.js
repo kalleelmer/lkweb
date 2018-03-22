@@ -1,6 +1,6 @@
 var module = angular.module("lkticket.webb");
 
-var MainCtrl = function($scope, User, $route, Core) {
+var MainCtrl = function($scope, User, $route, Core, Cart) {
 	var ctrl = this;
 
 	Core.get("/shows").then(function(response) {
@@ -8,6 +8,10 @@ var MainCtrl = function($scope, User, $route, Core) {
 	}, function(error) {
 		console.log(error);
 	});
+
+	$scope.getTotalPrice = function() {
+		return Cart.getPrice();
+	}
 
 }
 

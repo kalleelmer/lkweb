@@ -12,6 +12,14 @@ var CartCtrl = function(Core, $scope, $routeParams, Cart) {
     console.log(id);
   }
 
+  $scope.getTotalPrice = function() {
+    return Cart.getPrice();
+  }
+
+  $scope.pay = function() {
+    Cart.pay();
+  }
+
 }
 
 module.controller("CartCtrl", CartCtrl);

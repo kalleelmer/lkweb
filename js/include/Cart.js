@@ -61,6 +61,25 @@ var CartFactory = function($http, Core) {
     return tickets;
   }
 
+  Cart.getPrice = function() {
+    var totalPrice = 0;
+
+    for (var i = 0; i < tickets.length; i++) {
+      totalPrice+= tickets[i].price;
+    }
+
+    return totalPrice;
+
+  }
+
+  Cart.pay = function() {
+    Core.post("/order/" + sessionStorage.orderId + "/pay/bambora", {amount: Cart.getPrice}).then(function(response) {
+      console.log(response.data);
+    }, function(error) {
+      console.log(error);
+    });
+  }
+
   return Cart;
 }
 
