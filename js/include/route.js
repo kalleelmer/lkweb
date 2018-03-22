@@ -14,4 +14,10 @@ module.config([ "$routeProvider", function($routeProvider) {
 		templateUrl : "/pages/cart/cart.html",
 		controller : "CartCtrl"
 	});
+
+	$routeProvider.when("/performance/:id",{
+		templateUrl : "/pages/rate/rate.html",
+		controller : "RateCtrl"
+	});
+
 } ]);

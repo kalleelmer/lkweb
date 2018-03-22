@@ -1,0 +1,11 @@
+<div class="container">
+  <div ng-repeat="rate in rates">
+    <b> {{rate.name}} </b>
+    <div ng-repeat="category in categories">
+      <i>{{category.name}}</i>: 50 kr
+      <button ng-click="addTicket(rate.id, category.id)">
+        Lägg till i kundvagn</button>
+    </div>
+    <br>
+  </div>
+</div>
