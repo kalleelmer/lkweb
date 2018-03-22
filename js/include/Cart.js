@@ -1,20 +1,23 @@
 var module = angular.module("lkticket.webb");
 
 var CartFactory = function($http, Core) {
-	var Cart = {};
+  var Cart = {};
 
   var tickets = [];
   var order = {};
 
+  sessionStorage.orderId = 401;
+
   var updateTickets = function() {
     Core.get("/order/" + order.id + "/tickets").then(function(response) {
       tickets = response.data;
+
     }, function(error) {
       console.log(error);
     });
   }
 
-  if(sessionStorage.orderId){
+  if (sessionStorage.orderId) {
     Core.get("/order/" + sessionStorage.orderId).then(function(response) {
       order = response.data;
       updateTickets();
@@ -58,7 +61,7 @@ var CartFactory = function($http, Core) {
     return tickets;
   }
 
-	return Cart;
+  return Cart;
 }
 
 console.log("Registering Cart");

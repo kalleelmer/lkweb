@@ -11,8 +11,6 @@ var ShowCtrl = function($scope, $routeParams, $http, User, Core) {
 
   Core.get("/shows/" + $routeParams.id + "/performances").then(function(response) {
 				var dates = {};
-				console.log("Data: ");
-				console.log(response.data);
         if (response.data.length > 0){
           for ( var i in response.data) { // Group by date
     				var perf = response.data[i];
