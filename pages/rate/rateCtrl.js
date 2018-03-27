@@ -18,6 +18,12 @@ var RateCtrl = function($filter, $scope, $http, User, $routeParams, Core, $sce, 
     console.log(error);
   });
 
+  Core.get("/categories/" + $scope.performance.show.id +"/prices").then(function(response){
+    $scope.prices = response.data;
+  },function(error){
+    console.log(error);
+  });
+
   }, function(error) {
     console.log(error);
   });
