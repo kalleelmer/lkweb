@@ -20,4 +20,9 @@ module.config([ "$routeProvider", function($routeProvider) {
 		controller : "RateCtrl"
 	});
 
+	$routeProvider.when("/thanks",{
+		templateUrl : "/pages/thank/thank.html",
+		controller : "ThankCtrl"
+	});
+
 } ]);
