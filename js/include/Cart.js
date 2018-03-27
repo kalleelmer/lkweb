@@ -4,9 +4,7 @@ var CartFactory = function($http, Core, $window) {
   var Cart = {};
 
   var tickets = [];
-  var order = {};
-
-  //sessionStorage.orderId = 401;
+  var order;
 
   var updateTickets = function() {
     Core.get("/order/" + order.id + "/tickets").then(function(response) {
@@ -21,7 +19,6 @@ var CartFactory = function($http, Core, $window) {
     Core.get("/order/create").then(function(response) {
       order = response.data;
       sessionStorage.orderId = response.data.id;
-      updateTickets();
     }, function(error) {
       console.log(error);
     });
@@ -34,23 +31,24 @@ var CartFactory = function($http, Core, $window) {
     }, function(error) {
       console.log(error);
     });
-  } else {
-    Cart.newOrder();
   }
 
   Cart.addTicket = function(ticket) {
 
-    // var ticket = {
-    //   category_id : ticket.category_id,
-    //   performance_id : ticket.performance.id,
-    //   rate_id : ticket.rate_id,
-    //   count : parseInt(ticket.count),
-    //   profile_id : User.profileID()
-    // }
+    if (!sessionStorage.orderId) {
+      Core.get("/order/create").then(function(response) {
+        order = response.data;
+        sessionStorage.orderId = response.data.id;
+        Cart.addTicket(ticket);
+      }, function(error) {
+        console.log(error);
+      });
+    }
 
     Core.post("/order/" + order.id + "/tickets", ticket).then(function(response) {
       tickets.push(response.data[0]);
     }, function(error) {
+      alert("Biljetterna är slut");
       console.log(error);
     });
   }
@@ -64,6 +62,11 @@ var CartFactory = function($http, Core, $window) {
   }
 
   Cart.getPrice = function() {
+
+    if (!order) {
+      return 500;
+    }
+
     var totalPrice = 0;
 
     for (var i = 0; i < tickets.length; i++) {
@@ -87,9 +90,9 @@ var CartFactory = function($http, Core, $window) {
   }
 
   Cart.reset = function() {
-    sessionStorage.orderId = null;
-    tickets = [];
-    order = {};
+    sessionStorage.orderId = undefined;
+    tickets = null;
+    order = null;
   }
 
   return Cart;
