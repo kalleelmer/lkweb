@@ -87,8 +87,8 @@ var CartFactory = function($http, Core, $window) {
   }
 
   Cart.reset = function() {
-    tickets = [];
     sessionStorage.orderId = null;
+    tickets = [];
     order = {};
   }
 

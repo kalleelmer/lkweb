@@ -1,8 +1,9 @@
 <div class="container">
+  <h2>{{performance.show.name}} - {{performance.start | date : 'EEEE d MMMM yyyy'}}</h2>
   <div ng-repeat="rate in rates">
     <b> {{rate.name}} </b>
     <div ng-repeat="category in categories">
-      <i>{{category.name}}</i>: 50 kr
+      <i>{{category.name}}</i>: 100000 kr
       <button ng-click="addTicket(rate.id, category.id)">
         Lägg till i kundvagn</button>
     </div>
