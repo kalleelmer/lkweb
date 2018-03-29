@@ -1,8 +1,10 @@
 var module = angular.module("lkticket.webb");
 
-var ThankCtrl = function($routeParams, Cart) {
+var ThankCtrl = function($routeParams, Cart, $scope) {
 
-  Cart.reset();
+  $scope.order = function() {
+    return Cart.getOrder();
+  }
 
 }
 

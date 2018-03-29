@@ -13,6 +13,12 @@ var MainCtrl = function($scope, User, $route, Core, Cart) {
 		return Cart.getPrice();
 	}
 
+	$scope.getTimeLeft = function() {
+		var minutes = Math.floor(Cart.timeLeft()/60);
+		var seconds = Math.floor(Cart.timeLeft()%60);
+		return (minutes + ":" + seconds);
+	}
+
 }
 
 module.controller("MainCtrl", MainCtrl);
