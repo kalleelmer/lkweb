@@ -1,12 +1,23 @@
 <div class="container">
   <h2>{{performance.show.name}} - {{performance.start | date : 'EEEE d/M - HH:mm'}}</h2>
-  <div ng-repeat="rate in rates">
-    <b> {{rate.name}} </b>
-    <div ng-repeat="category in categories">
-      <i>{{category.name}}</i>: {{getPrice(rate.id, category.id)}} kr
-      <button ng-click="addTicket(rate.id, category.id)">
-        Lägg till i kundvagn</button>
-    </div>
-    <br>
+
+  <div class="col-sm-7">
+    <table>
+      <tr ng-repeat-start="rate in rates">
+        <td> <b>{{rate.name}} </b></td>
+        <td></td>
+        <td></td>
+      </tr>
+        <tr ng-repeat="category in categories">
+          <td><i>{{category.name}}</i>:</td>
+          <td>{{getPrice(rate.id, category.id)}} kr &nbsp;</td>
+          <td><button ng-click="addTicket(rate.id, category.id)">
+            Lägg till i kundvagn</button></td>
+        </tr>
+        <tr ng-repeat-end>
+          <td><br></td>
+        </tr>
+    </table>
   </div>
+
 </div>
