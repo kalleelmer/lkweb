@@ -72,7 +72,12 @@ var CartFactory = function($http, Core, $window, $interval) {
   }
 
   Cart.removeTicket = function() {
-    // TODO: kunna ta bort biljetter
+    Core.delete("/order/" + order.id + "/tickets?identifier=" + order.identifier, ticket).then(function(response) {
+      tickets.push(response.data[0]);
+    }, function(error) {
+      alert("Biljetterna är slut");
+      console.log(error);
+    });
   }
 
   Cart.getTickets = function() {

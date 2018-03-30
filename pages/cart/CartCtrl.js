@@ -7,9 +7,7 @@ var CartCtrl = function(Core, $scope, $routeParams, Cart) {
   }
 
   $scope.removeTicket = function(id) {
-
-    //// TODO: Implementera att ta bort biljetter
-    console.log(id);
+    Cart.removeTicket(id);
   }
 
   $scope.getTotalPrice = function() {
@@ -18,6 +16,14 @@ var CartCtrl = function(Core, $scope, $routeParams, Cart) {
 
   $scope.pay = function() {
     Cart.pay();
+  }
+
+  $scope.getPaymentStatus = function() {
+    if (Cart.getOrder()) {
+      return Cart.getOrder().paid;
+    } else {
+      return false;
+    }
   }
 
 }
