@@ -49,6 +49,8 @@ var RateCtrl = function($filter, $scope, $http, User, $routeParams, Core, $sce, 
       count: 1
     };
 
+    $scope.performance.availability[categoryId].available-=1;
+
     Cart.addTicket(data);
   }
 

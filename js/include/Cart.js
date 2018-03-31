@@ -1,6 +1,6 @@
 var module = angular.module("lkticket.webb");
 
-var CartFactory = function($http, Core, $window, $interval) {
+var CartFactory = function($http, Core, $window, $interval, Notification) {
   var Cart = {};
 
   var tickets = [];
@@ -55,25 +55,27 @@ var CartFactory = function($http, Core, $window, $interval) {
       Cart.newOrder(function(order){
         console.log(order);
         Core.post("/order/" + order.id + "/tickets?identifier=" + order.identifier, ticket).then(function(response) {
+          Notification.success("Biljett tillagd i kundvagnen");
           tickets.push(response.data[0]);
         }, function(error) {
-          alert("Biljetterna är slut");
+          Notification.error("Biljetterna är slut till den valda föreställningen");
           console.log(error);
         });
       });
     } else {
       Core.post("/order/" + order.id + "/tickets?identifier=" + order.identifier, ticket).then(function(response) {
         tickets.push(response.data[0]);
+        Notification.success("Biljett tillagd i kundvagnen");
       }, function(error) {
-        alert("Biljetterna är slut");
+        Notification.error("Biljetterna är slut till den valda föreställningen");
         console.log(error);
       });
     }
   }
 
-  Cart.removeTicket = function() {
-    Core.delete("/order/" + order.id + "/tickets?identifier=" + order.identifier, ticket).then(function(response) {
-      tickets.push(response.data[0]);
+  Cart.removeTicket = function(ticket) {
+    Core.delete("/order/" + order.id + "/tickets/" + ticket + "?identifier=" + order.identifier).then(function(response) {
+      tickets.splice(_.indexOf(tickets, _.find(tickets, function (obj) { return obj.id == ticket; })), 1);
     }, function(error) {
       alert("Biljetterna är slut");
       console.log(error);

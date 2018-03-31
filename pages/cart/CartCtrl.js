@@ -2,7 +2,6 @@ var module = angular.module("lkticket.webb");
 
 var CartCtrl = function(Core, $scope, $routeParams, Cart) {
   $scope.getTickets = function() {
-    console.log(Cart.getTickets());
     return Cart.getTickets();
   }
 
