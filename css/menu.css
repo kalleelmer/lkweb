@@ -16,3 +16,26 @@
 .main-menu .user-display {
 	min-width: 200px;
 }
+
+/* - - - - - Logotype - - - - - */
+.navbar-brand {
+	padding: 10px 10px;
+}
+
+.navbar-brand img {
+	height: 46px;
+}
+
+.navbar-brand, .navbar-nav>li>a {
+	text-shadow: none;
+}
+
+/* - - - - - Background color - - - - - */
+.navbar-default{
+	background-color: #f4376d;
+	background-image: none;
+	border: none;
+}
+.navbar-default .navbar-nav > li > a{
+	color:#FFF;
+}
