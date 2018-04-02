@@ -10,8 +10,11 @@ var CartFactory = function($http, Core, $window, $interval, Notification) {
 
   var startCountdown = function(ms) {
     countDown = Math.floor(ms/1000);
-    $interval(function() {
+    var timer = $interval(function() {
       countDown--;
+      if (countDown == 0) {
+          $interval.cancel(timer);
+      }
     }, 1000, 0);
   }
 

@@ -100,13 +100,21 @@
 
 	<div ng-view></div>
 
-	<div class="footer" style="z-index: 5">
-			<i class="fa fa-shopping-cart"></i>
+	<div class="footer row" style="z-index: 5">
+		<div class="col-sm-4">
+			<i class="fa fa-money"></i>
+			Totalt pris - {{getTotalPrice()}}kr
+		</div>
+		<div class="col-sm-4">
 			<a href ="#/cart/" class="navbar-btn">
-				Kundvagn
-				Totalt pris - {{getTotalPrice()}}kr
+				<i class="fa fa-shopping-cart"></i>
+				Till kundvagnen
 			</a>
-			TID KVAR: {{getTimeLeft()}}
+		</div>
+		<div class="col-sm-4" ng-if="getTimeLeft()">
+			<i class="fa fa-clock-o"></i>
+			Tid kvar: {{getTimeLeft()}}
+		</div>
 	</div>
 
 	<!-- TODO Analytics -->
