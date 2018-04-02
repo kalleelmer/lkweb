@@ -91,7 +91,6 @@
 					<a href ="#/show/{{show.id}}" class="navbar-btn">
 						{{show.name}}
 					</a>
-
 				</li>
       </ul>
     </div><!-- /.navbar-collapse -->
@@ -106,7 +105,7 @@
 			Totalt pris - {{getTotalPrice()}}kr
 		</div>
 		<div class="col-sm-4">
-			<a href ="#/cart/" class="navbar-btn">
+			<a href ="#/cart/{{getCartId()}}/{{getCartIdentifier()}}" class="navbar-btn" ng-if="getCartId()">
 				<i class="fa fa-shopping-cart"></i>
 				Till kundvagnen
 			</a>

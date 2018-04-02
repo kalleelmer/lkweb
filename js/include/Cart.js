@@ -1,6 +1,6 @@
 var module = angular.module("lkticket.webb");
 
-var CartFactory = function($http, Core, $window, $interval, Notification) {
+var CartFactory = function($http, Core, $window, $interval, Notification, $routeParams, $location) {
   var Cart = {};
 
   var tickets = [];
@@ -9,13 +9,16 @@ var CartFactory = function($http, Core, $window, $interval, Notification) {
   var order;
 
   var startCountdown = function(ms) {
-    countDown = Math.floor(ms/1000);
-    var timer = $interval(function() {
-      countDown--;
-      if (countDown == 0) {
-          $interval.cancel(timer);
-      }
-    }, 1000, 0);
+
+    if (!order.paid) {
+      countDown = Math.floor(ms/1000);
+      var timer = $interval(function() {
+        countDown--;
+        if (countDown == 0) {
+            $interval.cancel(timer);
+        }
+      }, 1000, 0);
+    }
   }
 
   Cart.timeLeft = function() {
@@ -42,13 +45,40 @@ var CartFactory = function($http, Core, $window, $interval, Notification) {
     });
   }
 
+  Cart.setOrder = function(id, identifier) {
+    console.log("Set order");
+    if (id != sessionStorage.orderId && identifier != sessionStorage.identifier) {
+      console.log("Ny order hämtas");
+      sessionStorage.orderId = id;
+      sessionStorage.orderIdentifier = identifier;
+
+      Core.get("/order/" + sessionStorage.orderId + "?identifier=" + sessionStorage.orderIdentifier).then(function(response) {
+        order = response.data;
+        updateTickets();
+        startCountdown(order.expires - Date.now());
+      }, function(error) {
+        console.log(error);
+      });
+    } else {
+      console.log("Ny order hämtas ej");
+    }
+  }
+
+  var urlPath = $location.path().split('/');
+
+  if (urlPath[1] == "cart") {
+    sessionStorage.orderId = urlPath[2];
+    sessionStorage.orderIdentifier = urlPath[3];
+  }
+
   if (sessionStorage.orderId) {
     Core.get("/order/" + sessionStorage.orderId + "?identifier=" + sessionStorage.orderIdentifier).then(function(response) {
       order = response.data;
       updateTickets();
       startCountdown(order.expires - Date.now());
     }, function(error) {
-      console.log(error);
+      sessionStorage.orderid = null;
+      sessionStorage.orderIdentifier = null;
     });
   }
 
@@ -87,6 +117,10 @@ var CartFactory = function($http, Core, $window, $interval, Notification) {
 
   Cart.getTickets = function() {
     return tickets;
+  }
+
+  Cart.getOrder = function() {
+    return order;
   }
 
   Cart.getPrice = function() {

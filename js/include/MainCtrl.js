@@ -13,6 +13,30 @@ var MainCtrl = function($scope, User, $route, Core, Cart) {
 		return Cart.getPrice();
 	}
 
+	$scope.getCartId = function() {
+		if (Cart.getOrder()) {
+				return Cart.getOrder().id;
+		} else {
+			return null;
+		}
+	}
+
+	$scope.getCartIdentifier = function() {
+		if (Cart.getOrder()) {
+				return Cart.getOrder().identifier;
+		} else {
+			return null;
+		}
+	}
+
+	$scope.getPaymentStatus = function() {
+		if (Cart.getOrder()) {
+			return Cart.getOrder().paid;
+		} else {
+			return false;
+		}
+	}
+
 	$scope.getTimeLeft = function() {
 
 		if (Cart.timeLeft() != undefined) {

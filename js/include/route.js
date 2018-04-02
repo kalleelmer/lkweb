@@ -10,7 +10,7 @@ module.config([ "$routeProvider", function($routeProvider) {
 		templateUrl : "/pages/show/show.html",
 		controller : "ShowCtrl"
 	});
-	$routeProvider.when("/cart/", {
+	$routeProvider.when("/cart/:id/:identifier", {
 		templateUrl : "/pages/cart/cart.html",
 		controller : "CartCtrl"
 	});
