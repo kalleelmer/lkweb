@@ -1,6 +1,9 @@
 <div class="container">
   <h2>{{performance.show.name}} - {{performance.start | date : 'EEEE d/M - HH:mm'}}</h2>
 
+  <p>Student- och ungdomsbiljett kan köpas av studerande på gymnasiet och universitet mot uppvisande av studentbevis och av de som kan visa att de är under 18 år. Barn som kan sitta i knät under hela föreställningen går in gratis. På Barnevalen gäller barnbiljett upp till 12 år. Barn som är 6 år eller yngre har gratis entré till karnevalsområdet.</p>
+  <hr class="my-4">
+
   <!--<div class="col-sm-6">
     <table>
       <tr ng-repeat-start="rate in rates">
@@ -20,16 +23,16 @@
     </table>
   </div>-->
   <div class="col-sm-6">
-    <table>
+    <table class="rate-table">
       <tr ng-repeat-start="category in categories" ng-if = "performance.availability[category.id]">
         <td> <b>{{category.name}} - {{performance.availability[category.id].available || "0"}} platser kvar</b></td>
         <td></td>
         <td></td>
       </tr>
-        <tr ng-repeat="rate in rates" ng-if = "getPrice(rate.id, category.id) > 0" ng-show = "performance.availability[category.id]">
-          <td><i>{{rate.name}}</i>:&nbsp;</td>
+        <tr class="rate-table-spacer" ng-repeat="rate in rates" ng-if = "getPrice(rate.id, category.id) > 0" ng-show = "performance.availability[category.id]">
+          <td> <i>{{rate.name}}</i>:&nbsp;</td>
           <td>{{getPrice(rate.id, category.id)}} kr &nbsp;</td>
-          <td><button ng-click="addTicket(rate.id, category.id)" ng-disabled = "performance.availability[category.id].available == 0">
+          <td><button class="btn btn-primary"ng-click="addTicket(rate.id, category.id)" ng-disabled = "performance.availability[category.id].available == 0">
             Lägg till i kundvagn</button></td>
         </tr>
         <tr ng-repeat-end>

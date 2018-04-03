@@ -32,7 +32,7 @@
 
   <h3>Totalt pris: {{getTotalPrice()}}kr </h3>
 
-  <button type="button" name="button" ng-click = "initpay = true" ng-hide="initpay">Gå till betalning</button>
+  <button class="btn btn-primary" type="button" name="button" ng-click = "initpay = true" ng-hide="initpay">Gå till betalning</button>
   <div class="" ng-show="initpay">
     <p>Namn:</p>
     <input type="text" ng-model = "customer.name">
@@ -42,7 +42,7 @@
     <input type="text" ng-model = "customer.phonenumber">
   </div>
   <br>
-  <button type="button" name="button" ng-click="pay()" ng-if="!getPaymentStatus()" ng-show="initpay"> Till kortbetalning</button>
+  <button class="btn btn-primary" type="button" name="button" ng-click="pay()" ng-if="!getPaymentStatus()" ng-show="initpay"> Till kortbetalning</button>
   <span ng-if="getPaymentStatus()">Order Betald</span>
 
 </div>

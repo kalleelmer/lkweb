@@ -6,20 +6,6 @@
 	float: right;
 	margin-top: 5px;
 }
-
-.footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: #F7a021;
-    color: white;
-		font-size: 20px;
-		height: 40px;
-		text-align: center;
-		margin-left: 0 !important;
-		margin-right: 0 !important;
-}
 h1, h2, h3, h4, p, table{
 	color: #FFF;
 }
@@ -28,9 +14,36 @@ body {
 	background-color: #390444;
 	/*background-color: #f35d98;*/
 }
-.container p {
+p, a {
 	color: #FFF;
 }
+
+/* - - - - - footer - - - - - */
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #F7a021;
+    color: white;
+		font-size: 20px;
+		height: 50px;
+		text-align: center;
+		margin-left: 0 !important;
+		margin-right: 0 !important;
+		z-index: 5;
+		display: table;
+}
+.footer a:hover,.footer a:focus {
+	color: #390444;
+	text-decoration: none;
+}
+.centered-text{
+	display: table-cell;
+	vertical-align: middle;
+	width: 33.33333333%;
+}
+
 /* - - - - - jumbotron - - - - - */
 .jumbotron-bg{
 	background-image: url("../images/shows/test.jpg");
@@ -39,7 +52,7 @@ body {
 	margin-top: -20px;
 }
 .jumbotron {
-	background-color: rgba(0, 0, 0, 0.2);
+	background-color: rgba(0, 0, 0, 0.7);
 	color: #FFF;
 }
 
@@ -59,14 +72,19 @@ body {
 	background-image: none;
 }
 
-/* - - - - - btn override - - - - - */
-.btn {
-	background-color: #f0f0f0;
+/* - - - - - rate tabke - - - - - */
+.rate-table-spacer{
+	line-height: 50px;
 }
 
+/* - - - - - btn override - - - - - */
 .btn-primary {
 	background-color: #8a4797;
 	background-image: none;
+	border: none;
+	text-shadow: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
 }
 
 .btn-primary:hover {

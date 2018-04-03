@@ -87,7 +87,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-				<li><a class="navbar-btn">Välj nöje:</a></li>
+				<li><p class="navbar-btn prompt">Välj nöje:</p></li>
 				<li ng-repeat = "show in shows">
 
 					<a href ="#/show/{{show.id}}" class="navbar-btn">
@@ -101,23 +101,22 @@
 
 	<div ng-view></div>
 
-	<div class="footer row" style="z-index: 5">
-		<div class="col-sm-4">
+	<div class="footer row">
+		<div class="centered-text">
 			<i class="fa fa-money"></i>
 			Totalt pris - {{getTotalPrice()}}kr
 		</div>
-		<div class="col-sm-4">
+		<div class="centered-text">
 			<a href ="#/cart/{{getCartId()}}/{{getCartIdentifier()}}" class="navbar-btn" ng-if="getCartId()">
 				<i class="fa fa-shopping-cart"></i>
 				Till kundvagnen
 			</a>
 		</div>
-		<div class="col-sm-4" ng-if="getTimeLeft()">
+		<div class="centered-text" ng-if="getTimeLeft()">
 			<i class="fa fa-clock-o"></i>
-			Tid kvar: {{getTimeLeft()}}
+			<p>Tid kvar: {{getTimeLeft()}}</p>
 		</div>
 	</div>
-
 	<!-- TODO Analytics -->
 </body>
 </html>

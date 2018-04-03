@@ -16,7 +16,10 @@
 .main-menu .user-display {
 	min-width: 200px;
 }
-
+.prompt{
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
 /* - - - - - Logotype - - - - - */
 .navbar-brand {
 	padding: 10px 10px;
@@ -30,7 +33,7 @@
 	text-shadow: none;
 }
 
-/* - - - - - Background color - - - - - */
+/* - - - - - Color - - - - - */
 .navbar-default{
 	background-color: #f4376d;
 	background-image: none;
