@@ -54,6 +54,9 @@ var RateCtrl = function($filter, $scope, $http, User, $routeParams, Core, $sce, 
       count: 1
     };
 
+    console.log(categoryId);
+    console.log($scope.performance.availability);
+
     $scope.performance.availability[categoryId].available-=1;
 
     Cart.addTicket(data);
@@ -65,7 +68,12 @@ var RateCtrl = function($filter, $scope, $http, User, $routeParams, Core, $sce, 
 
       for (var i = 0; i < $scope.prices[categoryId].length; i++) {
         if ($scope.prices[categoryId][i].rate_id == rateId) {
-          return $scope.prices[categoryId][i].price;
+          var price = $scope.prices[categoryId][i].price;
+          if (price > 0) {
+            return (price + $scope.performance.surcharge);
+          } else {
+            return price;
+          }
         }
       }
 

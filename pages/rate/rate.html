@@ -22,11 +22,11 @@
   <div class="col-sm-6">
     <table>
       <tr ng-repeat-start="category in categories">
-        <td> <b>{{category.name}} - {{performance.availability[category.id].available}} platser kvar</b></td>
+        <td> <b>{{category.name}} - {{performance.availability[category.id].available || "0"}} platser kvar</b></td>
         <td></td>
         <td></td>
       </tr>
-        <tr ng-repeat="rate in rates">
+        <tr ng-repeat="rate in rates" ng-if = "getPrice(rate.id, category.id) > 0">
           <td><i>{{rate.name}}</i>:&nbsp;</td>
           <td>{{getPrice(rate.id, category.id)}} kr &nbsp;</td>
           <td><button ng-click="addTicket(rate.id, category.id)" ng-disabled = "performance.availability[category.id].available == 0">
