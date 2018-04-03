@@ -12,7 +12,7 @@
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: #662972;
+    background-color: #F7a021;
     color: white;
 		font-size: 20px;
 		height: 40px;
@@ -20,9 +20,43 @@
 		margin-left: 0 !important;
 		margin-right: 0 !important;
 }
+h1, h2, h3, h4, p, table{
+	color: #FFF;
+}
 
 body {
-	background-color: #f35d98;
+	background-color: #390444;
+	/*background-color: #f35d98;*/
+}
+.container p {
+	color: #FFF;
+}
+/* - - - - - jumbotron - - - - - */
+.jumbotron-bg{
+	background-image: url("../images/shows/test.jpg");
+	background-size: cover;
+	background-position: center;
+	margin-top: -20px;
+}
+.jumbotron {
+	background-color: rgba(0, 0, 0, 0.2);
+	color: #FFF;
+}
+
+/* - - - - - Shows days title - - - - - */
+.active {
+	background-color: #8a4797 !important;
+	text-shadow: none !important;
+	border-color: #8a4797 !important;
+	color: #FFF;
+}
+
+.list-group-item.active {
+	background-image: none;
+}
+
+.list-group-item.active:hover {
+	background-image: none;
 }
 
 /* - - - - - btn override - - - - - */
