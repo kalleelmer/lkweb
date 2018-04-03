@@ -6,6 +6,8 @@ var RateCtrl = function($filter, $scope, $http, User, $routeParams, Core, $sce, 
 
     $scope.performance = response.data;
 
+    console.log(response.data);
+
     Core.get("/shows/" + $scope.performance.show.id + "/rates").then(function(response) {
       $scope.rates = response.data;
     }, function(error) {
