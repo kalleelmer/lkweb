@@ -133,3 +133,7 @@ body {
 #price-label {
 	text-align: center;
 }
+
+.label-right {
+	float: right;
+}

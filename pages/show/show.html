@@ -18,10 +18,10 @@
 				{{date | date : 'EEEE d MMMM yyyy'}}
 			</div>
 			<a href = "#/performance/{{performance.id}}" class="list-group-item" ng-repeat="performance in performances">
-				<div class="label label-danger" ng-show="performance.available==0">
+				<div class="label label-danger label-right" ng-show="performance.available==0">
 					Slut
 				</div>
-				<div class="label" ng-show="performance.available>0"
+				<div class="label label-right" ng-show="performance.available>0"
 					ng-class="{'label-warning':performance.available < 10,'label-success':performance.available >= 10}">
 					{{performance.available}}
 				</div>
