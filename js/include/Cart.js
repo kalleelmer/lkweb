@@ -11,13 +11,17 @@ var CartFactory = function($http, Core, $window, $interval, Notification, $route
   var startCountdown = function(ms) {
 
     if (!order.paid) {
-      countDown = Math.floor(ms/1000);
-      var timer = $interval(function() {
-        countDown--;
-        if (countDown == 0) {
-            $interval.cancel(timer);
-        }
-      }, 1000, 0);
+      if (ms > 0) {
+        countDown = Math.floor(ms/1000);
+        var timer = $interval(function() {
+          countDown--;
+          if (countDown == 0) {
+              $interval.cancel(timer);
+          }
+        }, 1000, 0);
+      } else {
+        //Cart.newOrder(function(){});
+      }
     }
   }
 

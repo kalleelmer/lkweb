@@ -1,6 +1,6 @@
 var module = angular.module("lkticket.webb");
 
-var RateCtrl = function($filter, $scope, $http, User, $routeParams, Core, $sce, Cart) {
+var RateCtrl = function($filter, $scope, $http, User, $routeParams, Core, $sce, Cart, Notification) {
 
   Core.get("/performances/" + $routeParams.id).then(function(response) {
 
@@ -41,6 +41,11 @@ var RateCtrl = function($filter, $scope, $http, User, $routeParams, Core, $sce, 
 
   //Lägg till biljetten i kundvagnen
   $scope.addTicket = function(rateId, categoryId) {
+
+    if (Cart.getOrder() && Cart.getOrder().paid) {
+      Notification.error("Du har redan betalt din kundvagn och kan därför inte lägga till biljetter");
+      return;
+    }
 
     var data = {
       category_id: categoryId,
