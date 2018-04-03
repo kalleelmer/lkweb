@@ -147,10 +147,11 @@ var CartFactory = function($http, Core, $window, $interval, Notification, $route
     return order;
   }
 
-  Cart.pay = function() {
+  Cart.pay = function(customer) {
 
     var body = {
-      amount: Cart.getPrice()
+      amount: Cart.getPrice(),
+      customer: customer,
     };
 
     Core.post("/order/" + order.id + "/pay/bambora", body).then(function(response) {

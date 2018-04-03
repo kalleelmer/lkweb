@@ -1,36 +1,48 @@
 <div class="container item-page">
-  <h3>Biljetter i kundvagnen</h3>
-  <br>
-  <div class="row">
-    <div class="col-sm-4">
-      <ul class="list-group"
-        ng-repeat="(key, value) in getTickets() | groupBy: 'performance_id'">
-        <li class="list-group-item active">{{value[0].show_name}} -
-          {{value[0].performance_start | date : 'EEE HH:mm'}}</li>
-        <div ng-repeat="(key2, value2) in value | groupBy: 'category_id'">
-          <li class="list-group-item"
-            ng-repeat="(key3, value3) in value2 | groupBy: 'rate_id'">
-            <div class="row">
-              <div class="col-sm-7">
-                {{value3[0].rate_name}} -
-                {{value3[0].category_name}} </br>
-                {{value3.length}}x{{value3[0].price}}kr
+  <div ng-hide = "initpay">
+    <h3>Biljetter i kundvagnen</h3>
+    <br>
+    <div class="row">
+      <div class="col-sm-4">
+        <ul class="list-group"
+          ng-repeat="(key, value) in getTickets() | groupBy: 'performance_id'">
+          <li class="list-group-item active">{{value[0].show_name}} -
+            {{value[0].performance_start | date : 'EEE HH:mm'}}</li>
+          <div ng-repeat="(key2, value2) in value | groupBy: 'category_id'">
+            <li class="list-group-item"
+              ng-repeat="(key3, value3) in value2 | groupBy: 'rate_id'">
+              <div class="row">
+                <div class="col-sm-7">
+                  {{value3[0].rate_name}} -
+                  {{value3[0].category_name}} </br>
+                  {{value3.length}}x{{value3[0].price}}kr
+                </div>
+                <div class="col-sm-5 ticket-btn-box">
+                  <button type="button" class="material-btn ticket-btn btn btn-default btn-lg" ng-click="removeTicket(value3[0].id)" ng-if="!getPaymentStatus()">
+                    <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                  </button>
+                </div>
               </div>
-              <div class="col-sm-5 ticket-btn-box">
-                <button type="button" class="material-btn ticket-btn btn btn-default btn-lg" ng-click="removeTicket(value3[0].id)" ng-if="!getPaymentStatus()">
-                  <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-                </button>
-              </div>
-            </div>
-          </li>
-        </div>
-      </ul>
+            </li>
+          </div>
+        </ul>
+      </div>
     </div>
   </div>
 
   <h3>Totalt pris: {{getTotalPrice()}}kr </h3>
 
-  <button type="button" name="button" ng-click="pay()" ng-if="!getPaymentStatus()">Gå till betalning</button>
+  <button type="button" name="button" ng-click = "initpay = true" ng-hide="initpay">Gå till betalning</button>
+  <div class="" ng-show="initpay">
+    <p>Namn:</p>
+    <input type="text" ng-model = "customer.name">
+    <p>Email:</p>
+    <input type="text"  ng-model = "customer.email">
+    <p>Telefonummer:</p>
+    <input type="text" ng-model = "customer.phonenumber">
+  </div>
+  <br>
+  <button type="button" name="button" ng-click="pay()" ng-if="!getPaymentStatus()" ng-show="initpay"> Till kortbetalning</button>
   <span ng-if="getPaymentStatus()">Order Betald</span>
 
 </div>

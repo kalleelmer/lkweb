@@ -1,6 +1,7 @@
 var module = angular.module("lkticket.webb");
 
 var CartCtrl = function(Core, $scope, $routeParams, Cart) {
+
   $scope.getTickets = function() {
     return Cart.getTickets();
   }
@@ -14,7 +15,7 @@ var CartCtrl = function(Core, $scope, $routeParams, Cart) {
   }
 
   $scope.pay = function() {
-    Cart.pay();
+    Cart.pay($scope.customer);
   }
 
   $scope.getPaymentStatus = function() {
