@@ -33,7 +33,7 @@
 
   <h3>Totalt pris: {{getTotalPrice()}}kr </h3>
 
-  <button class="btn btn-primary" type="button" name="button" ng-click="initpay = true" ng-hide="initpay" ng-if="!getPaymentStatus()">Gå till betalning</button>
+  <button class="btn btn-primary" type="button" name="button" ng-click="initpay = true" ng-hide="initpay" ng-show="!getPaymentStatus()">Gå till betalning</button>
 
   <div class="" ng-show="initpay">
     <p>För att fortsätta till kortbetalningen vänligen fyll i dina uppgifter nedan. Efter betalningen kommer du att få en bekräftelse på mail. Har du inte fått detta inom ett dygn så vänligen hör av dig.</p>
@@ -50,7 +50,7 @@
         <h4>Telefonummer*:</h4>
         <input type="text" ng-model="customer.phone" class="form-control" required required name = "phone" placeholder="Telefonummer">
       </div>
-      <button class="btn btn-primary" type="button" name="button" ng-click="pay()" ng-if="!getPaymentStatus()" ng-show="initpay" ng-disabled = "!customer_form.$valid || (customer.email != email2)">Till kortbetalning</button>
+      <button class="btn btn-primary" type="button" name="button" ng-click="pay()" ng-show="!getPaymentStatus()" ng-show="initpay" ng-disabled = "!customer_form.$valid || (customer.email != email2)">Till kortbetalning</button>
     </form>
   </div>
   <br>
