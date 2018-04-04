@@ -20,7 +20,7 @@
                   </button>
                   <button type="button" class="material-btn ticket-btn btn btn-default btn-lg"
                     ng-click="addTicket(value3[0])">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true" ng-if="!getPaymentStatus()"></span>
                   </button>
                 </div>
               </div>
