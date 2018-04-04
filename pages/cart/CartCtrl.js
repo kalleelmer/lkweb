@@ -10,6 +10,16 @@ var CartCtrl = function(Core, $scope, $routeParams, Cart) {
     Cart.removeTicket(id);
   }
 
+  $scope.addTicket = function(ticket) {
+    var data = {
+      category_id: ticket.category_id,
+      rate_id: ticket.rate_id,
+      performance_id: ticket.performance_id,
+      count: 1
+    };
+    Cart.addTicket(data);
+  }
+
   $scope.getTotalPrice = function() {
     return Cart.getPrice();
   }

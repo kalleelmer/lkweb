@@ -8,8 +8,12 @@ var CartFactory = function($http, Core, $window, $interval, Notification, $route
   var countDown;
   var order;
 
-  var startCountdown = function(ms) {
+  const EXPIRE_DELAY = 1200000;
 
+  var startCountdown = function(ms) {
+    if (timer) {
+      $interval.cancel(timer);
+    }
     if (!order.paid) {
       if (ms > 0) {
         countDown = Math.floor(ms/1000);
@@ -17,10 +21,13 @@ var CartFactory = function($http, Core, $window, $interval, Notification, $route
           countDown--;
           if (countDown == 0) {
               $interval.cancel(timer);
+              Notification.error("Tiden för din order har gått ut. En ny order skapas nu åt dig.");
+              Cart.newOrder(function(){});
           }
         }, 1000, 0);
       } else {
-        //Cart.newOrder(function(){});
+        Cart.newOrder(function(){});
+        Notification.error("Tiden för din order har gått ut. En ny order skapas nu åt dig.");
       }
     }
   }
@@ -42,7 +49,9 @@ var CartFactory = function($http, Core, $window, $interval, Notification, $route
       order = response.data;
       sessionStorage.orderId = order.id;
       sessionStorage.orderIdentifier = order.identifier;
-      startCountdown(order.expires - Date.now());
+      tickets = [];
+      startCountdown((order.expires + EXPIRE_DELAY) - Date.now());
+      $location.path("/");
       callback(response.data);
     }, function(error) {
       console.log(error);
@@ -79,7 +88,7 @@ var CartFactory = function($http, Core, $window, $interval, Notification, $route
     Core.get("/order/" + sessionStorage.orderId + "?identifier=" + sessionStorage.orderIdentifier).then(function(response) {
       order = response.data;
       updateTickets();
-      startCountdown(order.expires - Date.now());
+      startCountdown((order.expires + EXPIRE_DELAY) - Date.now());
     }, function(error) {
       sessionStorage.orderid = null;
       sessionStorage.orderIdentifier = null;
@@ -113,6 +122,7 @@ var CartFactory = function($http, Core, $window, $interval, Notification, $route
   Cart.removeTicket = function(ticket) {
     Core.delete("/order/" + order.id + "/tickets/" + ticket + "?identifier=" + order.identifier).then(function(response) {
       tickets.splice(_.indexOf(tickets, _.find(tickets, function (obj) { return obj.id == ticket; })), 1);
+      Notification.success("Biljett borttagen");
     }, function(error) {
       alert("Biljetterna är slut");
       console.log(error);
