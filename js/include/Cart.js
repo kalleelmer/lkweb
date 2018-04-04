@@ -22,11 +22,15 @@ var CartFactory = function($http, Core, $window, $interval, Notification, $route
           if (countDown == 0) {
               $interval.cancel(timer);
               Notification.error("Tiden för din order har gått ut. En ny order skapas nu åt dig.");
-              Cart.newOrder(function(){});
+              Cart.newOrder(function(){
+                $location.path("/");
+              });
           }
         }, 1000, 0);
       } else {
-        Cart.newOrder(function(){});
+        Cart.newOrder(function(){
+          $location.path("/");
+        });
         Notification.error("Tiden för din order har gått ut. En ny order skapas nu åt dig.");
       }
     }
@@ -51,7 +55,6 @@ var CartFactory = function($http, Core, $window, $interval, Notification, $route
       sessionStorage.orderIdentifier = order.identifier;
       tickets = [];
       startCountdown((order.expires + EXPIRE_DELAY) - Date.now());
-      $location.path("/");
       callback(response.data);
     }, function(error) {
       console.log(error);
