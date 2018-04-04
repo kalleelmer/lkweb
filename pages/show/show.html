@@ -15,17 +15,23 @@
 {{performances}}
 </br>
 <div class="animation-wrapper">
-		<div class="list-group col-md-2" ng-repeat="(date, performances) in show.dates">
+		<div class="list-group col-md-3" ng-repeat="(date, performances) in show.dates">
 			<div class="list-group-item active">
 				{{date | date : 'EEEE d MMMM yyyy'}}
 			</div>
 			<a href = "#/performance/{{performance.id}}" class="list-group-item" ng-repeat="performance in performances">
 				<div class="label label-danger label-right" ng-show="performance.available==0">
-					Slut
+					Slutsåld
 				</div>
 				<div class="label label-right" ng-show="performance.available>0"
-					ng-class="{'label-warning':performance.available < 10,'label-success':performance.available >= 10}">
-					{{performance.available}}
+					ng-class="{'label-success':performance.available >= 10}">
+					<!--{{performance.available}}-->
+					Tillgänglig
+				</div>
+				<div class="label label-right" ng-show="(performance.available>0)&&(performance.available < 10)"
+					ng-class="{'label-warning':performance.available < 10}">
+					<!--{{performance.available}}-->
+					Få biljetter kvar
 				</div>
 				<div>
 					{{performance.start | date : 'HH:mm'}}

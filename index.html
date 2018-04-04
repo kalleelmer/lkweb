@@ -47,7 +47,6 @@
 	src="/bower_components/ng-file-upload/ng-file-upload-shim.min.js"></script>
 <script src="/bower_components/ng-file-upload/ng-file-upload.min.js"></script>
 
-
 <!-- Font Awesome -->
 <link rel="stylesheet" type="text/css"
 	href="/bower_components/font-awesome/css/font-awesome.min.css" />
@@ -99,16 +98,20 @@
   </div><!-- /.container-fluid -->
 </nav>
 
-	<div class="animation-wrapper" ng-view></div>
+	<div id="content" class="animation-wrapper" ng-view></div>
 
 	<div class="footer row">
-		<div class="centered-text">
+		<div class="centered-text half-cell" ng-if="getCartId()">
+			<i class="fa fa-ticket"></i>
+			<p>Antal biljetter: {{getNumberOfTickets()}} st</p>
+		</div>
+		<div class="centered-text half-cell" ng-if="getCartId()">
 			<i class="fa fa-money"></i>
-			Totalt pris - {{getTotalPrice()}}kr
+			<p>Totalt pris: {{getTotalPrice()}} kr</p>
 		</div>
 		<div class="centered-text">
 			<a href ="#/cart/{{getCartId()}}/{{getCartIdentifier()}}" class="navbar-btn" ng-if="getCartId()">
-				<i class="fa fa-shopping-cart"></i>
+				<i class="fa fa-shopping-cart"></i></br>
 				Till kundvagnen
 			</a>
 		</div>

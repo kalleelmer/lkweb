@@ -26,7 +26,7 @@ p, a {
 		z-index: 5;
 		display: table;
 }
-.footer a:hover,.footer a:focus {
+.footer a:hover,.footer a:active{
 	color: #390444;
 	text-decoration: none;
 }
@@ -34,7 +34,16 @@ p, a {
 	display: table-cell;
 	vertical-align: middle;
 	width: 33.33333333%;
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
+.centered-text p{
+	margin-bottom: 0px;
+}
+.half-cell{
+	width: 16.66666665%;
+}
+
 /* - - - - - animation - - - - - */
 .animation-wrapper{
 	-webkit-animation: fadein 1.5s; /* Safari, Chrome and Opera > 12.1 */
@@ -67,7 +76,10 @@ p, a {
     from { opacity: 0; }
     to   { opacity: 1; }
 }
-
+/* - - - - - content - - - - - */
+#content{
+	padding-bottom:67px;
+}
 /* - - - - - jumbotron - - - - - */
 .jumbotron-bg{
 	background-image: url("../images/shows/test.jpg");
@@ -88,6 +100,10 @@ p, a {
 	color: #FFF;
 }
 
+.list-group-item:first-letter {
+    text-transform: uppercase;
+}
+
 .list-group-item.active {
 	background-image: none;
 }
@@ -96,7 +112,8 @@ p, a {
 	background-image: none;
 }
 
-/* - - - - - rate tabke - - - - - */
+
+/* - - - - - rate table - - - - - */
 .rate-table-spacer{
 	line-height: 50px;
 }
@@ -148,9 +165,6 @@ p, a {
 	box-shadow: none;
 	white-space: nowrap;
 }
-.list-group:last-child {
-	padding-right: 0px;
-}
 .container-full {
 	margin: 0 auto;
 	width: 100%;
@@ -182,4 +196,7 @@ p, a {
 }
 .label-right {
 	float: right;
+}
+.ticket-btn-box{
+	text-align: center;
 }

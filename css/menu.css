@@ -39,6 +39,9 @@
 	background-image: none;
 	border: none;
 }
-.navbar-default .navbar-nav > li > a{
-	color:#FFF;
+.navbar-default .navbar-nav > li > a,.navbar-default .navbar-nav > li > a:focus{
+	color: #FFF;
+}
+.navbar-default .navbar-nav > li > a:hover{
+	color: #ff8eae;
 }

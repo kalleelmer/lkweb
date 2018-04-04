@@ -13,6 +13,10 @@ var MainCtrl = function($scope, User, $route, Core, Cart) {
 		return Cart.getPrice();
 	}
 
+	$scope.getNumberOfTickets = function() {
+		return Cart.getTickets().length;
+	}
+
 	$scope.getCartId = function() {
 		if (Cart.getOrder()) {
 				return Cart.getOrder().id;
