@@ -36,6 +36,10 @@ var CartCtrl = function(Core, $scope, $routeParams, Cart) {
     }
   }
 
+  $scope.getOrder = function() {
+    return Cart.getOrder();
+  }
+
   Cart.setOrder($routeParams.id, $routeParams.identifier);
 
   console.log($routeParams.test);

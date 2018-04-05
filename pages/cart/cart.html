@@ -1,10 +1,25 @@
+<div class="jumbotron-bg" ng-if="getPaymentStatus()">
+  <div class="jumbotron">
+    <div class="container">
+      <h1>Wehej! Tack för din betalning!</h1>
+      <p>Du ser dina biljetter samt referens nedanför.</p>
+    </div>
+  </div>
+</div>
+
 <div class="container item-page">
   <div ng-hide="initpay">
-    <h1 ng-if="getPaymentStatus()">Order Betald</h1>
-    <h3>Biljetter i kundvagnen</h3>
-    <br>
+
     <div class="row">
       <div class="col-sm-4">
+
+      </div>
+      <div class="col-sm-4">
+
+        <h1 ng-if="getPaymentStatus()"></h1>
+        <h3>Dina biljetter</h3>
+        <br>
+
         <ul class="list-group" ng-repeat="(key, value) in getTickets() | groupBy: 'performance_id'">
           <li class="list-group-item active">{{value[0].show_name}} - {{value[0].performance_start | date : 'EEE HH:mm'}}</li>
           <div ng-repeat="(key2, value2) in value | groupBy: 'category_id'">
@@ -18,21 +33,23 @@
                   <button type="button" class="btn btn-secondary" ng-click="removeTicket(value3[0].id)" ng-if="!getPaymentStatus()">
                     <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
                   </button>
-                  <button type="button" class="btn btn-secondary" ng-click="addTicket(value3[0])">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true" ng-if="!getPaymentStatus()"></span>
+                  <button type="button" class="btn btn-secondary" ng-click="addTicket(value3[0])" ng-if="!getPaymentStatus()">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                   </button>
                 </div>
               </div>
             </li>
           </div>
         </ul>
+
+        <h3>Totalt pris: {{getTotalPrice()}}kr </h3>
+        <h3 ng-if="getPaymentStatus()">Din referens: {{getOrder().identifier}} </h3>
+
+        <button class="btn btn-primary" type="button" name="button" ng-click="initpay = true" ng-hide="initpay" ng-show="!getPaymentStatus()">Gå till betalning</button>
+
       </div>
     </div>
   </div>
-
-  <h3>Totalt pris: {{getTotalPrice()}}kr </h3>
-
-  <button class="btn btn-primary" type="button" name="button" ng-click="initpay = true" ng-hide="initpay" ng-show="!getPaymentStatus()">Gå till betalning</button>
 
   <div class="" ng-show="initpay">
     <p>För att fortsätta till kortbetalningen vänligen fyll i dina uppgifter nedan. Efter betalningen kommer du att få en bekräftelse på mail. Har du inte fått detta inom ett dygn så vänligen hör av dig.</p>
@@ -41,16 +58,16 @@
 
       <div class="form-group">
         <h4>Namn*:</h4>
-        <input type="text" ng-model="customer.name" class="form-control" required name = "name" placeholder="Namn Efternamn">
+        <input type="text" ng-model="customer.name" class="form-control" required name="name" placeholder="Namn Efternamn">
         <h4>Email*:</h4>
-        <input type="email" ng-model="customer.email" class="form-control" required name = "email" placeholder="namn@example.com">
+        <input type="email" ng-model="customer.email" class="form-control" required name="email" placeholder="namn@example.com">
         <h4>Verifiera email*:</h4>
-        <input type="email" ng-model="email2" class="form-control" required required name = "email" placeholder="namn@example.com">
+        <input type="email" ng-model="email2" class="form-control" required required name="email" placeholder="namn@example.com">
         <h4>Telefonummer*:</h4>
-        <input type="text" ng-model="customer.phone" class="form-control" required required name = "phone" placeholder="Telefonummer">
+        <input type="text" ng-model="customer.phone" class="form-control" required required name="phone" placeholder="Telefonummer">
       </div>
-      <button class="btn btn-primary" type="button" name="button" ng-click="pay()" ng-show="!getPaymentStatus()" ng-show="initpay" ng-disabled = "!customer_form.$valid || (customer.email != email2)">Till kortbetalning</button>
+      <button class="btn btn-primary" type="button" name="button" ng-click="pay()" ng-show="!getPaymentStatus()" ng-show="initpay" ng-disabled="!customer_form.$valid || (customer.email != email2)">Till kortbetalning</button>
     </form>
   </div>
-  <br>
+
 </div>

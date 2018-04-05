@@ -11,9 +11,11 @@ var CartFactory = function($http, Core, $window, $interval, Notification, $route
   const EXPIRE_DELAY = 1200000;
 
   var startCountdown = function(ms) {
+
     if (timer) {
       $interval.cancel(timer);
     }
+
     if (!order.paid) {
       if (ms > 0) {
         countDown = Math.floor(ms/1000);
@@ -51,8 +53,8 @@ var CartFactory = function($http, Core, $window, $interval, Notification, $route
   Cart.newOrder = function(callback) {
     Core.get("/newOrder").then(function(response) {
       order = response.data;
-      sessionStorage.orderId = order.id;
-      sessionStorage.orderIdentifier = order.identifier;
+      localStorage.orderId = order.id;
+      localStorage.orderIdentifier = order.identifier;
       tickets = [];
       startCountdown((order.expires + EXPIRE_DELAY) - Date.now());
       callback(response.data);
@@ -63,12 +65,12 @@ var CartFactory = function($http, Core, $window, $interval, Notification, $route
 
   Cart.setOrder = function(id, identifier) {
     console.log("Set order");
-    if (id != sessionStorage.orderId && identifier != sessionStorage.identifier) {
+    if (id != localStorage.orderId && identifier != localStorage.identifier) {
       console.log("Ny order hämtas");
-      sessionStorage.orderId = id;
-      sessionStorage.orderIdentifier = identifier;
+      localStorage.orderId = id;
+      localStorage.orderIdentifier = identifier;
 
-      Core.get("/order/" + sessionStorage.orderId + "?identifier=" + sessionStorage.orderIdentifier).then(function(response) {
+      Core.get("/order/" + localStorage.orderId + "?identifier=" + localStorage.orderIdentifier).then(function(response) {
         order = response.data;
         updateTickets();
         startCountdown(order.expires - Date.now());
@@ -83,27 +85,36 @@ var CartFactory = function($http, Core, $window, $interval, Notification, $route
   var urlPath = $location.path().split('/');
 
   if (urlPath[1] == "cart") {
-    sessionStorage.orderId = urlPath[2];
-    sessionStorage.orderIdentifier = urlPath[3];
+    localStorage.orderId = urlPath[2];
+    localStorage.orderIdentifier = urlPath[3];
   }
 
-  if (sessionStorage.orderId) {
-    Core.get("/order/" + sessionStorage.orderId + "?identifier=" + sessionStorage.orderIdentifier).then(function(response) {
+  if (localStorage.orderId) {
+    console.log("Det finns en order");
+    Core.get("/order/" + localStorage.orderId + "?identifier=" + localStorage.orderIdentifier).then(function(response) {
       order = response.data;
       updateTickets();
       startCountdown((order.expires + EXPIRE_DELAY) - Date.now());
+
+      if (order.paid) {
+        $location.path("/cart/" + order.id + "/" + order.identifier);
+        localStorage.removeItem("orderId");
+        localStorage.removeItem("orderIdentifier");
+      }
+
     }, function(error) {
-      sessionStorage.orderid = null;
-      sessionStorage.orderIdentifier = null;
+      localStorage.removeItem("orderId");
+      localStorage.removeItem("orderIdentifier");
     });
   }
 
   Cart.addTicket = function(ticket) {
 
-    if (!sessionStorage.orderId) {
-      Cart.newOrder(function(order){
-        console.log(order);
-        Core.post("/order/" + order.id + "/tickets?identifier=" + order.identifier, ticket).then(function(response) {
+    console.log(localStorage.orderId);
+
+    if (!localStorage.orderId) {
+      Cart.newOrder(function(response){
+        Core.post("/order/" + response.id + "/tickets?identifier=" + response.identifier, ticket).then(function(response) {
           Notification.success("Biljett tillagd i kundvagnen");
           tickets.push(response.data[0]);
         }, function(error) {
@@ -142,7 +153,7 @@ var CartFactory = function($http, Core, $window, $interval, Notification, $route
 
   Cart.getPrice = function() {
 
-    if (!sessionStorage.orderId) {
+    if (tickets.length >! 0) {
       return 0;
     }
 
@@ -176,7 +187,7 @@ var CartFactory = function($http, Core, $window, $interval, Notification, $route
   }
 
   Cart.reset = function() {
-    sessionStorage.orderId = undefined;
+    localStorage.orderId = undefined;
     tickets = null;
     order = null;
   }

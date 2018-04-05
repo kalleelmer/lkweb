@@ -69,7 +69,7 @@
 </head>
 <body ng-controller="MainCtrl as main" class="page-{{route.current.pagetype}}">
 
-	<nav class="navbar navbar-default">
+	<nav class="navbar navbar-default" ng-hide="getPaymentStatus()">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -100,17 +100,17 @@
 
 	<div id="content" class="animation-wrapper" ng-view></div>
 
-	<div class="footer row">
-		<div class="centered-text half-cell" ng-if="getCartId()">
+	<div class="footer row" ng-if="getCartId()" ng-hide="getPaymentStatus()">
+		<div class="centered-text half-cell">
 			<i class="fa fa-ticket"></i>
 			<p>Antal biljetter: {{getNumberOfTickets()}} st</p>
 		</div>
-		<div class="centered-text half-cell" ng-if="getCartId()">
+		<div class="centered-text half-cell">
 			<i class="fa fa-money"></i>
 			<p>Totalt pris: {{getTotalPrice()}} kr</p>
 		</div>
 		<div class="centered-text">
-			<a href ="#/cart/{{getCartId()}}/{{getCartIdentifier()}}" class="navbar-btn" ng-if="getCartId()">
+			<a href ="#/cart/{{getCartId()}}/{{getCartIdentifier()}}" class="navbar-btn">
 				<i class="fa fa-shopping-cart"></i></br>
 				Till kundvagnen
 			</a>
