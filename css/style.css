@@ -76,6 +76,37 @@ p, a {
     from { opacity: 0; }
     to   { opacity: 1; }
 }
+.flyIn{
+	animation-name: flyIn;
+	-webkit-animation-name: flyIn;
+
+	animation-duration: 0.4s;
+	-webkit-animation-duration: 0.4s;
+
+	animation-timing-function: ease;
+	-webkit-animation-timing-function: ease;
+
+	visibility: visible !important;
+}
+
+@keyframes flyIn {
+	0% {
+		transform: translateY(100%);
+	}
+	100% {
+		transform: translateY(0%);
+	}
+}
+
+@-webkit-keyframes flyIn {
+	0% {
+		-webkit-transform: translateY(100%);
+	}
+	100% {
+		-webkit-transform: translateY(0%);
+	}
+}
+
 /* - - - - - content - - - - - */
 #content{
 	padding-bottom:67px;

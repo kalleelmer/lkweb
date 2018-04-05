@@ -100,7 +100,7 @@
 
 	<div id="content" class="animation-wrapper" ng-view></div>
 
-	<div class="footer row" ng-if="getCartId()" ng-hide="getPaymentStatus()">
+	<div class="footer row flyIn" ng-if="getCartId()" ng-hide="getPaymentStatus()">
 		<div class="centered-text half-cell">
 			<i class="fa fa-ticket"></i>
 			<p>Antal biljetter: {{getNumberOfTickets()}} st</p>
