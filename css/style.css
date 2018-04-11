@@ -18,7 +18,7 @@ p, a {
     width: 100%;
     background-color: #F7a021;
     color: white;
-		font-size: 20px;
+		font-size: 16px;
 		height: 50px;
 		text-align: center;
 		margin-left: 0 !important;
@@ -107,10 +107,19 @@ p, a {
 	}
 }
 
-/* - - - - - content - - - - - */
+
 #content{
-	padding-bottom:67px;
+	/*padding-bottom:67px;*/
 }
+/* - - - - - content - - - - - */
+#rights{
+	padding-bottom:67px;
+	text-align:center;
+}
+#rights p{
+	color:#8a4797;
+}
+
 /* - - - - - jumbotron - - - - - */
 .jumbotron-bg{
 	background-image: url("../images/shows/test.jpg");
@@ -230,17 +239,4 @@ p, a {
 }
 .ticket-btn-box{
 	text-align: center;
-}
-
-/* - - - - - start page - - - - - */
-
-.start-page-fa{
-	font-size: 50px;
-	color: white;
-	text-align: center;
-}
-
-.start-text {
-	font-size: 15px;
-	color: white;
 }
