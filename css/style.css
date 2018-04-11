@@ -231,3 +231,16 @@ p, a {
 .ticket-btn-box{
 	text-align: center;
 }
+
+/* - - - - - start page - - - - - */
+
+.start-page-fa{
+	font-size: 50px;
+	color: white;
+	text-align: center;
+}
+
+.start-text {
+	font-size: 15px;
+	color: white;
+}

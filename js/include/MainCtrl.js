@@ -46,7 +46,10 @@ var MainCtrl = function($scope, User, $route, Core, Cart) {
 		if (Cart.timeLeft() != undefined) {
 			var minutes = Math.floor(Cart.timeLeft()/60);
 			var seconds = Math.floor(Cart.timeLeft()%60);
-			return (minutes + ":" + seconds);
+			if (seconds < 10) {
+				return (minutes + ":0" + seconds + "");
+			}
+			return (minutes + ":" + seconds + "");
 		} else {
 			return false;
 		}

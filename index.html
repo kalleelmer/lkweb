@@ -41,7 +41,7 @@
 	<script src="/bower_components/ng-file-upload/ng-file-upload.min.js?v=BUILD_NUMBER"></script>
 
 	<!-- Font Awesome -->
-	<link rel="stylesheet" type="text/css" href="/bower_components/font-awesome/css/font-awesome.min.css?v=BUILD_NUMBER" />
+	<link rel="stylesheet" type="text/css" href="/bower_components/font-awesome/css/fontawesome-all.min.css?v=BUILD_NUMBER" />
 
 	<!-- Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,700,700i&subset=latin-ext" rel="stylesheet" />
@@ -78,7 +78,7 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li>
-						<p class="navbar-btn prompt">Välj nöje:</p>
+						<p class="navbar-btn prompt"><b>Välj ditt nöje:</b></p>
 					</li>
 					<li ng-repeat="show in shows">
 
@@ -97,11 +97,11 @@
 
 	<div class="footer row flyIn" ng-if="getCartId()" ng-hide="getPaymentStatus()">
 		<div class="centered-text half-cell">
-			<i class="fa fa-ticket"></i>
+			<i class="fa fa-ticket-alt"></i>
 			<p>Antal biljetter: {{getNumberOfTickets()}} st</p>
 		</div>
 		<div class="centered-text half-cell">
-			<i class="fa fa-money"></i>
+			<i class="fa fa-money-bill-alt"></i>
 			<p>Totalt pris: {{getTotalPrice()}} kr</p>
 		</div>
 		<div class="centered-text">
@@ -111,7 +111,7 @@
 			</a>
 		</div>
 		<div class="centered-text" ng-if="getTimeLeft()">
-			<i class="fa fa-clock-o"></i>
+			<i class="fa fa-clock"></i>
 			<p>Tid kvar: {{getTimeLeft()}}</p>
 		</div>
 	</div>

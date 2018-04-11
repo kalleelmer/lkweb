@@ -30,4 +30,9 @@ module.config([ "$routeProvider", function($routeProvider) {
 		controller : "DeniedCtrl"
 	});
 
+	$routeProvider.when("/",{
+		templateUrl : "/pages/start/start.html",
+		controller : "StartCtrl"
+	});
+
 } ]);
