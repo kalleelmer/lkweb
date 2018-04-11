@@ -51,11 +51,15 @@ p, a {
 #terms-link{
 	text-decoration: underline;
 }
-#terms-link:hover{
-
-}
 #terms-link:hover, #terms-link:focus{
 	color: #f7a021;
+}
+#payment-logos{
+	text-align: center;
+}
+#payment-logos img{
+	width:100%;
+	max-width:530px;
 }
 
 /* - - - - - animation - - - - - */
