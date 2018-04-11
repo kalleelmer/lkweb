@@ -25,4 +25,9 @@ module.config([ "$routeProvider", function($routeProvider) {
 		controller : "ThankCtrl"
 	});
 
+	$routeProvider.whien("/denied",{
+		templateUrl : "/pages/denied/denied.html",
+		controller : "DeniedCtrl"
+	});
+
 } ]);
