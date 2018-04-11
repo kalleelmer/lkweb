@@ -9,7 +9,7 @@ module.run(function(editableOptions) {
 module.config(function(NotificationProvider) {
   NotificationProvider.setOptions({
     delay: 5000,
-    startTop: 50,
+    startTop: 67,
     startRight: 10,
     verticalSpacing: 20,
     horizontalSpacing: 20,
