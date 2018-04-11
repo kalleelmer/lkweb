@@ -153,9 +153,7 @@ var CartFactory = function($http, Core, $window, $interval, Notification, $route
 
   Cart.getPrice = function() {
 
-    if (tickets.length >! 0) {
-      return 0;
-    }
+    console.log("HEJHEJ");
 
     var totalPrice = 0;
 
@@ -188,7 +186,7 @@ var CartFactory = function($http, Core, $window, $interval, Notification, $route
 
   Cart.reset = function() {
     localStorage.orderId = undefined;
-    tickets = null;
+    tickets = [];
     order = null;
   }
 
