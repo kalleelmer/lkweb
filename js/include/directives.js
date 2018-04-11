@@ -6,6 +6,6 @@ module.directive("loadingScreen", function() {
 		scope : {
 			value : "@"
 		},
-		templateUrl : "/templates/loading-screen.html"
+		templateUrl : "/templates/loading-screen.html?v=BUILD_NUMBER"
 	};
 });

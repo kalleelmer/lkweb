@@ -7,21 +7,21 @@ module.config([ '$locationProvider', function($locationProvider) {
 module.config([ "$routeProvider", function($routeProvider) {
 	console.log("Route: " + $routeProvider);
 	$routeProvider.when("/show/:id", {
-		templateUrl : "/pages/show/show.html",
+		templateUrl : "/pages/show/show.html?v=BUILD_NUMBER",
 		controller : "ShowCtrl"
 	});
 	$routeProvider.when("/cart/:id/:identifier", {
-		templateUrl : "/pages/cart/cart.html",
+		templateUrl : "/pages/cart/cart.html?v=BUILD_NUMBER",
 		controller : "CartCtrl"
 	});
 
 	$routeProvider.when("/performance/:id",{
-		templateUrl : "/pages/rate/rate.html",
+		templateUrl : "/pages/rate/rate.html?v=BUILD_NUMBER",
 		controller : "RateCtrl"
 	});
 
 	$routeProvider.when("/thanks",{
-		templateUrl : "/pages/thank/thank.html",
+		templateUrl : "/pages/thank/thank.html?v=BUILD_NUMBER",
 		controller : "ThankCtrl"
 	});
 
