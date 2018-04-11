@@ -26,7 +26,7 @@ p, a {
 		z-index: 5;
 		display: table;
 }
-.footer a:hover,.footer a:active{
+.footer a:hover,.footer a:active,.footer a:focus{
 	color: #390444;
 	text-decoration: none;
 }
@@ -42,6 +42,24 @@ p, a {
 }
 .half-cell{
 	width: 16.66666665%;
+}
+
+/* - - - - - terms - - - - - */
+#terms p,#terms h4,#terms h2{
+	color: #424242;
+}
+#terms-link{
+	text-decoration: underline;
+}
+#terms-link:hover, #terms-link:focus{
+	color: #f7a021;
+}
+#payment-logos{
+	text-align: center;
+}
+#payment-logos img{
+	width: 100%;
+	max-width: 530px;
 }
 
 /* - - - - - animation - - - - - */
@@ -113,6 +131,7 @@ p, a {
 }
 /* - - - - - content - - - - - */
 #rights{
+	margin-top: 50px;
 	padding-bottom:67px;
 	text-align:center;
 }
@@ -194,6 +213,9 @@ p, a {
 }
 .btn-abort {
 	float: left;
+}
+.btn-secondary:hover,.btn-secondary:focus{
+	background-color: #E0E0E0;
 }
 
 .title-item {

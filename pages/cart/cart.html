@@ -2,7 +2,7 @@
   <div class="jumbotron">
     <div class="container">
       <h1>Wehej! Tack för din betalning!</h1>
-      <p>Du ser dina biljetter samt referens nedanför.</p>
+      <p>Du kan hitta dina biljetter samt din referens nedanför. En orderbekräftelse är även på väg till dig via mail. Med hjälp av din referens kan du hämta ut biljetterna i en av våra tillgängliga biljettbodar på stortorget. Trevlig karneval!</p>
     </div>
   </div>
 </div>
@@ -52,7 +52,7 @@
   </div>
 
   <div class="" ng-show="initpay">
-    <p>För att fortsätta till kortbetalningen vänligen fyll i dina uppgifter nedan. Efter betalningen kommer du att få en bekräftelse på mail. Har du inte fått detta inom ett dygn så vänligen hör av dig.</p>
+    <p>Vänligen fyll i dina uppgifter nedan för att fortsätta till kortbetalningen. En bekräftelse kommer att skickas till den angivna mailen efter att betalningen genomförts. Har du inte fått ett bekräftelsemail inom ett dygn så hör vänligen hör av dig till oss. Kontaktuppgiter finner du på vår <a href="">kontaktsida.</a></p>
     <hr class="my-4">
     <form name="customer_form" novalidate>
 
@@ -66,7 +66,7 @@
         <h4>Telefonummer*:</h4>
         <input type="text" ng-model="customer.phone" class="form-control" required name="phone" placeholder="Telefonummer">
         <br>
-        <p><input type="checkbox" ng-model="customer.accept" class="" required> Jag har läst och godkänner <a href="" data-toggle="modal" data-target="#policy">avtalet.</a></p>
+        <p><input type="checkbox" ng-model="customer.accept" class="" required> Jag har läst och godkänner <a id="terms-link" href="" data-toggle="modal" data-target="#policy">köpvillkoren.</a></p>
       </div>
       <button class="btn btn-primary" type="button" name="button" ng-click="pay()" ng-show="!getPaymentStatus()" ng-show="initpay" ng-disabled="!customer_form.$valid || (customer.email != email2)">Till kortbetalning</button>
     </form>
