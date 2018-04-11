@@ -62,9 +62,11 @@
         <h4>Email*:</h4>
         <input type="email" ng-model="customer.email" class="form-control" required name="email" placeholder="namn@example.com">
         <h4>Verifiera email*:</h4>
-        <input type="email" ng-model="email2" class="form-control" required required name="email" placeholder="namn@example.com">
+        <input type="email" ng-model="email2" class="form-control" required name="email" placeholder="namn@example.com">
         <h4>Telefonummer*:</h4>
-        <input type="text" ng-model="customer.phone" class="form-control" required required name="phone" placeholder="Telefonummer">
+        <input type="text" ng-model="customer.phone" class="form-control" required name="phone" placeholder="Telefonummer">
+        <br>
+        <p><input type="checkbox" ng-model="customer.accept" class="" required> Jag har läst och godkänner <a href="" data-toggle="modal" data-target="#policy">avtalet.</a></p>
       </div>
       <button class="btn btn-primary" type="button" name="button" ng-click="pay()" ng-show="!getPaymentStatus()" ng-show="initpay" ng-disabled="!customer_form.$valid || (customer.email != email2)">Till kortbetalning</button>
     </form>

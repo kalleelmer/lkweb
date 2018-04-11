@@ -1,102 +1,97 @@
 <!DOCTYPE html>
 <html ng-app="lkticket.webb" lang="en">
+
 <head>
-<title>Biljetter - Lundakarnevalen 2018</title>
+	<title>Biljetter - Lundakarnevalen 2018</title>
 
-<meta name="description"
-	content="Administrationsgränssnitt för Lundakarnevalens biljettsystem" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta property="og:image" content="/images/thumbnail.png" />
+	<meta name="description" content="Administrationsgränssnitt för Lundakarnevalens biljettsystem" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta property="og:image" content="/images/thumbnail.png" />
 
-<link rel="icon" href="/images/icons/default.png"
-	type="image/vnd.microsoft.icon" />
+	<link rel="icon" href="/images/icons/default.png" type="image/vnd.microsoft.icon" />
 
-<!-- Angular -->
-<script src="/bower_components/angular/angular.min.js?v=BUILD_NUMBER"></script>
-<script src="/bower_components/angular-route/angular-route.min.js?v=BUILD_NUMBER"></script>
-<script
-	src="/bower_components/angular-xeditable/dist/js/xeditable.min.js?v=BUILD_NUMBER"></script>
-<link rel="stylesheet" type="text/css"
-	href="/bower_components/angular-xeditable/dist/css/xeditable.min.css?v=BUILD_NUMBER" />
-<script src="bower_components/angular-filter/dist/angular-filter.min.js?v=BUILD_NUMBER"></script>
+	<!-- Angular -->
+	<script src="/bower_components/angular/angular.min.js?v=BUILD_NUMBER"></script>
+	<script src="/bower_components/angular-route/angular-route.min.js?v=BUILD_NUMBER"></script>
+	<script src="/bower_components/angular-xeditable/dist/js/xeditable.min.js?v=BUILD_NUMBER"></script>
+	<link rel="stylesheet" type="text/css" href="/bower_components/angular-xeditable/dist/css/xeditable.min.css?v=BUILD_NUMBER" />
+	<script src="bower_components/angular-filter/dist/angular-filter.min.js?v=BUILD_NUMBER"></script>
 
-<!-- Angular ui notifications -->
-<link rel="stylesheet" href="/bower_components/angular-ui-notification/dist/angular-ui-notification.min.css?v=BUILD_NUMBER">
-<script src="/bower_components/angular-ui-notification/dist/angular-ui-notification.min.js?v=BUILD_NUMBER"></script>
+	<!-- Angular ui notifications -->
+	<link rel="stylesheet" href="/bower_components/angular-ui-notification/dist/angular-ui-notification.min.css?v=BUILD_NUMBER">
+	<script src="/bower_components/angular-ui-notification/dist/angular-ui-notification.min.js?v=BUILD_NUMBER"></script>
 
-<!-- JQuery -->
-<script src="/bower_components/jquery/dist/jquery.min.js?v=BUILD_NUMBER"></script>
+	<!-- JQuery -->
+	<script src="/bower_components/jquery/dist/jquery.min.js?v=BUILD_NUMBER"></script>
 
-<!-- The Chosen Library -->
-<script src="/bower_components/chosen/chosen.jquery.js?v=BUILD_NUMBER"></script>
-<link rel="stylesheet" type="text/css"
-	href="/bower_components/chosen/chosen.css?v=BUILD_NUMBER" />
-<script src="/bower_components/angular-chosen/angular-chosen.js?v=BUILD_NUMBER"></script>
+	<!-- The Chosen Library -->
+	<script src="/bower_components/chosen/chosen.jquery.js?v=BUILD_NUMBER"></script>
+	<link rel="stylesheet" type="text/css" href="/bower_components/chosen/chosen.css?v=BUILD_NUMBER" />
+	<script src="/bower_components/angular-chosen/angular-chosen.js?v=BUILD_NUMBER"></script>
 
-<!-- Bootstrap -->
-<link rel="stylesheet" type="text/css"
-	href="/bower_components/bootstrap/dist/css/bootstrap.css?v=BUILD_NUMBER" />
-<link rel="stylesheet" type="text/css"
-	href="/bower_components/bootstrap/dist/css/bootstrap-theme.css?v=BUILD_NUMBER" />
-<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js?v=BUILD_NUMBER"></script>
+	<!-- Bootstrap -->
+	<link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.css?v=BUILD_NUMBER" />
+	<link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap-theme.css?v=BUILD_NUMBER" />
+	<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js?v=BUILD_NUMBER"></script>
 
-<!-- ng-file-upload -->
-<script
-	src="/bower_components/ng-file-upload/ng-file-upload-shim.min.js?v=BUILD_NUMBER"></script>
-<script src="/bower_components/ng-file-upload/ng-file-upload.min.js?v=BUILD_NUMBER"></script>
+	<!-- ng-file-upload -->
+	<script src="/bower_components/ng-file-upload/ng-file-upload-shim.min.js?v=BUILD_NUMBER"></script>
+	<script src="/bower_components/ng-file-upload/ng-file-upload.min.js?v=BUILD_NUMBER"></script>
 
-<!-- Font Awesome -->
-<link rel="stylesheet" type="text/css"
-	href="/bower_components/font-awesome/css/font-awesome.min.css?v=BUILD_NUMBER" />
+	<!-- Font Awesome -->
+	<link rel="stylesheet" type="text/css" href="/bower_components/font-awesome/css/font-awesome.min.css?v=BUILD_NUMBER" />
 
-<!-- Fonts -->
-<link
-	href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,700,700i&subset=latin-ext"
-	rel="stylesheet" />
+	<!-- Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,700,700i&subset=latin-ext" rel="stylesheet" />
 
-<!-- Locale -->
-<script src="/bower_components/angular-i18n/angular-locale_sv-se.js?v=BUILD_NUMBER"></script>
+	<!-- Locale -->
+	<script src="/bower_components/angular-i18n/angular-locale_sv-se.js?v=BUILD_NUMBER"></script>
 
-<!-- App -->
-<link rel="stylesheet" type="text/css" href="/x.css?v=BUILD_NUMBER" />
-<script src="/x.js?v=BUILD_NUMBER"></script>
-<script src="/js/env.js?v=BUILD_NUMBER"></script>
+	<!-- App -->
+	<link rel="stylesheet" type="text/css" href="/x.css?v=BUILD_NUMBER" />
+	<script src="/x.js?v=BUILD_NUMBER"></script>
+	<script src="/js/env.js?v=BUILD_NUMBER"></script>
 
-<script src="/bower_components/lodash/dist/lodash.js?v=BUILD_NUMBER"></script>
+	<script src="/bower_components/lodash/dist/lodash.js?v=BUILD_NUMBER"></script>
 
 </head>
+
 <body ng-controller="MainCtrl as main" class="page-{{route.current.pagetype}}">
 
 	<nav class="navbar navbar-default" ng-hide="getPaymentStatus()">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-			<a class="navbar-brand" href="#"><img src="../images/logo/logotyp.svg"
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#"><img src="../images/logo/logotyp.svg"
 				alt="LKTicket Webb" /></a>
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-    </div>
+			</div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-				<li><p class="navbar-btn prompt">Välj nöje:</p></li>
-				<li ng-repeat = "show in shows">
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li>
+						<p class="navbar-btn prompt">Välj nöje:</p>
+					</li>
+					<li ng-repeat="show in shows">
 
-					<a href ="#/show/{{show.id}}" class="navbar-btn">
+						<a href="#/show/{{show.id}}" class="navbar-btn">
 						{{show.name}}
 					</a>
-				</li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+					</li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container-fluid -->
+	</nav>
 
 	<div id="content" class="animation-wrapper" ng-view></div>
 
@@ -110,7 +105,7 @@
 			<p>Totalt pris: {{getTotalPrice()}} kr</p>
 		</div>
 		<div class="centered-text">
-			<a href ="#/cart/{{getCartId()}}/{{getCartIdentifier()}}" class="navbar-btn">
+			<a href="#/cart/{{getCartId()}}/{{getCartIdentifier()}}" class="navbar-btn">
 				<i class="fa fa-shopping-cart"></i></br>
 				Till kundvagnen
 			</a>
@@ -120,6 +115,28 @@
 			<p>Tid kvar: {{getTimeLeft()}}</p>
 		</div>
 	</div>
+
+	<div id="policy" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Modal Header</h4>
+				</div>
+				<div class="modal-body">
+					<p>Some text in the modal.</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
 	<!-- TODO Analytics -->
 </body>
+
 </html>
