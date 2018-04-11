@@ -44,6 +44,20 @@ p, a {
 	width: 16.66666665%;
 }
 
+/* - - - - - terms - - - - - */
+#terms p,#terms h4,#terms h2{
+	color: #424242;
+}
+#terms-link{
+	text-decoration: underline;
+}
+#terms-link:hover{
+
+}
+#terms-link:hover, #terms-link:focus{
+	color: #f7a021;
+}
+
 /* - - - - - animation - - - - - */
 .animation-wrapper{
 	-webkit-animation: fadein 1.5s; /* Safari, Chrome and Opera > 12.1 */
