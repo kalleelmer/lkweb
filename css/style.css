@@ -43,7 +43,11 @@ p, a {
 .half-cell{
 	width: 16.66666665%;
 }
-
+@media screen and (max-width:767px){
+	.half-cell{
+		width: 33.33333333%;
+	}
+}
 /* - - - - - terms - - - - - */
 #terms p,#terms h4,#terms h2{
 	color: #424242;

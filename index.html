@@ -77,18 +77,18 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-left">
-					<li>
+					<li class="non-clickable">
 						<p class="navbar-btn prompt"><b>Välj ditt nöje:</b></p>
 					</li>
 					<li ng-repeat="show in shows">
-						<a href="#/show/{{show.id}}" class="navbar-btn">
+						<a data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" href="#/show/{{show.id}}" class="navbar-btn">
 						{{show.name}}
 					</a>
 					</li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li>
-						<a href="#/contact" class="navbar-btn">Kontakt</a>
+						<a data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" href="#/contact" class="navbar-btn">Kontakt</a>
 					</li>
 				</ul>
 			</div>
@@ -103,23 +103,29 @@
 	</div>
 
 	<div class="footer row flyIn" ng-if="getCartId()" ng-hide="getPaymentStatus()">
-		<div class="centered-text half-cell">
+		<div class="centered-text half-cell hidden-xs">
 			<i class="fa fa-ticket-alt"></i>
 			<p>Antal biljetter: {{getNumberOfTickets()}} st</p>
 		</div>
 		<div class="centered-text half-cell">
 			<i class="fa fa-money-bill-alt"></i>
-			<p>Totalt pris: {{getTotalPrice()}} kr</p>
+			<p class="hidden-xs">Totalt pris: {{getTotalPrice()}} kr</p>
+			<p class="visible-xs-block">{{getTotalPrice()}} kr</p>
 		</div>
 		<div class="centered-text">
-			<a href="#/cart/{{getCartId()}}/{{getCartIdentifier()}}" class="navbar-btn">
+			<a class="hidden-xs" href="#/cart/{{getCartId()}}/{{getCartIdentifier()}}" class="navbar-btn">
 				<i class="fa fa-shopping-cart"></i></br>
 				Till kundvagnen
+			</a>
+			<a class="visible-xs-block" href="#/cart/{{getCartId()}}/{{getCartIdentifier()}}" class="navbar-btn">
+				<i class="fa fa-shopping-cart"></i></br>
+				Betala
 			</a>
 		</div>
 		<div class="centered-text" ng-if="getTimeLeft()">
 			<i class="fa fa-clock"></i>
-			<p>Tid kvar: {{getTimeLeft()}}</p>
+			<p class="hidden-xs">Tid kvar: {{getTimeLeft()}}</p>
+			<p class="visible-xs-block">{{getTimeLeft()}}</p>
 		</div>
 	</div>
 

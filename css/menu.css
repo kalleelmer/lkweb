@@ -37,6 +37,7 @@
 @media screen and (max-width:767px){
 	#bs-example-navbar-collapse-1{
 		background-color: #d82458;
+		text-align: center;
 	}
 	.navbar-header{
 		height: 66px;
@@ -51,6 +52,16 @@
 	.navbar-toggle .icon-bar + .icon-bar {
     margin-top: 7px;
 	}
+	.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    border: none;
+	}
+	.non-clickable{
+		background-color: transparent!important;
+	}
+	.nav > li:hover{
+    background-color: #c32250;
+	}
+
 }
 /* - - - - - Logotype - - - - - */
 .navbar-brand {
