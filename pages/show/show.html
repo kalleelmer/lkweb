@@ -19,7 +19,7 @@
 			<div class="list-group-item active">
 				{{date | date : 'EEEE d MMMM yyyy'}}
 			</div>
-			<a href = "#/performance/{{performance.id}}" class="list-group-item" ng-repeat="performance in performances">
+			<a href = "#/performance/{{performance.id}}" class="list-group-item" ng-repeat="performance in performances | orderBy: 'start'">
 				<div class="label label-danger label-right" ng-show="performance.available==0">
 					Slutsåld
 				</div>
