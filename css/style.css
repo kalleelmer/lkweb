@@ -52,10 +52,10 @@ p, a {
 #terms p,#terms h4,#terms h2{
 	color: #424242;
 }
-#terms-link{
+.colored-link{
 	text-decoration: underline;
 }
-#terms-link:hover, #terms-link:focus{
+.colored-link:hover, .colored-link:focus{
 	color: #f7a021;
 }
 #payment-logos{
