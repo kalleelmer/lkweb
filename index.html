@@ -78,15 +78,19 @@
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav">
+				<ul class="nav navbar-nav navbar-left">
 					<li>
 						<p class="navbar-btn prompt"><b>Välj ditt nöje:</b></p>
 					</li>
 					<li ng-repeat="show in shows">
-
 						<a href="#/show/{{show.id}}" class="navbar-btn">
 						{{show.name}}
 					</a>
+					</li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+						<a href="#/contact" class="navbar-btn">Kontakt</a>
 					</li>
 				</ul>
 			</div>
@@ -96,7 +100,7 @@
 	</nav>
 
 	<div id="content" class="animation-wrapper" ng-view></div>
-	<div id="rights" class="col-sm-12">
+	<div id="rights" class="col-sm-12" ng-class = "{'rights-padding' : getPaymentStatus()}">
 		<p>© 2017 Lundakarnevalen. All rights reserved.</p>
 	</div>
 
@@ -181,8 +185,8 @@
 					<h4>10.4 Tvister & lagar</h4>
 					<p>Svensk rätt skall tillämpas på samtliga köp enligt dessa avtalsvillkor. Tvist om köp enligt dessa avtalsvillkor skall exklusivt prövas av svensk allmän domstol.</p>
 				</div>
-				<div id="bambora-logo" class="col-sm-12" style="text-align:center;">
-					<img src="../images/misc/logos-sweden.png" srcset="../images/misc/logos-sweden-2x.png 2x" style="width:100%;max-width:530px;" alt="Supported payment methods">
+				<div id="payment-logos" class="col-sm-12" style="text-align:center;">
+					<img src="../images/misc/logos-sweden.png" srcset="../images/misc/logos-sweden-2x.png 2x" alt="Supported payment methods">
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
