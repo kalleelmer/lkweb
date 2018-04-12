@@ -76,18 +76,19 @@
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav">
+				<ul class="nav navbar-nav navbar-left">
 					<li>
 						<p class="navbar-btn prompt"><b>Välj ditt nöje:</b></p>
 					</li>
 					<li ng-repeat="show in shows">
-
 						<a href="#/show/{{show.id}}" class="navbar-btn">
 						{{show.name}}
 					</a>
 					</li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
 					<li>
-						<p id="contact" class="navbar-btn prompt"><b>Kontakt</b></p>
+						<a href="#/contact" class="navbar-btn">Kontakt</a>
 					</li>
 				</ul>
 			</div>
@@ -97,7 +98,7 @@
 	</nav>
 
 	<div id="content" class="animation-wrapper" ng-view></div>
-	<div id="rights" class="col-sm-12">
+	<div id="rights" class="col-sm-12" ng-class = "{'rights-padding' : getPaymentStatus()}">
 		<p>© 2017 Lundakarnevalen. All rights reserved.</p>
 	</div>
 

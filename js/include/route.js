@@ -35,4 +35,9 @@ module.config([ "$routeProvider", function($routeProvider) {
 		controller : "StartCtrl"
 	});
 
+	$routeProvider.when("/contact",{
+		templateUrl : "/pages/contact/contact.html",
+		controller : "ContactCtrl"
+	});
+
 } ]);

@@ -132,11 +132,13 @@ p, a {
 /* - - - - - content - - - - - */
 #rights{
 	margin-top: 50px;
-	padding-bottom:67px;
 	text-align:center;
 }
 #rights p{
 	color:#8a4797;
+}
+.rights-padding{
+	padding-bottom:67px;
 }
 
 /* - - - - - jumbotron - - - - - */
@@ -166,6 +168,16 @@ p, a {
 }
 .start-text{
 	text-align: center;
+}
+
+/* - - - - - footer - - - - - */
+.contact{
+	text-align: center;
+	font-size: 18px;
+	color: #FFF;
+}
+.contact-action:hover, .contact-action:focus{
+	color: #8a4797!important;
 }
 
 /* - - - - - Shows days title - - - - - */
