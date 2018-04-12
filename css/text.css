@@ -8,12 +8,12 @@ p.multi-paragraph {
 }
 
 body {
-	font-family: Lato Light, Helvetica, Arial, sans-serif;
-	font-size: 14px;
+	font-family: 'Lato', Helvetica, Arial, sans-serif;
+	font-size: 15px;
 	line-height: 1.42857143;
 }
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: Montserrat Semibold, Helvetica, Arial, sans-serif;
+	font-family: 'Montserrat', Helvetica, Arial, sans-serif;
 	text-transform: uppercase;
 }
