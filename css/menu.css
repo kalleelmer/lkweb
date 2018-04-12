@@ -20,6 +20,11 @@
 	padding-top: 15px;
 	padding-bottom: 15px;
 }
+#contact-link{
+	text-align: right;
+	float: right;
+}
+
 /* - - - - - Logotype - - - - - */
 .navbar-brand {
 	padding: 10px 10px;

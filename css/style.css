@@ -151,6 +151,23 @@ p, a {
 	color: #FFF;
 }
 
+/* - - - - - start - - - - - */
+
+.start-page-fa{
+	text-align: center;
+	font-size: 30px;
+}
+.start-page-fa i{
+	border: 4px solid #FFF;
+	border-radius:50% !important;
+	-moz-border-radius:50% !important;
+	-webkit-border-radius:50% !important;
+	padding: 15px;
+}
+.start-text{
+	text-align: center;
+}
+
 /* - - - - - Shows days title - - - - - */
 .active {
 	background-color: #8a4797 !important;
