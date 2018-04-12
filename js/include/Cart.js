@@ -191,8 +191,9 @@ var CartFactory = function($http, Core, $window, $interval, Notification, $route
 			customer: customer,
 		};
 
-		Core.post("/order/" + order.id + "/pay/bambora", body).then(function(response) {
+		Core.post("/order/" + order.id + "/pay/bambora?identifier=" + order.identifier, body).then(function(response) {
 			console.log(response.data);
+			clearLocalStorage();
 			$window.location.href = response.data.url;
 		}, function(error) {
 			console.log(error);
