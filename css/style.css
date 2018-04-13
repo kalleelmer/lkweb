@@ -26,14 +26,15 @@ p, a {
 		z-index: 5;
 		display: table;
 }
-.footer a:focus{
-	color: white;
-	text-decoration: none;
-}
-.footer a:hover,.footer a:active{
+.footer a:hover {
 	color: #390444;
 	text-decoration: none;
 }
+.footer a:focus, .footer a:active{
+	color: white;
+	text-decoration: none;
+}
+
 .centered-text{
 	display: table-cell;
 	vertical-align: middle;
@@ -59,6 +60,12 @@ p, a {
 .colored-link{
 	text-decoration: underline;
 }
+
+    a:link - a normal, unvisited link
+    a:visited - a link the user has visited
+    a:hover - a link when the user mouses over it
+    a:active - a link the moment it is clicked
+
 .colored-link:hover, .colored-link:focus{
 	color: #f7a021;
 }
@@ -285,11 +292,10 @@ p, a {
 .btn-secondary{
 	background-color: #f0f0f0;
 }
-
 .btn-secondary:hover{
 	background-color: #E0E0E0;
 }
-.btn-secondary:focus{
+.btn-secondary:focus, .btn-secondary:active{
 	background-color: #f0f0f0;
 }
 
