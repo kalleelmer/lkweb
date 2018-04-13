@@ -165,9 +165,9 @@ p, a {
 }
 .start-page-fa i{
 	border: 4px solid #FFF;
-	border-radius:50% !important;
-	-moz-border-radius:50% !important;
-	-webkit-border-radius:50% !important;
+	border-radius: 100px !important;
+	-moz-border-radius: 100px !important;
+	-webkit-border-radius: 100px !important;
 	padding: 15px;
 }
 .start-text{
