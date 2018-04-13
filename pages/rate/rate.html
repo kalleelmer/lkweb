@@ -25,18 +25,16 @@
   <div class="col-sm-6">
     <table class="rate-table">
       <tr ng-repeat-start="category in categories" ng-if = "performance.availability[category.id]">
-        <td> <b>{{category.name}} - {{performance.availability[category.id].available || "0"}} platser kvar</b></td>
-        <td></td>
-        <td></td>
+        <td><b>{{category.name}} - {{performance.availability[category.id].available || "0"}} platser kvar</b></td>
       </tr>
         <tr class="rate-table-spacer" ng-repeat="rate in rates" ng-if = "getPrice(rate.id, category.id) > 0" ng-show = "performance.availability[category.id]">
-          <td> <i>{{rate.name}}</i>:&nbsp;</td>
-          <td>{{getPrice(rate.id, category.id)}} kr &nbsp;</td>
-          <td><button class="btn btn-primary" ng-click="addTicket(rate.id, category.id)" ng-disabled = "performance.availability[category.id].available == 0">
+          <td class="third-width"> <i>{{rate.name}}</i>:&nbsp;</td>
+          <td class="third-width mobile-center">{{getPrice(rate.id, category.id)}} kr &nbsp;</td>
+          <td class="third-width"><button class="btn btn-primary" ng-click="addTicket(rate.id, category.id)" ng-disabled = "performance.availability[category.id].available == 0">
             Lägg till i kundvagn</button></td>
         </tr>
         <tr ng-repeat-end>
-          <td><br></td>
+          <td></br></td>
         </tr>
     </table>
   </div>

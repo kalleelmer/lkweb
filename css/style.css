@@ -172,6 +172,20 @@ p, a {
 }
 .start-text{
 	text-align: center;
+	font-weight: 400;
+}
+@media screen and (max-width:767px){
+	.start-text{
+		font-weight: 600;
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+	.mobile-center{
+		margin-bottom: 30px;
+	}
+	.mobile-center:last-of-type {
+		margin-bottom: 10px;
+	}
 }
 
 /* - - - - - footer - - - - - */
@@ -179,9 +193,16 @@ p, a {
 	text-align: center;
 	font-size: 18px;
 	color: #FFF;
+	text-decoration: none;
 }
 .contact-action:hover, .contact-action:focus{
 	color: #8a4797!important;
+}
+@media screen and (max-width:767px){
+	.contact{
+		margin-top: 30px;
+		margin-bottom: 25px;
+	}
 }
 
 /* - - - - - Shows days title - - - - - */
@@ -213,6 +234,11 @@ p, a {
 /* - - - - - rate table - - - - - */
 .rate-table-spacer{
 	line-height: 50px;
+}
+@media screen and (max-width:767px){
+	.third-width{
+		width: 33.3333333%;
+	}
 }
 
 /* - - - - - btn override - - - - - */
@@ -298,5 +324,17 @@ p, a {
 	float: right;
 }
 .ticket-btn-box{
-	text-align: center;
+	text-align: right;
+}
+.ticket-btn-box button {
+		margin-left: 5px;
+}
+@media screen and (max-width:767px){
+	.ticket-btn-box button {
+	    margin-left: 10px;
+	}
+}
+
+.ui-notification.success{
+	background-color: #8a4797;
 }
