@@ -4,7 +4,7 @@
 <head>
 	<title>Biljetter - Lundakarnevalen 2018</title>
 
-	<meta name="description" content="Administrationsgränssnitt för Lundakarnevalens biljettsystem" />
+	<meta name="description" content="Lundakarnevalens biljettportal 2018" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -58,8 +58,13 @@
 
 	<link rel="icon" type="image/png" sizes="96x96" href="favicon.png">
 
+<<<<<<< HEAD
 	<link href="https://fonts.googleapis.com/css?family=Lato|Montserrat" rel="stylesheet">
+=======
+	<!--<link href="https://fonts.googleapis.com/css?family=Lato|Montserrat" rel="stylesheet">-->
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,300i,700|Montserrat:600,600i" rel="stylesheet">
 	<script src="bower_components/angular-google-analytics/dist/angular-google-analytics.js"></script>
+>>>>>>> a277307916efb3fe25b7347007436e91743af000
 
 </head>
 
@@ -104,7 +109,7 @@
 
 	<div id="content" class="animation-wrapper" ng-view></div>
 	<div id="rights" class="col-sm-12" ng-class = "{'rights-padding' : !getPaymentStatus()}">
-		<p>© 2017 Lundakarnevalen. All rights reserved.</p>
+		<p>© 2018 Lundakarnevalen. All rights reserved.</p>
 	</div>
 
 	<div class="footer row flyIn" ng-if="getCartId()" ng-hide="getPaymentStatus()">
@@ -134,6 +139,37 @@
 		</div>
 	</div>
 
+<div id="entrePris" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+
+	<!-- entré kostnader -->
+	<div id="entre" class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">&times;</button>
+			<h2 class="modal-title">Entré till karnevalsområdet</h2>
+		</div>
+		<div class="modal-body">
+			<p>För att kunna se nöjena behövs en entré biljett för att komma in på
+			karnevalsområdet. Armbandet ger obegränsat inträde under karnevalsperioden.
+			Engångsbiljett ger inträde en gång och om man går ut från området behövs
+			en ny entrebiljett.</p>
+
+			<h4>Armband:</h4>
+			<p> 200 kr</p>
+
+			<h4>Engångsbiljett:</h4>
+			<p> 60 kr</p>
+
+			<h4>Barn under 6 år:</h4>
+			<p> gratis inträde</p>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+		</div>
+	</div>
+</div>
+</div>
+
 	<div id="policy" class="modal fade" role="dialog">
 		<div class="modal-dialog">
 
@@ -156,8 +192,8 @@
 						223 50, Lund, Skåne</br>
 						</br>
 
-						046-12 55 55</br>
-						test@test.se</br>
+						076-8297609</br>
+						biljett@lundakarnevalen.se</br>
 						</br>
 
 						Information & bilder på hemsidan ägs av Lundakarnevalen och får inte kopieras utan tillåtelse.

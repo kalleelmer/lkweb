@@ -11,10 +11,45 @@
   <div ng-hide="initpay">
 
     <div class="row">
-      <div class="col-sm-4">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4 visible-lg-block">
+
+        <h1 ng-if="getPaymentStatus()"></h1>
+        <h3>Dina biljetter</h3>
+        <br>
+
+        <ul class="list-group" ng-repeat="(key, value) in getTickets() | groupBy: 'performance_id'">
+          <li class="list-group-item active">{{value[0].show_name}} - {{value[0].performance_start | date : 'EEE HH:mm'}}</li>
+          <div ng-repeat="(key2, value2) in value | groupBy: 'category_id'">
+            <li class="list-group-item" ng-repeat="(key3, value3) in value2 | groupBy: 'rate_id'">
+              <div class="row">
+                <div class="col-sm-7">
+                  {{value3[0].rate_name}} - {{value3[0].category_name}} </br>
+                  {{value3.length}}x{{value3[0].price}}kr
+                </div>
+                <div class="col-sm-5 ticket-btn-box">
+                  <button type="button" class="btn btn-secondary" ng-click="removeTicket(value3[0].id)" ng-if="!getPaymentStatus()">
+                    <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                  </button>
+                  <button type="button" class="btn btn-secondary" ng-click="addTicket(value3[0])" ng-if="!getPaymentStatus()">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                  </button>
+                </div>
+              </div>
+            </li>
+          </div>
+        </ul>
+
+        <h3>Totalt pris: {{getTotalPrice()}}kr </h3>
+        <h3 ng-if="getPaymentStatus()">Din referens: {{getOrder().identifier}} </h3>
+
+        <button class="btn btn-primary" type="button" name="button" ng-click="initpay = true" ng-hide="initpay || getPaymentStatus()" >Gå till betalning</button>
 
       </div>
-      <div class="col-sm-4">
+    </div>
+    <div class="row">
+      <div class="col-sm-3"></div>
+      <div class="col-sm-6 hidden-lg">
 
         <h1 ng-if="getPaymentStatus()"></h1>
         <h3>Dina biljetter</h3>
@@ -66,7 +101,9 @@
         <h4>Telefonummer*:</h4>
         <input type="text" ng-model="customer.phone" class="form-control" required name="phone" placeholder="Telefonummer">
         <br>
-        <p><input type="checkbox" ng-model="customer.accept" class="" required> Jag har läst och godkänner <a class="colored-link" href="" data-toggle="modal" data-target="#policy">köpvillkoren.</a></p>
+        <p><input type="checkbox" ng-model="customer.accept" class="" required> Jag har läst och godkänner <a class="colored-link" href="" data-toggle="modal" data-target="#policy">köpvillkoren.</a>
+        <br>
+        <input type="checkbox" ng-model="customer2.accept" class="" required>Jag är medveten om att det tillkommer <a class="colored-link" href="" data-toggle="modal" data-target="#entrePris">kostnad för entré</a> till karnevalsområdet</p>
       </div>
       <button class="btn btn-primary" type="button" name="button" ng-click="pay()" ng-show="!getPaymentStatus()" ng-show="initpay" ng-disabled="!customer_form.$valid || (customer.email != email2)">Till kortbetalning</button>
     </form>

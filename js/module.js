@@ -14,7 +14,8 @@ module.config(function(NotificationProvider) {
 		verticalSpacing: 20,
 		horizontalSpacing: 20,
 		positionX: 'right',
-		positionY: 'bottom'
+		positionY: 'bottom',
+    maxCount: 3
 	});
 });
 
