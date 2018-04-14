@@ -8,8 +8,6 @@ var CartFactory = function($http, Core, $window, $interval, Notification, $route
 	var countDown;
 	var order;
 
-	const EXPIRE_DELAY = 1200000;
-
 	var startCountdown = function(ms) {
 
 		if (timer) {
@@ -17,7 +15,7 @@ var CartFactory = function($http, Core, $window, $interval, Notification, $route
 		}
 
 		if (!order.paid) {
-			if (ms > 0) {
+			if (ms > 0 & !timer) {
 				countDown = Math.floor(ms / 1000);
 				var timer = $interval(function() {
 					countDown--;
@@ -79,7 +77,7 @@ var CartFactory = function($http, Core, $window, $interval, Notification, $route
     order = ord;
     setLocalStorage(order.id, order.identifier);
     tickets = [];
-    startCountdown((order.expires + EXPIRE_DELAY) - Date.now());
+    startCountdown((order.expires) - Date.now());
   }
 
 	Cart.newOrder = function(callback) {
@@ -139,6 +137,7 @@ var CartFactory = function($http, Core, $window, $interval, Notification, $route
   }
 
 	Cart.addTicket = function(ticket) {
+
 		if (order) {
       postTicket(ticket);
 		} else {
