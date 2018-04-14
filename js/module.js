@@ -18,9 +18,14 @@ module.config(function(NotificationProvider) {
 	});
 });
 
-module.config(['AnalyticsProvider', function (AnalyticsProvider) {
-  console.log("conf analytics");
-   AnalyticsProvider.setAccount('UA-117433868-1');  //UU-XXXXXXX-X should be your tracking code
+module.config(['AnalyticsProvider', function(AnalyticsProvider) {
+	console.log("conf analytics");
+
+	AnalyticsProvider.setAccount('UA-117433868-1'); //UU-XXXXXXX-X should be your tracking code
+	AnalyticsProvider.useECommerce(true, true);
+	AnalyticsProvider.setCurrency('SEK');
+	AnalyticsProvider.readFromRoute(true);
+
 }]).run(['Analytics', function(Analytics) {
-  console.log("starting analytics");
+	console.log("starting analytics");
 }]);
