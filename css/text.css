@@ -8,12 +8,33 @@ p.multi-paragraph {
 }
 
 body {
-	font-family: Lato Light, Helvetica, Arial, sans-serif;
-	font-size: 14px;
+	font-family: 'Lato', Helvetica, Arial, sans-serif;
+	font-size: 15px;
 	line-height: 1.42857143;
 }
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: Montserrat Semibold, Helvetica, Arial, sans-serif;
+	font-family: 'Montserrat', Helvetica, Arial, sans-serif;
 	text-transform: uppercase;
+}
+.mobile-center{
+	text-align: left;
+}
+@media screen and (max-width:767px){
+	h1 {
+		font-size: 26px;
+	}
+	.jumbotron p {
+    font-size: 19px;
+	}
+	h2{
+		font-size: 24px;
+	}
+	h3{
+		font-size: 20px;
+	}
+	.mobile-center{
+		text-align: center;
+	}
+
 }
