@@ -76,9 +76,6 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-left">
-					<li class="non-clickable">
-						<p class="navbar-btn prompt"><b>Välj ditt nöje:</b></p>
-					</li>
 					<li ng-repeat="show in shows">
 						<a data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" href="#/show/{{show.id}}" class="navbar-btn">
 						{{show.name}}
@@ -97,7 +94,7 @@
 	</nav>
 
 	<div id="content" class="animation-wrapper" ng-view></div>
-	<div id="rights" class="col-sm-12" ng-class = "{'rights-padding' : !getPaymentStatus()}">
+	<div id="rights" class="col-sm-12" ng-class = "{'rights-padding' : getTotalPrice()!=0}">
 		<p>© 2017 Lundakarnevalen. All rights reserved.</p>
 	</div>
 
