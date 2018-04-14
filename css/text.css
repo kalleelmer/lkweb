@@ -30,7 +30,7 @@ h2, h3, h4, h5, h6 {
 }
 @media screen and (max-width:767px){
 	h1 {
-		font-size: 26px;
+		font-size: 32px;
 	}
 	.jumbotron p {
     font-size: 19px;
