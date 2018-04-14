@@ -35,7 +35,7 @@
     background-color: #fff;
 }
 @media screen and (max-width:767px){
-	#bs-example-navbar-collapse-1{
+	.navbar-collapse{
 		background-color: #d82458;
 		text-align: center;
 	}
@@ -54,9 +54,6 @@
 	}
 	.navbar-default .navbar-collapse, .navbar-default .navbar-form {
     border: none;
-	}
-	.non-clickable{
-		background-color: transparent!important;
 	}
 	.nav > li:hover{
     background-color: #c32250;

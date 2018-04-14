@@ -1,3 +1,8 @@
+@font-face {
+    font-family: OPTIBrian;
+    src: url("../fonts/optibrianjamesboldcond-bold.otf");
+}
+
 /* User-generated text that should preserve newlines. */
 p.multi-paragraph {
 	white-space: pre-line;
@@ -12,8 +17,11 @@ body {
 	font-size: 15px;
 	line-height: 1.42857143;
 }
+h1 {
+	font-family: 'OPTIBrian', Helvetica, Arial, sans-serif;
+}
 
-h1, h2, h3, h4, h5, h6 {
+h2, h3, h4, h5, h6 {
 	font-family: 'Montserrat', Helvetica, Arial, sans-serif;
 	text-transform: uppercase;
 }

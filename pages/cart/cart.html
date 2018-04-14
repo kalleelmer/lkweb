@@ -16,7 +16,7 @@
 
         <h1 ng-if="getPaymentStatus()"></h1>
         <h3>Dina biljetter</h3>
-        <br>
+      <br/>
 
         <ul class="list-group" ng-repeat="(key, value) in getTickets() | groupBy: 'performance_id'">
           <li class="list-group-item active">{{value[0].show_name}} - {{value[0].performance_start | date : 'EEE HH:mm'}}</li>
@@ -24,7 +24,7 @@
             <li class="list-group-item" ng-repeat="(key3, value3) in value2 | groupBy: 'rate_id'">
               <div class="row">
                 <div class="col-sm-7">
-                  {{value3[0].rate_name}} - {{value3[0].category_name}} </br>
+                  {{value3[0].rate_name}} - {{value3[0].category_name}} <br/>
                   {{value3.length}}x{{value3[0].price}}kr
                 </div>
                 <div class="col-sm-5 ticket-btn-box">
@@ -43,7 +43,7 @@
         <h3>Totalt pris: {{getTotalPrice()}}kr </h3>
         <h3 ng-if="getPaymentStatus()">Din referens: {{getOrder().identifier}} </h3>
 
-        <button class="btn btn-primary" type="button" name="button" ng-click="initpay = true" ng-hide="getTotalPrice() == 0" >Gå till betalning</button>
+        <button class="btn btn-primary" type="button" name="button" ng-click="initpay = true" ng-hide="getTotalPrice()==0" >Gå till betalning</button>
 
       </div>
     </div>
