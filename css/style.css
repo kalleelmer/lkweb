@@ -54,18 +54,12 @@ p, a {
 	}
 }
 /* - - - - - terms - - - - - */
-#terms p,#terms h4,#terms h2{
+.terms-and-policy p, .terms-and-policy h4, .terms-and-policy h2{
 	color: #424242;
 }
 .colored-link{
 	text-decoration: underline;
 }
-
-    a:link - a normal, unvisited link
-    a:visited - a link the user has visited
-    a:hover - a link when the user mouses over it
-    a:active - a link the moment it is clicked
-
 .colored-link:hover, .colored-link:focus{
 	color: #f7a021;
 }
