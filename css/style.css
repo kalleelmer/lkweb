@@ -152,7 +152,7 @@ p, a {
 
 /* - - - - - jumbotron - - - - - */
 .jumbotron-bg{
-	background-image: url("../images/shows/test.jpg");
+	background-image: url("../images/shows/default.jpg");
 	background-size: cover;
 	background-position: center;
 }
