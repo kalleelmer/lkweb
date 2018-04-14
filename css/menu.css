@@ -25,6 +25,9 @@
 	float: right;
 }
 /* - - - - - burger - - - - - */
+.navbar-default {
+	margin-bottom: 0px;
+}
 .navbar-default .navbar-toggle {
     border: none;
 }
