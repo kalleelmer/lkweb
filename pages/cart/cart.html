@@ -43,7 +43,7 @@
         <h3>Totalt pris: {{getTotalPrice()}}kr </h3>
         <h3 ng-if="getPaymentStatus()">Din referens: {{getOrder().identifier}} </h3>
 
-        <button class="btn btn-primary" type="button" name="button" ng-click="initpay = true" ng-hide="initpay || getPaymentStatus()" >Gå till betalning</button>
+        <button class="btn btn-primary" type="button" name="button" ng-click="initpay = true" ng-hide="getTotalPrice() == 0" >Gå till betalning</button>
 
       </div>
     </div>
