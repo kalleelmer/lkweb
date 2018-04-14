@@ -1,6 +1,6 @@
 var module = angular.module("lkticket.webb");
 
-var RateCtrl = function($filter, $scope, $http, User, $routeParams, Core, $sce, Cart, Notification) {
+var RateCtrl = function($filter, $scope, $http, User, $routeParams, Core, $sce, Cart, Notification, Analytics) {
 
   Core.get("/performances/" + $routeParams.id).then(function(response) {
 
@@ -43,6 +43,9 @@ var RateCtrl = function($filter, $scope, $http, User, $routeParams, Core, $sce, 
 
   //Lägg till biljetten i kundvagnen
   $scope.addTicket = function(rateId, categoryId) {
+
+    Analytics.addProduct($scope.performance.id, $scope.performance.show.name, categoryId, "Karneval", rateId, $scope.getPrice(rateId, categoryId), "1", 'coupon', 'position', 'custom');
+    Analytics.trackCart('add');
 
     if (Cart.getOrder() && Cart.getOrder().paid) {
       Notification.error("Du har redan betalt din kundvagn och kan därför inte lägga till biljetter");

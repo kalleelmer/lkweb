@@ -1,6 +1,6 @@
 var module = angular.module("lkticket.webb");
 
-var CartFactory = function($http, Core, $window, $interval, Notification, $routeParams, $location) {
+var CartFactory = function($http, Core, $window, $interval, Notification, $routeParams, $location, Analytics) {
 	var Cart = {};
 
 	var tickets = [];
