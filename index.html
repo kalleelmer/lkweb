@@ -90,10 +90,10 @@
 			<!-- /.container-fluid -->
 		</nav>
 		<div ng-if="shows.length == 0" class="site-closed-banner">
-			<span>Onlineförsäljningen har ännu inte öppnat.</span>
+			<span>Onlineförsäljningen har ännu inte öppnat</span>
 		</div>
 		<div id="content" class="animation-wrapper" ng-view></div>
-		<div id="rights" class="col-sm-12" ng-class = "{'rights-padding' : !getPaymentStatus() || getTotalPrice()>0}">
+		<div id="rights" class="col-sm-12" ng-class = "{'rights-padding' : getTotalPrice()>0 || !getCartId()}">
 			<p>© 2018 Lundakarnevalen. All rights reserved.</p>
 		</div>
 
