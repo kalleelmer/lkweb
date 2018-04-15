@@ -97,7 +97,7 @@
 	</div>
 	<div id="content" class="animation-wrapper" ng-view></div>
 	<div id="rights" class="col-sm-12" ng-class = "{'rights-padding' : getCartId()}">
-		<p>© 2017 Lundakarnevalen. All rights reserved.</p>
+		<p>© 2018 Lundakarnevalen. All rights reserved.</p>
 	</div>
 
 	<div class="footer row flyIn" ng-if="getCartId()" ng-hide="getPaymentStatus()">
@@ -110,16 +110,16 @@
 			<p class="hidden-xs">Totalt pris: {{getTotalPrice()}} kr</p>
 			<p class="visible-xs-block">{{getTotalPrice()}} kr</p>
 		</div>
-		<div class="centered-text">
-			<a class="hidden-xs" href="#/cart/{{getCartId()}}/{{getCartIdentifier()}}" class="navbar-btn">
-				<i class="fa fa-shopping-cart"></i></br>
-				Till kundvagnen
-			</a>
-			<a class="visible-xs-block" href="#/cart/{{getCartId()}}/{{getCartIdentifier()}}" class="navbar-btn">
-				<i class="fa fa-shopping-cart"></i></br>
-				Betala
-			</a>
-		</div>
+		<a href="#/cart/{{getCartId()}}/{{getCartIdentifier()}}" class="centered-text">
+			<div class="hidden-xs">
+					<i class="fa fa-shopping-cart"></i></br>
+					Till kundvagnen
+			</div>
+			<div class="visible-xs-block">
+					<i class="fa fa-shopping-cart"></i></br>
+					Betala
+			</div>
+		</a>
 		<div class="centered-text" ng-if="getTimeLeft()">
 			<i class="fa fa-clock"></i>
 			<p class="hidden-xs">Tid kvar: {{getTimeLeft()}}</p>
