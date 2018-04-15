@@ -155,7 +155,6 @@ p, a {
 	background-image: url("../images/shows/default.jpg");
 	background-size: cover;
 	background-position: center;
-	margin-top: -20px;
 }
 .jumbotron {
 	background-color: rgba(0, 0, 0, 0.7);
