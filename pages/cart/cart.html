@@ -2,59 +2,19 @@
   <div class="jumbotron">
     <div class="container">
       <h1>Wehej! Tack för din betalning!</h1>
-      <p>Du kan hitta dina biljetter samt din referens nedanför. En orderbekräftelse är även på väg till dig via mail. Med hjälp av din referens kan du hämta ut biljetterna i en av våra tillgängliga biljettbodar på stortorget. Trevlig karneval!</p>
+      <p>En bekräftelse har skickats till mailen du angav vid registreringen av din order. Du kan se dina biljetter samt bokningskoden för din order nedan. Med din bokningskod kan du enkelt hämta ut dina biljetter i en av Lundakarnevalens biljettbodar.</p>
     </div>
   </div>
 </div>
 
 <div class="container item-page">
   <div ng-hide="initpay">
-
     <div class="row">
-      <div class="col-sm-4"></div>
+      <div class="col-sm-4 visible-lg-block"></div>
       <div class="col-sm-4 visible-lg-block">
-
         <h1 ng-if="getPaymentStatus()"></h1>
         <h3>Dina biljetter</h3>
-      <br/>
-
-        <ul class="list-group" ng-repeat="(key, value) in getTickets() | groupBy: 'performance_id'">
-          <li class="list-group-item active">{{value[0].show_name}} - {{value[0].performance_start | date : 'EEE HH:mm'}}</li>
-          <div ng-repeat="(key2, value2) in value | groupBy: 'category_id'">
-            <li class="list-group-item" ng-repeat="(key3, value3) in value2 | groupBy: 'rate_id'">
-              <div class="row">
-                <div class="col-sm-7">
-                  {{value3[0].rate_name}} - {{value3[0].category_name}} <br/>
-                  {{value3.length}}x{{value3[0].price}}kr
-                </div>
-                <div class="col-sm-5 ticket-btn-box">
-                  <button type="button" class="btn btn-secondary" ng-click="removeTicket(value3[0].id)" ng-if="!getPaymentStatus()">
-                    <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-                  </button>
-                  <button type="button" class="btn btn-secondary" ng-click="addTicket(value3[0])" ng-if="!getPaymentStatus()">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                  </button>
-                </div>
-              </div>
-            </li>
-          </div>
-        </ul>
-
-        <h3>Totalt pris: {{getTotalPrice()}}kr </h3>
-        <h3 ng-if="getPaymentStatus()">Din referens: {{getOrder().identifier}} </h3>
-
-        <button class="btn btn-primary" type="button" name="button" ng-click="initpay = true" ng-hide="getTotalPrice()==0" >Gå till betalning</button>
-
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-3"></div>
-      <div class="col-sm-6 hidden-lg">
-
-        <h1 ng-if="getPaymentStatus()"></h1>
-        <h3>Dina biljetter</h3>
-        <br>
-
+        <br/>
         <ul class="list-group" ng-repeat="(key, value) in getTickets() | groupBy: 'performance_id'">
           <li class="list-group-item active">{{value[0].show_name}} - {{value[0].performance_start | date : 'EEE HH:mm'}}</li>
           <div ng-repeat="(key2, value2) in value | groupBy: 'category_id'">
@@ -76,17 +36,47 @@
             </li>
           </div>
         </ul>
-
         <h3>Totalt pris: {{getTotalPrice()}}kr </h3>
-        <h3 ng-if="getPaymentStatus()">Din referens: {{getOrder().identifier}} </h3>
-
-        <button class="btn btn-primary" type="button" name="button" ng-click="initpay = true" ng-hide="initpay || getPaymentStatus()" >Gå till betalning</button>
-
+        <h3 ng-if="getPaymentStatus()">Din bokningskod: {{getOrder().identifier}} </h3>
+        <button class="btn btn-primary" type="button" name="button" ng-click="initpay = true" ng-show="!getPaymentStatus()" ng-hide="getTotalPrice()==0 || getPaymentStatus()">Gå till betalning</button>
+        <p ng-if="getPaymentStatus()"><b>OBS:</b> Bokningskoden ovan är det enda som krävs för att hämta ut dina biljetter. Vi ber dig därför spara denna i säkert förvar.</p>
       </div>
+      <div class="col-sm-3 hidden-lg"></div>
+      <div class="col-sm-6 hidden-lg">
+        <h1 ng-if="getPaymentStatus()"></h1>
+        <h3>Dina biljetter</h3>
+        <br/>
+        <ul class="list-group" ng-repeat="(key, value) in getTickets() | groupBy: 'performance_id'">
+          <li class="list-group-item active">{{value[0].show_name}} - {{value[0].performance_start | date : 'EEE HH:mm'}}</li>
+          <div ng-repeat="(key2, value2) in value | groupBy: 'category_id'">
+            <li class="list-group-item" ng-repeat="(key3, value3) in value2 | groupBy: 'rate_id'">
+              <div class="row">
+                <div class="col-sm-7">
+                  {{value3[0].rate_name}} - {{value3[0].category_name}} </br>
+                  {{value3.length}}x{{value3[0].price}}kr
+                </div>
+                <div class="col-sm-5 ticket-btn-box">
+                  <button type="button" class="btn btn-secondary" ng-click="removeTicket(value3[0].id)" ng-if="!getPaymentStatus()">
+                    <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                  </button>
+                  <button type="button" class="btn btn-secondary" ng-click="addTicket(value3[0])" ng-if="!getPaymentStatus()">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                  </button>
+                </div>
+              </div>
+            </li>
+          </div>
+        </ul>
+        <h3>Totalt pris: {{getTotalPrice()}}kr </h3>
+        <h3 ng-if="getPaymentStatus()">Din bokningskod: {{getOrder().identifier}} </h3>
+        <button class="btn btn-primary" type="button" name="button" ng-click="initpay = true" ng-show="!getPaymentStatus()" ng-hide="getTotalPrice()==0 || getPaymentStatus()">Gå till betalning</button>
+        <p ng-if="getPaymentStatus()"><b>OBS:</b> Bokningskoden ovan är det enda som krävs för att hämta ut dina biljetter. Vi ber dig därför spara denna i säkert förvar.</p>
+      </div>
+
     </div>
   </div>
 
-  <div class="" ng-show="initpay">
+  <div ng-show="initpay">
     <p>Vänligen fyll i dina uppgifter nedan för att fortsätta till kortbetalningen. En bekräftelse kommer att skickas till den angivna mailen efter att betalningen genomförts. Har du inte fått ett bekräftelsemail inom ett dygn så hör vänligen hör av dig till oss. Kontaktuppgiter finner du på vår <a class="colored-link" href="#/contact">kontaktsida.</a></p>
     <hr class="my-4">
     <form name="customer_form" novalidate>
@@ -97,13 +87,13 @@
         <h4>Email*:</h4>
         <input type="email" ng-model="customer.email" class="form-control" required name="email" placeholder="namn@example.com">
         <h4>Verifiera email*:</h4>
-        <input type="email" ng-model="email2" class="form-control" required name="email" placeholder="namn@example.com">
+        <input type="email" ng-model="email2" class="form-control" required required name="email" placeholder="namn@example.com">
         <h4>Telefonummer*:</h4>
-        <input type="text" ng-model="customer.phone" class="form-control" required name="phone" placeholder="Telefonummer">
-        <br>
+        <input type="text" ng-model="customer.phone" class="form-control" required required name="phone" placeholder="Telefonummer">
+        <br/>
         <p><input type="checkbox" ng-model="customer.accept" class="" required>
           Jag har läst och godkänner <a class="colored-link" href="" data-toggle="modal" data-target="#policy">köpvillkoren.</a>
-        <br>
+        <br/>
         <input type="checkbox" ng-model="customer2.accept" class="" required>
         Jag är medveten om att det tillkommer <a class="colored-link" href="" data-toggle="modal" data-target="#entrePris">en kostnad för entré</a> till karnevalsområdet.</p>
       </div>

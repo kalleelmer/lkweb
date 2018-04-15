@@ -1,228 +1,222 @@
 <!DOCTYPE html>
 <html ng-app="lkticket.webb" lang="en">
+	<head>
+		<title>Biljetter - Lundakarnevalen 2018</title>
 
-<head>
-	<title>Biljetter - Lundakarnevalen 2018</title>
+		<meta name="description" content="Lundakarnevalens biljettportal" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta property="og:image" content="/images/logo/logo.png" />
+		<link rel="icon" type="image/png" sizes="96x96" href="/imgaes/misc/favicon.png">
 
-	<meta name="description" content="Lundakarnevalens biljettportal" />
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta property="og:image" content="/images/logo/logo.png" />
-	<link rel="icon" type="image/png" sizes="96x96" href="/imgaes/misc/favicon.png">
+		<!-- Angular -->
+		<script src="/bower_components/angular/angular.min.js?v=BUILD_NUMBER"></script>
+		<script src="/bower_components/angular-route/angular-route.min.js?v=BUILD_NUMBER"></script>
+		<script src="/bower_components/angular-xeditable/dist/js/xeditable.min.js?v=BUILD_NUMBER"></script>
+		<link rel="stylesheet" type="text/css" href="/bower_components/angular-xeditable/dist/css/xeditable.min.css?v=BUILD_NUMBER" />
+		<script src="bower_components/angular-filter/dist/angular-filter.min.js?v=BUILD_NUMBER"></script>
 
-	<!-- Angular -->
-	<script src="/bower_components/angular/angular.min.js?v=BUILD_NUMBER"></script>
-	<script src="/bower_components/angular-route/angular-route.min.js?v=BUILD_NUMBER"></script>
-	<script src="/bower_components/angular-xeditable/dist/js/xeditable.min.js?v=BUILD_NUMBER"></script>
-	<link rel="stylesheet" type="text/css" href="/bower_components/angular-xeditable/dist/css/xeditable.min.css?v=BUILD_NUMBER" />
-	<script src="bower_components/angular-filter/dist/angular-filter.min.js?v=BUILD_NUMBER"></script>
+		<!-- Angular ui notifications -->
+		<link rel="stylesheet" href="/bower_components/angular-ui-notification/dist/angular-ui-notification.min.css?v=BUILD_NUMBER">
+		<script src="/bower_components/angular-ui-notification/dist/angular-ui-notification.min.js?v=BUILD_NUMBER"></script>
 
-	<!-- Angular ui notifications -->
-	<link rel="stylesheet" href="/bower_components/angular-ui-notification/dist/angular-ui-notification.min.css?v=BUILD_NUMBER">
-	<script src="/bower_components/angular-ui-notification/dist/angular-ui-notification.min.js?v=BUILD_NUMBER"></script>
+		<!-- JQuery -->
+		<script src="/bower_components/jquery/dist/jquery.min.js?v=BUILD_NUMBER"></script>
 
-	<!-- JQuery -->
-	<script src="/bower_components/jquery/dist/jquery.min.js?v=BUILD_NUMBER"></script>
+		<!-- The Chosen Library -->
+		<script src="/bower_components/chosen/chosen.jquery.js?v=BUILD_NUMBER"></script>
+		<link rel="stylesheet" type="text/css" href="/bower_components/chosen/chosen.css?v=BUILD_NUMBER" />
+		<script src="/bower_components/angular-chosen/angular-chosen.js?v=BUILD_NUMBER"></script>
 
-	<!-- The Chosen Library -->
-	<script src="/bower_components/chosen/chosen.jquery.js?v=BUILD_NUMBER"></script>
-	<link rel="stylesheet" type="text/css" href="/bower_components/chosen/chosen.css?v=BUILD_NUMBER" />
-	<script src="/bower_components/angular-chosen/angular-chosen.js?v=BUILD_NUMBER"></script>
+		<!-- Bootstrap -->
+		<link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.css?v=BUILD_NUMBER" />
+		<link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap-theme.css?v=BUILD_NUMBER" />
+		<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js?v=BUILD_NUMBER"></script>
 
-	<!-- Bootstrap -->
-	<link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.css?v=BUILD_NUMBER" />
-	<link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap-theme.css?v=BUILD_NUMBER" />
-	<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js?v=BUILD_NUMBER"></script>
+		<!-- ng-file-upload -->
+		<script src="/bower_components/ng-file-upload/ng-file-upload-shim.min.js?v=BUILD_NUMBER"></script>
+		<script src="/bower_components/ng-file-upload/ng-file-upload.min.js?v=BUILD_NUMBER"></script>
 
-	<!-- ng-file-upload -->
-	<script src="/bower_components/ng-file-upload/ng-file-upload-shim.min.js?v=BUILD_NUMBER"></script>
-	<script src="/bower_components/ng-file-upload/ng-file-upload.min.js?v=BUILD_NUMBER"></script>
+		<!-- Font Awesome -->
+		<link rel="stylesheet" type="text/css" href="/bower_components/font-awesome/css/fontawesome-all.min.css?v=BUILD_NUMBER" />
 
-	<!-- Font Awesome -->
-	<link rel="stylesheet" type="text/css" href="/bower_components/font-awesome/css/fontawesome-all.min.css?v=BUILD_NUMBER" />
+		<!-- Fonts -->
+		<link href="https://fonts.googleapis.com/css?family=Lato:300,300i,700|Montserrat:600,600i" rel="stylesheet">
 
-	<!-- Fonts -->
-	<link href="https://fonts.googleapis.com/css?family=Lato:300,300i,700|Montserrat:600,600i" rel="stylesheet">
+		<!-- Locale -->
+		<script src="/bower_components/angular-i18n/angular-locale_sv-se.js?v=BUILD_NUMBER"></script>
 
-	<!-- Locale -->
-	<script src="/bower_components/angular-i18n/angular-locale_sv-se.js?v=BUILD_NUMBER"></script>
+		<!-- App -->
+		<link rel="stylesheet" type="text/css" href="/x.css?v=BUILD_NUMBER" />
+		<script src="/x.js?v=BUILD_NUMBER"></script>
+		<script src="/js/env.js?v=BUILD_NUMBER"></script>
+		<script src="/bower_components/lodash/dist/lodash.js?v=BUILD_NUMBER"></script>
+		<script src="bower_components/angular-google-analytics/dist/angular-google-analytics.js"></script>
+	</head>
 
-	<!-- App -->
-	<link rel="stylesheet" type="text/css" href="/x.css?v=BUILD_NUMBER" />
-	<script src="/x.js?v=BUILD_NUMBER"></script>
-	<script src="/js/env.js?v=BUILD_NUMBER"></script>
-	<script src="/bower_components/lodash/dist/lodash.js?v=BUILD_NUMBER"></script>
-	<script src="bower_components/angular-google-analytics/dist/angular-google-analytics.js"></script>
-
-</head>
-
-<body ng-controller="MainCtrl as main" class="page-{{route.current.pagetype}}">
-
-	<nav class="navbar navbar-default" ng-hide="getPaymentStatus()">
-		<div class="container-fluid">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<a class="navbar-brand" href="#"><img src="../images/logo/logotyp.svg"
-				alt="LKTicket Webb" /></a>
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-			</div>
-
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse">
-				<ul class="nav navbar-nav navbar-left">
-					<li ng-repeat="show in shows">
-						<a data-toggle="collapse" data-target=".navbar-collapse" href="#/show/{{show.id}}" class="navbar-btn visible-xs">{{show.name}}</a>
-						<a href="#/show/{{show.id}}" class="navbar-btn hidden-xs">{{show.name}}</a>
-					</li>
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					<li>
-						<a data-toggle="collapse" data-target=".navbar-collapse" href="#/contact" class="navbar-btn visible-xs">Kontakt</a>
-						<a href="#/contact" class="navbar-btn hidden-xs">Kontakt</a>
-					</li>
-				</ul>
-			</div>
-			<!-- /.navbar-collapse -->
-		</div>
-		<!-- /.container-fluid -->
-	</nav>
-	<div ng-if="shows.length == 0" class="site-closed-banner">
-		<span>Onlineförsäljningen har ännu inte öppnat.</span>
-	</div>
-	<div id="content" class="animation-wrapper" ng-view></div>
-	<div id="rights" class="col-sm-12" ng-class = "{'rights-padding' : getCartId()}">
-		<p>© 2018 Lundakarnevalen. All rights reserved.</p>
-	</div>
-
-	<div class="footer row flyIn" ng-if="getCartId()" ng-hide="getPaymentStatus()">
-		<div class="centered-text half-cell hidden-xs">
-			<i class="fa fa-ticket-alt"></i>
-			<p>Antal biljetter: {{getNumberOfTickets()}} st</p>
-		</div>
-		<div class="centered-text half-cell">
-			<i class="fa fa-money-bill-alt"></i>
-			<p class="hidden-xs">Totalt pris: {{getTotalPrice()}} kr</p>
-			<p class="visible-xs-block">{{getTotalPrice()}} kr</p>
-		</div>
-		<a href="#/cart/{{getCartId()}}/{{getCartIdentifier()}}" class="centered-text">
-			<div class="hidden-xs">
-					<i class="fa fa-shopping-cart"></i></br>
-					Till kundvagnen
-			</div>
-			<div class="visible-xs-block">
-					<i class="fa fa-shopping-cart"></i></br>
-					Betala
-			</div>
-		</a>
-		<div class="centered-text" ng-if="getTimeLeft()">
-			<i class="fa fa-clock"></i>
-			<p class="hidden-xs">Tid kvar: {{getTimeLeft()}}</p>
-			<p class="visible-xs-block">{{getTimeLeft()}}</p>
-		</div>
-	</div>
-	<div id="entrePris" class="modal fade" role="dialog">
-		<div class="modal-dialog">
-			<!-- Modal ontent -->
-			<div class="modal-content terms-and-policy">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h2 class="modal-title">Entré till karnevalsområdet</h2>
+	<body ng-controller="MainCtrl as main" class="page-{{route.current.pagetype}}">
+		<nav class="navbar navbar-default" ng-hide="getPaymentStatus()">
+			<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#"><img src="../images/logo/logotyp.svg"
+					alt="LKTicket Webb" /></a>
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
 				</div>
-				<div class="modal-body">
-					<p>För att kunna se nöjena behövs en entrébiljett som ger tillträde till
-					karnevalsområdet. Det finns två typer av entrébiljetter till Lundakarnevalen som beskrivs nedan.<b> Samtliga entrébiljetter går utmärkt att köpa via denna biljettportal och kan hämtas ut tillsammans med biljetterna i en av våra tillgängliga biljettbodar.</b></p>
 
-					<h4>Armband</h4>
-					<p>Armbandet ger obegränsat inträde under karnevalsdagarna. Det betyder att du har möjlighet att fritt ta dig in och ut genom karnavalsområdet under samtliga karnevalsdagar.<br/><b>Pris: 200 kr</b></p>
-
-					<h4>Engångsbiljett</h4>
-					<p>Engångsbiljetter ger inträde till karnevalsområdet en gång. Om man går ut från området med en engångsbiljett behövs en ny entrebiljett för att åter få tillträde till området.<br/><b>Pris: 70 kr</b></p>
-
-					<h4>Barn under 7 år</h4>
-					<p>Gratis inträde gäller för alla barn yngre än 7 år.</p>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse">
+					<ul class="nav navbar-nav navbar-left">
+						<li ng-repeat="show in shows">
+							<a data-toggle="collapse" data-target=".navbar-collapse" href="#/show/{{show.id}}" class="navbar-btn visible-xs">{{show.name}}</a>
+							<a href="#/show/{{show.id}}" class="navbar-btn hidden-xs">{{show.name}}</a>
+						</li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li>
+							<a data-toggle="collapse" data-target=".navbar-collapse" href="#/contact" class="navbar-btn visible-xs">Kontakt</a>
+							<a href="#/contact" class="navbar-btn hidden-xs">Kontakt</a>
+						</li>
+					</ul>
 				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+				<!-- /.navbar-collapse -->
+			</div>
+			<!-- /.container-fluid -->
+		</nav>
+		<div ng-if="shows.length == 0" class="site-closed-banner">
+			<span>Onlineförsäljningen har ännu inte öppnat.</span>
+		</div>
+		<div id="content" class="animation-wrapper" ng-view></div>
+		<div id="rights" class="col-sm-12" ng-class = "{'rights-padding' : !getPaymentStatus() || getTotalPrice()>0}">
+			<p>© 2018 Lundakarnevalen. All rights reserved.</p>
+		</div>
+
+		<div class="footer row flyIn" ng-if="getCartId()" ng-hide="getPaymentStatus() || getTotalPrice()==0">
+			<div class="centered-text half-cell hidden-xs">
+				<i class="fa fa-ticket-alt"></i>
+				<p>Antal biljetter: {{getNumberOfTickets()}} st</p>
+			</div>
+			<div class="centered-text half-cell">
+				<i class="fa fa-money-bill-alt"></i>
+				<p class="hidden-xs">Totalt pris: {{getTotalPrice()}} kr</p>
+				<p class="visible-xs-block">{{getTotalPrice()}} kr</p>
+			</div>
+			<a href="#/cart/{{getCartId()}}/{{getCartIdentifier()}}" class="centered-text">
+				<div class="hidden-xs">
+						<i class="fa fa-shopping-cart"></i></br>
+						Till kundvagnen
+				</div>
+				<div class="visible-xs-block">
+						<i class="fa fa-shopping-cart"></i></br>
+						Betala
+				</div>
+			</a>
+			<div class="centered-text" ng-if="getTimeLeft()">
+				<i class="fa fa-clock"></i>
+				<p class="hidden-xs">Tid kvar: {{getTimeLeft()}}</p>
+				<p class="visible-xs-block">{{getTimeLeft()}}</p>
+			</div>
+		</div>
+		<div id="entrePris" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+				<!-- Modal ontent -->
+				<div class="modal-content terms-and-policy">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h2 class="modal-title">Entré till karnevalsområdet</h2>
+					</div>
+					<div class="modal-body">
+						<p>För att kunna se nöjena behövs en entrébiljett som ger tillträde till
+						karnevalsområdet. Det finns två typer av entrébiljetter till Lundakarnevalen som beskrivs nedan.<b> Samtliga entrébiljetter går utmärkt att köpa via denna biljettportal och kan hämtas ut tillsammans med biljetterna i en av våra tillgängliga biljettbodar.</b></p>
+
+						<h4>Armband</h4>
+						<p>Armbandet ger obegränsat inträde under karnevalsdagarna. Det betyder att du har möjlighet att fritt ta dig in och ut genom karnavalsområdet under samtliga karnevalsdagar.<br/><b>Pris: 200 kr</b></p>
+
+						<h4>Engångsbiljett</h4>
+						<p>Engångsbiljetter ger inträde till karnevalsområdet en gång. Om man går ut från området med en engångsbiljett behövs en ny entrebiljett för att åter få tillträde till området.<br/><b>Pris: 70 kr</b></p>
+
+						<h4>Barn under 7 år</h4>
+						<p>Gratis inträde gäller för alla barn yngre än 7 år.</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<div id="policy" class="modal fade" role="dialog">
-		<div class="modal-dialog">
-			<!-- Modal content-->
-			<div class="modal-content terms-and-policy">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h2 class="modal-title">Köpvillkor</h2>
-				</div>
-				<div class="modal-body">
-					<h4>1. Företagsinformation</h4>
-					<p>www.web.lkticket.net tillhandahålls av</br>
-						</br>
+		<div id="policy" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+				<!-- Modal content-->
+				<div class="modal-content terms-and-policy">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h2 class="modal-title">Köpvillkor</h2>
+					</div>
+					<div class="modal-body">
+						<h4>1. Företagsinformation</h4>
+						<p>www.web.lkticket.net tillhandahålls av</br>
+							</br>
 
-						Lundakarnevalen</br>
-						Organisationsnummer: 845001-4496</br>
-						</br>
+							Lundakarnevalen</br>
+							Organisationsnummer: 845001-4496</br>
+							</br>
 
-						Sandgatan 2, 3e vån</br>
-						223 50, Lund, Skåne</br>
-						</br>
+							Sandgatan 2, 3e vån</br>
+							223 50, Lund, Skåne</br>
+							</br>
 
-						046-12 55 55</br>
-						test@test.se</br>
-						</br>
+							046-12 55 55</br>
+							test@test.se</br>
+							</br>
 
-						Information & bilder på hemsidan ägs av Lundakarnevalen och får inte kopieras utan tillåtelse.
-					</p>
-					<h4>2. Priser</h4>
-					<p>Varje vara anges inklusive moms i Svenska kronor. I kundvagnen ser man det totala priset inklusive alla avgifter så som moms.</p>
-					<h4>3.1 Betalning</h4>
-					<p>Betalning sker genom vald betalningsmetod i kassan. Betalningsmetoden tillhandahålls av Bambora tillsammans med samarbetspartners.</p>
-					<h4>3.2 Kortbetalning</h4>
-					<p>Kortbetalning accepteras av Visa, MasterCard och Maestro. Debitering av ditt betalkort sker direkt.</p>
-					<h4>4.1 Uthämtning av biljett</h4>
-					<p>Som kund ansvarar du för att hämta ut dina betalda biljetter från en av de tillgängliga biljettbodarna i god tid innan föreställningen börjar.</p>
-					<h4>4.2 Ersättning av borttappad biljett</h4>
-					<p>Kunden tar fullt ansvar för borttappade biljetter och kommer inte erbjudas någon ersättning för borttappade biljetter.</p>
-					<h4>5. Ångerrätt och öppet köp</h4>
-					<p>Lundakarnevalen erbjuder inte ångerrätt och öppet köp på köpet av biljetter i enighet med 2 kap. 11 § distansavtalslagen.</p>
-					<h4>7. Sekretess, säkerhet & personuppgifter</h4>
-					<p>I samband med din beställning godkänner du att Lundakarnevalen lagrar och använder dina uppgifter. Det gör vi för att kunna fullfölja våra åtaganden gentemot dig. Vi dokumenterar även all kommunikation som vi har med dig via e-post, detta för att
-						tillhandahålla den service som du förväntar dig av oss. Lundakarnevalen kommer inte att lämna ut dina personuppgifter till tredje part. Enligt Personuppgiftslagen har du på begäran, en gång per år, rätt att få del av den information vi har registrerat
-						om dig. Vi förbehåller oss rätten att använda dina e-post för utskick av marknadsföring och nyhetsbrev.</p>
-					<h4>8. Kontakt & Kundtjänst</h4>
-					<p>Kontaktuppgifter för frågor kring biljettjänsten finns att hitta på vår kontaktsida.</p>
-					<h4>9. Cookies</h4>
-					<p>En cookie är en textfil som skickas från en websida till din dator där den lagras antingen i minnet (session cookies) eller som en liten textfil (textbaserade cookies). Cookies används för att lagra t.ex. inloggningsinformation eller din kundvagn
-						när du surfar runt på olika webbplatser. Om din webbläsare är inställd på att inte acceptera cookies kommer du inte ha möjlighet att göra någon beställning på vår sida. Du kan lätt ändra detta under inställningar i din webbläsare. Observera att
-						vi inte använder cookies för att spara personlig information om dig.</p>
-					<h4>10.1 Force Majeure</h4>
-					<p>Force Majeure såsom krig, omfattande arbetskonflikt, blockad, eldsvåda, miljökatastrof, allvarlig smittspridning eller annan omfattning som part inte råder över och som förhindrar part att fullgöra sina skyldigheter och befriar part från detta. Sådan
-						befrielse gäller under förutsättning att verksamheten inte heller kan bedrivas under dessa förhållanden. Motparten skall omedelbart underrättas om omständigheter som kan tillämpning denna bestämmelse.</p>
-					<h4>10.2 Ändring av avtalsvillkor</h4>
-					<p>Efter att kund genomfört ett köp äger Säljföretaget inte rätt att ändra villkoren för aktuellt köp om inget annat är överenskommet.</p>
-					<h4>10.3 Klagomål</h4>
-					<p>Om du som kund har klagomål kan dessa framföras via våra kontaktuppgifter som ni finner på vår kontaktsida.</p>
-					<h4>10.4 Tvister & lagar</h4>
-					<p>Svensk rätt skall tillämpas på samtliga köp enligt dessa avtalsvillkor. Tvist om köp enligt dessa avtalsvillkor skall exklusivt prövas av svensk allmän domstol.</p>
-				</div>
-				<div id="payment-logos" class="col-sm-12" style="text-align:center;">
-					<img src="../images/misc/logos-sweden.png" srcset="../images/misc/logos-sweden-2x.png 2x" alt="Supported payment methods">
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+							Information & bilder på hemsidan ägs av Lundakarnevalen och får inte kopieras utan tillåtelse.
+						</p>
+						<h4>2. Priser</h4>
+						<p>Varje vara anges inklusive moms i Svenska kronor. I kundvagnen ser man det totala priset inklusive alla avgifter så som moms.</p>
+						<h4>3.1 Betalning</h4>
+						<p>Betalning sker genom vald betalningsmetod i kassan. Betalningsmetoden tillhandahålls av Bambora tillsammans med samarbetspartners.</p>
+						<h4>3.2 Kortbetalning</h4>
+						<p>Kortbetalning accepteras av Visa, MasterCard och Maestro. Debitering av ditt betalkort sker direkt.</p>
+						<h4>4.1 Uthämtning av biljett</h4>
+						<p>Som kund ansvarar du för att hämta ut dina betalda biljetter från en av de tillgängliga biljettbodarna i god tid innan föreställningen börjar.</p>
+						<h4>4.2 Ersättning av borttappad biljett</h4>
+						<p>Kunden tar fullt ansvar för borttappade biljetter och kommer inte erbjudas någon ersättning för borttappade biljetter.</p>
+						<h4>5. Ångerrätt och öppet köp</h4>
+						<p>Lundakarnevalen erbjuder inte ångerrätt och öppet köp på köpet av biljetter i enighet med 2 kap. 11 § distansavtalslagen.</p>
+						<h4>7. Sekretess, säkerhet & personuppgifter</h4>
+						<p>I samband med din beställning godkänner du att Lundakarnevalen lagrar och använder dina uppgifter. Det gör vi för att kunna fullfölja våra åtaganden gentemot dig. Vi dokumenterar även all kommunikation som vi har med dig via e-post, detta för att
+							tillhandahålla den service som du förväntar dig av oss. Lundakarnevalen kommer inte att lämna ut dina personuppgifter till tredje part. Enligt Personuppgiftslagen har du på begäran, en gång per år, rätt att få del av den information vi har registrerat
+							om dig. Vi förbehåller oss rätten att använda dina e-post för utskick av marknadsföring och nyhetsbrev.</p>
+						<h4>8. Kontakt & Kundtjänst</h4>
+						<p>Kontaktuppgifter för frågor kring biljettjänsten finns att hitta på vår kontaktsida.</p>
+						<h4>9. Cookies</h4>
+						<p>En cookie är en textfil som skickas från en websida till din dator där den lagras antingen i minnet (session cookies) eller som en liten textfil (textbaserade cookies). Cookies används för att lagra t.ex. inloggningsinformation eller din kundvagn
+							när du surfar runt på olika webbplatser. Om din webbläsare är inställd på att inte acceptera cookies kommer du inte ha möjlighet att göra någon beställning på vår sida. Du kan lätt ändra detta under inställningar i din webbläsare. Observera att
+							vi inte använder cookies för att spara personlig information om dig.</p>
+						<h4>10.1 Force Majeure</h4>
+						<p>Force Majeure såsom krig, omfattande arbetskonflikt, blockad, eldsvåda, miljökatastrof, allvarlig smittspridning eller annan omfattning som part inte råder över och som förhindrar part att fullgöra sina skyldigheter och befriar part från detta. Sådan
+							befrielse gäller under förutsättning att verksamheten inte heller kan bedrivas under dessa förhållanden. Motparten skall omedelbart underrättas om omständigheter som kan tillämpning denna bestämmelse.</p>
+						<h4>10.2 Ändring av avtalsvillkor</h4>
+						<p>Efter att kund genomfört ett köp äger Säljföretaget inte rätt att ändra villkoren för aktuellt köp om inget annat är överenskommet.</p>
+						<h4>10.3 Klagomål</h4>
+						<p>Om du som kund har klagomål kan dessa framföras via våra kontaktuppgifter som ni finner på vår kontaktsida.</p>
+						<h4>10.4 Tvister & lagar</h4>
+						<p>Svensk rätt skall tillämpas på samtliga köp enligt dessa avtalsvillkor. Tvist om köp enligt dessa avtalsvillkor skall exklusivt prövas av svensk allmän domstol.</p>
+					</div>
+					<div id="payment-logos" class="col-sm-12" style="text-align:center;">
+						<img src="../images/misc/logos-sweden.png" srcset="../images/misc/logos-sweden-2x.png 2x" alt="Supported payment methods">
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-
-	<!-- TODO Analytics -->
-</body>
-
+	</body>
 </html>
