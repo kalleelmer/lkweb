@@ -6,14 +6,12 @@
     </div>
   </div>
 </div>
-
 <div class="container item-page">
   <div ng-hide="initpay">
     <div class="row">
       <div class="col-sm-4 visible-lg-block"></div>
       <div class="col-sm-4 visible-lg-block">
-        <h1 ng-if="getPaymentStatus()"></h1>
-        <h3>Dina biljetter</h3>
+        <h2>Dina biljetter</h2>
         <br/>
         <ul class="list-group" ng-repeat="(key, value) in getTickets() | groupBy: 'performance_id'">
           <li class="list-group-item active">{{value[0].show_name}} - {{value[0].performance_start | date : 'EEE HH:mm'}}</li>
@@ -43,8 +41,7 @@
       </div>
       <div class="col-sm-3 hidden-lg"></div>
       <div class="col-sm-6 hidden-lg">
-        <h1 ng-if="getPaymentStatus()"></h1>
-        <h3>Dina biljetter</h3>
+        <h2>Dina biljetter</h2>
         <br/>
         <ul class="list-group" ng-repeat="(key, value) in getTickets() | groupBy: 'performance_id'">
           <li class="list-group-item active">{{value[0].show_name}} - {{value[0].performance_start | date : 'EEE HH:mm'}}</li>
@@ -72,15 +69,12 @@
         <button class="btn btn-primary" type="button" name="button" ng-click="initpay = true" ng-show="!getPaymentStatus()" ng-hide="getTotalPrice()==0 || getPaymentStatus()">Gå till betalning</button>
         <p ng-if="getPaymentStatus()"><b>OBS:</b> Bokningskoden ovan är det enda som krävs för att hämta ut dina biljetter. Vi ber dig därför spara denna i säkert förvar.</p>
       </div>
-
     </div>
   </div>
-
-  <div ng-show="initpay">
+  <div style="margin-top: 20px;" ng-show="initpay">
     <p>Vänligen fyll i dina uppgifter nedan för att fortsätta till kortbetalningen. En bekräftelse kommer att skickas till den angivna mailen efter att betalningen genomförts. Har du inte fått ett bekräftelsemail inom ett dygn så hör vänligen hör av dig till oss. Kontaktuppgiter finner du på vår <a class="colored-link" href="#/contact">kontaktsida.</a></p>
     <hr class="my-4">
     <form name="customer_form" novalidate>
-
       <div class="form-group">
         <h4>Namn*:</h4>
         <input type="text" ng-model="customer.name" class="form-control" required name="name" placeholder="Namn Efternamn">
@@ -100,5 +94,4 @@
       <button class="btn btn-primary" type="button" name="button" ng-click="pay()" ng-show="!getPaymentStatus()" ng-show="initpay" ng-disabled="!customer_form.$valid || (customer.email != email2)">Till kortbetalning</button>
     </form>
   </div>
-
 </div>
