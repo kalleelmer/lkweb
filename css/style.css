@@ -239,10 +239,11 @@ p, a {
 .rate-table-spacer{
 	line-height: 50px;
 }
-@media screen and (max-width:767px){
-	.third-width{
-		width: 33.3333333%;
-	}
+.third-width{
+	width: 33.3333333%;
+}
+.centered-price{
+	text-align: center;
 }
 
 /* - - - - - btn override - - - - - */
