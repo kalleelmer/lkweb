@@ -26,17 +26,17 @@ module.config([ "$routeProvider", function($routeProvider) {
 	});
 
 	$routeProvider.when("/denied",{
-		templateUrl : "/pages/denied/denied.html",
+		templateUrl : "/pages/denied/denied.html?v=BUILD_NUMBER",
 		controller : "DeniedCtrl"
 	});
 
 	$routeProvider.when("/",{
-		templateUrl : "/pages/start/start.html",
+		templateUrl : "/pages/start/start.html?v=BUILD_NUMBER",
 		controller : "StartCtrl"
 	});
 
 	$routeProvider.when("/contact",{
-		templateUrl : "/pages/contact/contact.html",
+		templateUrl : "/pages/contact/contact.html?v=BUILD_NUMBER",
 		controller : "ContactCtrl"
 	});
 
