@@ -1,4 +1,5 @@
-<div class="jumbotron-bg" style="background-image: url('{{show.image}}');">
+<div class="jumbotron-bg"
+	style="background-image: url('{{show.image}}');">
 	<div class="jumbotron">
 		<div class="container">
 			<h1>{{show.name}}</h1>
@@ -7,36 +8,27 @@
 	</div>
 </div>
 <div class="container" ng-controller="ShowCtrl">
-
-<div class="col-sm-4">
-
-</div>
-{{performances}}
-</br>
-<div class="animation-wrapper">
-		<div class="list-group col-md-3" ng-repeat="(date, performances) in show.dates">
+	<div class="animation-wrapper">
+		<div class="list-group col-md-3"
+			ng-repeat="(date, perfs) in performances | orderBy:'date' | groupBy:'date'">
 			<div class="list-group-item active">
 				<span ng-if="date && date != 'null'">{{date | date : 'EEEE d
 					MMMM yyyy'}} </span><span>&nbsp;</span>
 			</div>
-			<a href = "#/performance/{{performance.id}}" class="list-group-item" ng-repeat="performance in performances | orderBy: 'start'">
-				<div class="label label-danger label-right" ng-show="performance.available==0">
-					Slutsåld
-				</div>
-				<div class="label label-right" ng-show="performance.available>10"
-					ng-class="{'label-success':performance.available >= 10}">
-					<!--{{performance.available}}-->
-					Tillgänglig
-				</div>
-				<div class="label label-right" ng-show="(performance.available>0)&&(performance.available < 10)"
-					ng-class="{'label-warning':performance.available < 10}">
-					<!--{{performance.available}}-->
-					Få biljetter kvar
-				</div>
-				<div>
-					{{performance.start | date : 'HH:mm'}}
-				</div>
+			<a href="#/performance/{{perf.id}}" class="list-group-item"
+				ng-repeat="perf in perfs | orderBy: 'start'">
+				<div class="label label-danger label-right"
+					ng-show="perf.available==0">Slutsåld</div>
+				<div class="label label-right" ng-show="perf.available>10"
+					ng-class="{'label-success':perf.available >= 10}">
+					Tillgänglig</div>
+				<div class="label label-right"
+					ng-show="(perf.available>0)&&(perf.available < 10)"
+					ng-class="{'label-warning':perf.available < 10}">Fåtal kvar</div>
+				<div ng-show="perf.title === null">{{perf.start | date :
+					'HH:mm'}}</div>
+				<div ng-show="perf.title !== null">{{perf.title}}</div>
 			</a>
 		</div>
-</div>
+	</div>
 </div>
