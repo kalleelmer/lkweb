@@ -245,7 +245,22 @@ p, a {
 .centered-price{
 	text-align: center;
 }
-
+@media screen and (min-width:421px){
+	.hidden-phones{
+		display: block;
+	}
+	.visible-phones{
+		display: none;
+	}
+}
+@media screen and (max-width:420px){
+	.hidden-phones{
+		display: none;
+	}
+	.visible-phones{
+		display: block;
+	}
+}
 /* - - - - - btn override - - - - - */
 .btn-primary {
 	background-color: #8a4797;

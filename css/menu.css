@@ -148,8 +148,9 @@
 		text-align: center;
 	}
 	.navbar-toggle {
-		margin-top: 14px;
-		margin-bottom: 14px;
+		margin-top: 13px;
+		margin-bottom: 13px;
+		height: 39px;
 	}
 	.navbar-toggle .icon-bar {
 		width: 28px;

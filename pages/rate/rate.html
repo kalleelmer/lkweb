@@ -5,7 +5,7 @@
   <hr class="my-4">
 
   <div class="col-sm-12">
-    <table class="rate-table">
+    <table class="rate-table hidden-phones">
       <tr ng-repeat-start="category in categories" ng-if = "performance.availability[category.id]">
         <td><b>{{category.name}}</b></td>
       </tr>
@@ -22,6 +22,18 @@
         <td></br></td>
       </tr>
     </table>
+    <div class="visible-phones" ng-repeat-start="category in categories" ng-if = "performance.availability[category.id]">
+      <p><b>{{category.name}}</b></p>
+    </div>
+    <div ng-repeat-end class="row visible-phones" ng-repeat="rate in rates" ng-if = "getPrice(rate.id, category.id) > 0" ng-show = "performance.availability[category.id]" style="color:#FFF;">
+      <div style="margin-top:10px;"class="col-xs-6"><i>{{rate.name}}</i>:&nbsp;</div>
+      <div style="margin-top:10px;text-align:right;"class="col-xs-6">{{getPrice(rate.id, category.id)}} kr &nbsp;</div>
+      <div style="margin-bottom:10px;margin-top:15px;text-align:right;"class="col-xs-12">
+        <button class="btn btn-primary" ng-click="addTicket(rate.id, category.id)" ng-disabled = "performance.availability[category.id].available == 0">
+          Lägg till i kundvagn
+        </button>
+      </div>
+    </div>
   </div>
-  
+
 </div>
