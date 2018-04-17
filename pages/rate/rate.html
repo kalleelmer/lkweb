@@ -1,6 +1,6 @@
 <div class="container">
-  <h2>{{performance.show.name}} - {{performance.start | date : 'EEEE d/M - HH:mm'}}</h2>
-
+  <h2 ng-show="performance.show.name=='Området'">{{performance.show.name}} - Fredag 18/5 till Söndag 20/5</h2>
+  <h2 ng-hide="performance.show.name=='Området'">{{performance.show.name}} - {{performance.start | date : 'EEEE d/M - HH:mm'}}</h2>
   <p>Student- och ungdomsbiljett kan köpas av studerande på gymnasiet och universitet mot uppvisande av studentbevis och av de som kan visa att de är under 18 år. Barn som kan sitta i knät under hela föreställningen går in gratis. På Barnevalen gäller barnbiljett upp till 12 år. Barn som är 6 år eller yngre har gratis entré till karnevalsområdet.</p>
   <hr class="my-4">
 
