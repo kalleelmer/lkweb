@@ -87,7 +87,7 @@
 .visible-mobile{
 	display: none!important;
 }
-@media only screen and (max-width: 1050px) and (min-width: 768px) {
+@media only screen and (max-width: 1140px) and (min-width: 768px) {
     .navbar-header {
         float: none;
     }
@@ -139,7 +139,7 @@
     	margin: 7.5px -15px;
 		}
 }
-@media only screen and (max-width: 1050px) {
+@media only screen and (max-width: 1140px) {
 	.navbar-header{
 		height: 66px;
 	}
