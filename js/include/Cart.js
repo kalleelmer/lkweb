@@ -148,7 +148,8 @@ var CartFactory = function($http, Core, $window, $interval, Notification, $route
 	}
 
 	Cart.removeTicket = function(ticket) {
-		Core.delete("/order/" + order.id + "/tickets/" + ticket + "?identifier=" + order.identifier).then(function(response) {
+		var req = Core.delete("/order/" + order.id + "/tickets/" + ticket + "?identifier=" + order.identifier);
+		req.then(function(response) {
 			tickets.splice(_.indexOf(tickets, _.find(tickets, function(obj) {
 				return obj.id == ticket;
 			})), 1);
@@ -157,6 +158,7 @@ var CartFactory = function($http, Core, $window, $interval, Notification, $route
 			alert("Biljetterna är slut");
 			console.log(error);
 		});
+		return req;
 	}
 
 	Cart.getTickets = function() {

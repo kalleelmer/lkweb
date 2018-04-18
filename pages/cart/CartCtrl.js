@@ -5,11 +5,21 @@ var CartCtrl = function(Core, $scope, $routeParams, Cart, Analytics) {
   $scope.getTickets = function() {
     return Cart.getTickets();
   }
+  
+  var setWorking = function() {
+	  $scope.working = true;
+  }
+  
+  var setDone = function() {
+	  $scope.working = false;
+  }
 
   $scope.removeTicket = function(ticket) {
-    Cart.removeTicket(ticket.id);
-    Analytics.addProduct(ticket.performance.id, ticket.show_name, ticket.category_id, "Karneval", ticket.rate_id, ticket.price, "1", 'coupon', 'position', 'custom');
+	setWorking();
+    var req = Cart.removeTicket(ticket.id);
+    Analytics.addProduct(ticket.performance_id, ticket.show_name, ticket.category_id, "Karneval", ticket.rate_id, ticket.price, "1", 'coupon', 'position', 'custom');
     Analytics.trackCart('remove');
+    req.then(setDone, setDone);
   }
 
   $scope.addTicket = function(ticket) {

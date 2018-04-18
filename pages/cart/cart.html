@@ -25,10 +25,10 @@
                   {{value3.length}}x{{value3[0].price}}kr
                 </div>
                 <div class="col-sm-5 ticket-btn-box">
-                  <button type="button" class="btn btn-secondary" ng-click="removeTicket(value3[0])" ng-if="!getPaymentStatus()">
+                  <button type="button" class="btn btn-secondary" ng-click="removeTicket(value3[0])" ng-if="!getPaymentStatus()" ng-disabled="working">
                     <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
                   </button>
-                  <button type="button" class="btn btn-secondary" ng-click="addTicket(value3[0])" ng-if="!getPaymentStatus()">
+                  <button type="button" class="btn btn-secondary" ng-click="addTicket(value3[0])" ng-if="!getPaymentStatus()" ng-disabled="working">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                   </button>
                 </div>
