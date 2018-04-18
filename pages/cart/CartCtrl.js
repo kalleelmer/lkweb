@@ -1,13 +1,15 @@
 var module = angular.module("lkticket.webb");
 
-var CartCtrl = function(Core, $scope, $routeParams, Cart) {
+var CartCtrl = function(Core, $scope, $routeParams, Cart, Analytics) {
 
   $scope.getTickets = function() {
     return Cart.getTickets();
   }
 
-  $scope.removeTicket = function(id) {
-    Cart.removeTicket(id);
+  $scope.removeTicket = function(ticket) {
+    Cart.removeTicket(ticket.id);
+    Analytics.addProduct(ticket.performance.id, ticket.show_name, ticket.category_id, "Karneval", ticket.rate_id, ticket.price, "1", 'coupon', 'position', 'custom');
+    Analytics.trackCart('remove');
   }
 
   $scope.addTicket = function(ticket) {
@@ -18,6 +20,8 @@ var CartCtrl = function(Core, $scope, $routeParams, Cart) {
       count: 1
     };
     Cart.addTicket(data);
+    Analytics.addProduct(ticket.performance.id, ticket.show_name, ticket.category_id, "Karneval", ticket.rate_id, ticket.price, "1", 'coupon', 'position', 'custom');
+    Analytics.trackCart('add');
   }
 
   $scope.getTotalPrice = function() {
