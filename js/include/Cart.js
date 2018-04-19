@@ -8,18 +8,17 @@ var CartFactory = function($http, Core, $window, $interval, Notification, $route
 	var countDown;
 	var order;
 
-	var startCountdown = function(ms) {
+	var startCountdown = function() {
 
 		if (timer) {
 			$interval.cancel(timer);
 		}
 
 		if (!order.paid) {
-			if (ms > 0 & !timer) {
-				countDown = Math.floor(ms / 1000);
+			if (order.expires - Date.now() > 0) {
 				var timer = $interval(function() {
-					countDown--;
-					if (countDown == 0) {
+					countDown = Math.floor((order.expires - Date.now())/1000);
+					if (countDown < 0) {
 						$interval.cancel(timer);
 						Notification.error("Tiden för din order har gått ut. En ny order skapas nu åt dig.");
 						Cart.newOrder(function() {
@@ -77,7 +76,7 @@ var CartFactory = function($http, Core, $window, $interval, Notification, $route
     order = ord;
     setLocalStorage(order.id, order.identifier);
     tickets = [];
-    startCountdown((order.expires) - Date.now());
+    startCountdown();
   }
 
 	Cart.newOrder = function(callback) {
