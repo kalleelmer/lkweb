@@ -1,15 +1,15 @@
 var module = angular.module("lkticket.webb");
 
-var CartCtrl = function(Core, $scope, $routeParams, Cart, Analytics) {
+var CartCtrl = function(Core, $scope, $routeParams, Cart, Analytics, $location) {
 
   $scope.getTickets = function() {
     return Cart.getTickets();
   }
-  
+
   var setWorking = function() {
 	  $scope.working = true;
   }
-  
+
   var setDone = function() {
 	  $scope.working = false;
   }
@@ -35,6 +35,7 @@ var CartCtrl = function(Core, $scope, $routeParams, Cart, Analytics) {
   }
 
   $scope.getTotalPrice = function() {
+    console.log($scope.getOrder());
     return Cart.getPrice();
   }
 
@@ -52,6 +53,12 @@ var CartCtrl = function(Core, $scope, $routeParams, Cart, Analytics) {
 
   $scope.getOrder = function() {
     return Cart.getOrder();
+  }
+
+  $scope.newOrder = function() {
+    Cart.newOrder(function() {
+      $location.path("/");
+    });
   }
 
   Cart.loadOrder($routeParams.id, $routeParams.identifier);

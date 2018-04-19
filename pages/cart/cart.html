@@ -38,7 +38,9 @@
         </ul>
         <h3>Totalt pris: {{getTotalPrice()}}kr </h3>
         <h3 ng-if="getPaymentStatus()">Din bokningskod: {{getOrder().identifier}} </h3>
-        <button class="btn btn-primary" type="button" name="button" ng-click="initpay = true" ng-show="!getPaymentStatus()" ng-hide="getTotalPrice()==0 || getPaymentStatus()">Gå till betalning</button>
+        <button class="btn btn-primary" type="button" name="button" ng-click="initpay = true" ng-show="!getPaymentStatus()" ng-hide="getTotalPrice()==0 || getPaymentStatus() || getOrder().customer_id > 0">Gå till betalning</button>
+        <p ng-if="getOrder().customer_id > 0" ng-hide="getPaymentStatus()">Obs! En betalningsprocess har redan påbörjats för denna bokning.</p>
+        <button class="btn btn-primary" type="button" name="button" ng-click="newOrder()" ng-if= "getOrder().customer_id > 0" ng-hide="getPaymentStatus()">Skapa en ny order.</button>
         <p ng-if="getPaymentStatus()"><b>OBS:</b> Bokningskoden ovan är det enda som krävs för att hämta ut dina biljetter. Vi ber dig därför spara denna i säkert förvar.</p>
       </div>
     </div>
@@ -65,7 +67,7 @@
         <input type="checkbox" ng-model="customer2.accept" class="" required>
         Jag är medveten om att det tillkommer <a class="colored-link" href="" data-toggle="modal" data-target="#entrePris">en kostnad för entré</a> till karnevalsområdet.</p>
       </div>
-      <button class="btn btn-primary" type="button" name="button" ng-click="pay()" ng-show="!getPaymentStatus()" ng-show="initpay" ng-disabled="!customer_form.$valid || (customer.email != email2)">Till kortbetalning</button>
+      <button class="btn btn-primary" type="button" name="button" ng-click="pay()" ng-show="!getPaymentStatus()" ng-show="initpay" ng-disabled="!customer_form.$valid || (customer.email != email2)" ng-hide ="getOrder().customer_id > 0">Till kortbetalning</button>
     </form>
   </div>
 
