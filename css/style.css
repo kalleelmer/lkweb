@@ -364,3 +364,10 @@ p, a {
 .ui-notification.success{
 	background-color: #8a4797;
 }
+
+.english-text {
+	padding: .2em .6em .3em !important;
+	font-size: 75% !important;
+	margin-left: 10px !important;
+	margin-right: 10px !important;
+}
