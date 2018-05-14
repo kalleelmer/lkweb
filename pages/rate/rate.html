@@ -1,7 +1,8 @@
 <div class="container">
   <h2 ng-show="performance.title != null">{{performance.show.name}} - {{performance.title}}</h2>
   <h2 ng-hide="performance.title != null">{{performance.show.name}} - {{performance.start | date : 'EEEE d/M - HH:mm'}}</h2>
-  <p>Student- och ungdomsbiljett kan köpas av studerande på gymnasiet och universitet mot uppvisande av studentbevis och av de som kan visa att de är under 18 år. Barn som kan sitta i knät under hela föreställningen går in gratis. På Barnevalen gäller barnbiljett upp till 12 år. Barn som är 6 år eller yngre har gratis entré till karnevalsområdet.</p>
+  <p ng-show="performance.show.name != 'Filmen' && performance.show.name != 'Området'">Student- och ungdomsbiljett kan köpas av studerande på gymnasiet och universitet mot uppvisande av studentbevis och av de som kan visa att de är under 18 år. Barn som kan sitta i knät under hela föreställningen går in gratis. På Barnevalen gäller barnbiljett upp till 12 år. Barn som är 6 år eller yngre har gratis entré till karnevalsområdet.</p>
+  <p ng-hide="performance.show.name != 'Filmen' && performance.show.name != 'Området'">Barn som kan sitta i knät under hela föreställningen går in gratis. På Barnevalen gäller barnbiljett upp till 12 år. Barn som är 6 år eller yngre har gratis entré till karnevalsområdet.</p>
   <hr class="my-4">
 
   <div class="col-sm-12">
