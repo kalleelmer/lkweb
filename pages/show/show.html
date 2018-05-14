@@ -25,7 +25,7 @@
 				<div class="label label-right"
 					ng-show="(perf.available>0)&&(perf.available < 10)"
 					ng-class="{'label-warning':perf.available < 10}">Fåtal kvar</div>
-					<span class="badge badge-primary badge-pill english-text" ng-show="$index%3 == 0 && performance.show.name == 'Filmen'">Engelsk text</span>
+					<span class="badge badge-primary badge-pill english-text" ng-show="$index%3 == 0 && show.name == 'Filmen'">Engelsk text</span>
 				<div ng-show="perf.title === null">{{perf.start | date :
 					'HH:mm'}}</div>
 				<div ng-show="perf.title !== null">{{perf.title}}</div>
