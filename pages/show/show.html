@@ -19,13 +19,13 @@
 				ng-repeat="perf in perfs | orderBy: 'start'">
 				<div class="label label-danger label-right"
 					ng-show="perf.available==0">Slutsåld</div>
-				<div class="label label-right" ng-show="perf.available>10"
-					ng-class="{'label-success':perf.available >= 10}">
-					Tillgänglig</div>
-				<div class="label label-right"
-					ng-show="(perf.available>0)&&(perf.available < 10)"
-					ng-class="{'label-warning':perf.available < 10}">Fåtal kvar</div>
-					<span class="badge badge-primary badge-pill english-text" ng-show="perf.note == 'English subtitles'">En subs</span>
+				<div class="label label-right label-success"
+					ng-show="perf.available>=10">Tillgänglig</div>
+				<div class="label label-right label-warning"
+					ng-show="(perf.available>0)&&(perf.available < 10)">Fåtal
+					kvar</div>
+				<div class="badge badge-primary badge-pill performance-label"
+					ng-show="perf.label">{{perf.label}}</div>
 				<div ng-show="perf.title === null">{{perf.start | date :
 					'HH:mm'}}</div>
 				<div ng-show="perf.title !== null">{{perf.title}}</div>
