@@ -1,41 +1,76 @@
 <div class="container">
-  <h2 ng-show="performance.title != null">{{performance.show.name}} - {{performance.title}}</h2>
-  <h2 ng-hide="performance.title != null">{{performance.show.name}} - {{performance.start | date : 'EEEE d/M - HH:mm'}}</h2>
-  <p ng-show="performance.show.name != 'Filmen' && performance.show.name != 'Området'">Student- och ungdomsbiljett kan köpas av studerande på gymnasiet och universitet mot uppvisande av studentbevis och av de som kan visa att de är under 18 år. Barn som kan sitta i knät under hela föreställningen går in gratis. På Barnevalen gäller barnbiljett upp till 12 år. Barn som är 6 år eller yngre har gratis entré till karnevalsområdet.</p>
-  <p ng-hide="performance.show.name != 'Filmen' && performance.show.name != 'Området'">Barn som kan sitta i knät under hela föreställningen går in gratis. På Barnevalen gäller barnbiljett upp till 12 år. Barn som är 6 år eller yngre har gratis entré till karnevalsområdet.</p>
-  <p ng-show="performance.note"><i>{{performance.note}}</i></p>
-  <hr class="my-4">
+	<h2 ng-show="performance.title != null">{{performance.show.name}}
+		- {{performance.title}}</h2>
+	<h2 ng-hide="performance.title != null">{{performance.show.name}}
+		- {{performance.start | date : 'EEEE d/M - HH:mm'}}</h2>
+	<p
+		ng-show="performance.show.name != 'Filmen' && performance.show.name != 'Området'">Student-
+		och ungdomsbiljett kan köpas av studerande på gymnasiet och
+		universitet mot uppvisande av studentbevis och av de som kan visa att
+		de är under 18 år. Barn som kan sitta i knät under hela
+		föreställningen går in gratis. På Barnevalen gäller barnbiljett upp
+		till 12 år. Barn som är 6 år eller yngre har gratis entré till
+		karnevalsområdet.</p>
+	<p
+		ng-hide="performance.show.name != 'Filmen' && performance.show.name != 'Området'">Barn
+		som kan sitta i knät under hela föreställningen går in gratis. På
+		Barnevalen gäller barnbiljett upp till 12 år. Barn som är 6 år eller
+		yngre har gratis entré till karnevalsområdet.</p>
+	<p ng-show="performance.note">
+		<i>{{performance.note}}</i>
+	</p>
+	<hr class="my-4">
 
-  <div class="col-sm-12">
-    <table class="rate-table hidden-phones">
-      <tr ng-repeat-start="category in categories" ng-if = "performance.availability[category.id]">
-        <td><b>{{category.name}}</b></td>
-      </tr>
-      <tr class="rate-table-spacer" ng-repeat="rate in rates" ng-if = "getPrice(rate.id, category.id) > 0" ng-show = "performance.availability[category.id]">
-        <td class="third-width"><i>{{rate.name}}</i>:&nbsp;</td>
-        <td class="third-width centered-price">{{getPrice(rate.id, category.id)}} kr &nbsp;</td>
-        <td class="third-width">
-            <button class="btn btn-primary" ng-click="addTicket(rate.id, category.id)" ng-disabled = "performance.availability[category.id].available == 0">
-              Lägg till i kundvagn
-            </button>
-        </td>
-      </tr>
-      <tr ng-repeat-end>
-        <td></br></td>
-      </tr>
-    </table>
-    <div class="visible-phones" ng-repeat-start="category in categories" ng-if = "performance.availability[category.id]">
-      <p><b>{{category.name}}</b></p>
-    </div>
-    <div ng-repeat-end class="row visible-phones" ng-repeat="rate in rates" ng-if = "getPrice(rate.id, category.id) > 0" ng-show = "performance.availability[category.id]" style="color:#FFF;">
-      <div style="margin-top:10px;"class="col-xs-6"><i>{{rate.name}}</i>:&nbsp;</div>
-      <div style="margin-top:10px;text-align:right;"class="col-xs-6">{{getPrice(rate.id, category.id)}} kr &nbsp;</div>
-      <div style="margin-bottom:10px;margin-top:15px;text-align:right;"class="col-xs-12">
-        <button class="btn btn-primary" ng-click="addTicket(rate.id, category.id)" ng-disabled = "performance.availability[category.id].available == 0">
-          Lägg till i kundvagn
-        </button>
-      </div>
-    </div>
-  </div>
+	<div class="col-sm-12">
+		<table class="rate-table hidden-phones">
+			<tr ng-repeat-start="category in categories"
+				ng-if="performance.availability[category.id]">
+				<td><b>{{category.name}}</b></td>
+			</tr>
+			<tr class="rate-table-spacer" ng-repeat="rate in rates"
+				ng-if="getPrice(rate.id, category.id) > 0"
+				ng-show="performance.availability[category.id]">
+				<td class="third-width"><i>{{rate.name}}</i>:&nbsp;</td>
+				<td class="third-width centered-price">{{getPrice(rate.id,
+					category.id)}} kr &nbsp;</td>
+				<td class="third-width">
+					<div ng-show="performance.availability[category.id].available > 0">
+						<button class="btn btn-primary"
+							ng-click="addTicket(rate.id, category.id)">Lägg i
+							kundvagn</button>
+					</div>
+					<div ng-show="performance.availability[category.id].available == 0">
+						<button class="btn btn-danger" disabled>Slutsåld</button>
+					</div>
+				</td>
+			</tr>
+			<tr ng-repeat-end>
+				<td></br></td>
+			</tr>
+		</table>
+		<div class="visible-phones" ng-repeat-start="category in categories"
+			ng-if="performance.availability[category.id]">
+			<p>
+				<b>{{category.name}}</b>
+			</p>
+		</div>
+		<div ng-repeat-end class="row visible-phones"
+			ng-repeat="rate in rates" ng-if="getPrice(rate.id, category.id) > 0"
+			ng-show="performance.availability[category.id]" style="color: #FFF;">
+			<div style="margin-top: 10px;" class="col-xs-6">
+				<i>{{rate.name}}</i>:&nbsp;
+			</div>
+			<div style="margin-top: 10px; text-align: right;" class="col-xs-6">{{getPrice(rate.id,
+				category.id)}} kr &nbsp;</div>
+			<div
+				style="margin-bottom: 10px; margin-top: 15px; text-align: right;"
+				class="col-xs-12">
+				<button class="btn btn-primary"
+					ng-click="addTicket(rate.id, category.id)"
+					ng-disabled="performance.availability[category.id].available == 0">
+					Lägg till i kundvagn</button>
+			</div>
+		</div>
+	</div>
 
 </div>
