@@ -95,6 +95,9 @@
 		<div ng-if="shows.length == 0" class="site-closed-banner">
 			<span>Försäljningen har ännu inte öppnat</span>
 		</div>
+		<div class="site-closed-banner">
+			<span>Tänk på att alla biljetter måste hämtas ut fysiskt i god tid innan föreställningen</span>
+		</div>
 		<div id="content" class="animation-wrapper" ng-view></div>
 		<div id="rights" class="col-sm-12" ng-class = "{'rights-padding' : getTotalPrice()>0 || !getCartId()}">
 			<p>© 2018 Lundakarnevalen. All rights reserved.</p>
